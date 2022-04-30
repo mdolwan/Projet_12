@@ -107,9 +107,6 @@
 				F6D5913C281C1C6C00F32F59 /* Views */,
 				F6D5913B281C1C5E00F32F59 /* Controllers */,
 				F6D5913A281C1C5700F32F59 /* Models */,
-				F6D59106281C1B1700F32F59 /* AppDelegate.swift */,
-				F6D59108281C1B1700F32F59 /* SceneDelegate.swift */,
-				F6D5910A281C1B1700F32F59 /* ViewController.swift */,
 			);
 			path = MesAmies;
 			sourceTree = "<group>";
@@ -141,6 +138,7 @@
 		F6D5913B281C1C5E00F32F59 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6D5910A281C1B1700F32F59 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -164,6 +162,8 @@
 		F6D5913E281C1C8500F32F59 /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				F6D59106281C1B1700F32F59 /* AppDelegate.swift */,
+				F6D59108281C1B1700F32F59 /* SceneDelegate.swift */,
 				F6D59112281C1B1900F32F59 /* Assets.xcassets */,
 				F6D59117281C1B1900F32F59 /* Info.plist */,
 			);
