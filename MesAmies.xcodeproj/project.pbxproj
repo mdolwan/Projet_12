@@ -10,13 +10,8 @@
 		2CF6F8790EA91F745BBAD35D /* Pods_MesAmiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D66556CA5A6F5433A0F33A0 /* Pods_MesAmiesTests.framework */; };
 		330AAF9DCCB1839A68F7EA1A /* Pods_MesAmies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4569C26F3B405C730AE12201 /* Pods_MesAmies.framework */; };
 		F67609622827C7D6004DC9AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67609612827C7D6004DC9AF /* SignUpViewController.swift */; };
-		F67609642827DAF3004DC9AF /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67609632827DAF3004DC9AF /* SignUp.swift */; };
 		F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67778FE2829B09300AEAC5E /* MesamiesSession.swift */; };
-		F67779012829B4AF00AEAC5E /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67779002829B4AF00AEAC5E /* Collect.swift */; };
 		F67779052829C4A100AEAC5E /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67779042829C4A100AEAC5E /* RequestService.swift */; };
-		F67779072829C9AD00AEAC5E /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67779062829C9AD00AEAC5E /* RequestError.swift */; };
-		F6957658282827A3003022C7 /* Reponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6957657282827A3003022C7 /* Reponse.swift */; };
-		F695765C28283C92003022C7 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695765B28283C92003022C7 /* SignIn.swift */; };
 		F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A67C92829208F00439DD6 /* SettingViewController.swift */; };
 		F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59106281C1B1700F32F59 /* AppDelegate.swift */; };
 		F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59108281C1B1700F32F59 /* SceneDelegate.swift */; };
@@ -28,6 +23,11 @@
 		F6D59121281C1B1900F32F59 /* MesAmiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59120281C1B1900F32F59 /* MesAmiesTests.swift */; };
 		F6D5912B281C1B1900F32F59 /* MesAmiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5912A281C1B1900F32F59 /* MesAmiesUITests.swift */; };
 		F6D5912D281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5912C281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift */; };
+		F6E5F5CF282AFBE60089504D /* Reponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5CE282AFBE60089504D /* Reponse.swift */; };
+		F6E5F5D1282AFC0B0089504D /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D0282AFC0B0089504D /* Collect.swift */; };
+		F6E5F5D3282AFC2F0089504D /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D2282AFC2F0089504D /* RequestError.swift */; };
+		F6E5F5D5282AFC520089504D /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D4282AFC520089504D /* SignIn.swift */; };
+		F6E5F5D7282AFC7E0089504D /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D6282AFC7E0089504D /* SignUp.swift */; };
 		F93C646BB49B39C2FFC9DFB8 /* Pods_MesAmies_MesAmiesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5560E43F6754A86EEFB2BB86 /* Pods_MesAmies_MesAmiesUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,13 +59,8 @@
 		E281F366A6F6A652918B5828 /* Pods-MesAmiesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesAmiesTests.debug.xcconfig"; path = "Target Support Files/Pods-MesAmiesTests/Pods-MesAmiesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F659339C6D974FF252F87EF7 /* Pods-MesAmies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesAmies.debug.xcconfig"; path = "Target Support Files/Pods-MesAmies/Pods-MesAmies.debug.xcconfig"; sourceTree = "<group>"; };
 		F67609612827C7D6004DC9AF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		F67609632827DAF3004DC9AF /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUp.swift; path = MesAmies/Controllers/SignUp.swift; sourceTree = SOURCE_ROOT; };
 		F67778FE2829B09300AEAC5E /* MesamiesSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesamiesSession.swift; sourceTree = "<group>"; };
-		F67779002829B4AF00AEAC5E /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Collect.swift; path = MesAmies/Repository/Collect.swift; sourceTree = SOURCE_ROOT; };
 		F67779042829C4A100AEAC5E /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
-		F67779062829C9AD00AEAC5E /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestError.swift; path = MesAmies/Repository/RequestError.swift; sourceTree = SOURCE_ROOT; };
-		F6957657282827A3003022C7 /* Reponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reponse.swift; path = MesAmies/Controllers/Reponse.swift; sourceTree = SOURCE_ROOT; };
-		F695765B28283C92003022C7 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignIn.swift; path = MesAmies/Controllers/SignIn.swift; sourceTree = SOURCE_ROOT; };
 		F69A67C92829208F00439DD6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F6D59103281C1B1700F32F59 /* MesAmies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MesAmies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D59106281C1B1700F32F59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +76,11 @@
 		F6D59126281C1B1900F32F59 /* MesAmiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MesAmiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D5912A281C1B1900F32F59 /* MesAmiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesAmiesUITests.swift; sourceTree = "<group>"; };
 		F6D5912C281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesAmiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F6E5F5CE282AFBE60089504D /* Reponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reponse.swift; sourceTree = "<group>"; };
+		F6E5F5D0282AFC0B0089504D /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
+		F6E5F5D2282AFC2F0089504D /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		F6E5F5D4282AFC520089504D /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		F6E5F5D6282AFC7E0089504D /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,11 +198,11 @@
 		F6D5913A281C1C5700F32F59 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F67609632827DAF3004DC9AF /* SignUp.swift */,
-				F6957657282827A3003022C7 /* Reponse.swift */,
-				F695765B28283C92003022C7 /* SignIn.swift */,
-				F67779002829B4AF00AEAC5E /* Collect.swift */,
-				F67779062829C9AD00AEAC5E /* RequestError.swift */,
+				F6E5F5CE282AFBE60089504D /* Reponse.swift */,
+				F6E5F5D0282AFC0B0089504D /* Collect.swift */,
+				F6E5F5D2282AFC2F0089504D /* RequestError.swift */,
+				F6E5F5D4282AFC520089504D /* SignIn.swift */,
+				F6E5F5D6282AFC7E0089504D /* SignUp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -486,17 +486,17 @@
 			files = (
 				F67609622827C7D6004DC9AF /* SignUpViewController.swift in Sources */,
 				F67779052829C4A100AEAC5E /* RequestService.swift in Sources */,
-				F6957658282827A3003022C7 /* Reponse.swift in Sources */,
 				F6D5910B281C1B1700F32F59 /* SignInViewController.swift in Sources */,
+				F6E5F5D3282AFC2F0089504D /* RequestError.swift in Sources */,
+				F6E5F5CF282AFBE60089504D /* Reponse.swift in Sources */,
 				F6D59111281C1B1700F32F59 /* MesAmies.xcdatamodeld in Sources */,
 				F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */,
+				F6E5F5D1282AFC0B0089504D /* Collect.swift in Sources */,
 				F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */,
 				F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */,
-				F67779012829B4AF00AEAC5E /* Collect.swift in Sources */,
-				F67779072829C9AD00AEAC5E /* RequestError.swift in Sources */,
-				F695765C28283C92003022C7 /* SignIn.swift in Sources */,
 				F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */,
-				F67609642827DAF3004DC9AF /* SignUp.swift in Sources */,
+				F6E5F5D7282AFC7E0089504D /* SignUp.swift in Sources */,
+				F6E5F5D5282AFC520089504D /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
