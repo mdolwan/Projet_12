@@ -11,9 +11,10 @@ import Alamofire
 class SettingViewController: UIViewController {
 
     var repository : RequestService = RequestService()
-   // var schools : [SchoolElement] = []
+   
     var typeSchool: String = ""
     var allSchoolArray : [String] = []
+    var schoolId : [Int] = []
     @IBOutlet weak var addSchoolMaternnelleButton: UIButton!
     @IBOutlet weak var maternelleSchoolLabel: UILabel!
     override func viewDidLoad() {
@@ -42,15 +43,20 @@ extension SettingViewController{
         let parameters: Parameters = [
             "type" : type
         ]
-        repository.schoolSelect(url: api, method: .post, parameters: parameters, callback: {   dataReponse in
+        repository.schoolSelect(url: api, method: .post, parameters: parameters, callback: { [self]   dataReponse in
         
             switch dataReponse {
             case .success(let school):
                 print( school.count )
-                for i in 0...school.count-1 { print(school[i].name) }
+                for i in 0...school.count-1 {
+                    self.allSchoolArray.append("\(school[i].name), \(school[i].city) - \(school[i].code)")
+                    self.schoolId.append(Int(school[i].id)!)
+                  //  print("\(i+1)-", school[i].name)
+                }
+                print(schoolId, allSchoolArray)
                 
             case .failure(let error):
-                print(error, "rr")
+                print(error)
             }
         })
     }
