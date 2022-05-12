@@ -24,7 +24,7 @@
 		F6D5912B281C1B1900F32F59 /* MesAmiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5912A281C1B1900F32F59 /* MesAmiesUITests.swift */; };
 		F6D5912D281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5912C281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift */; };
 		F6E5F5CF282AFBE60089504D /* Reponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5CE282AFBE60089504D /* Reponse.swift */; };
-		F6E5F5D1282AFC0B0089504D /* SchoolElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D0282AFC0B0089504D /* SchoolElement.swift */; };
+		F6E5F5D1282AFC0B0089504D /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D0282AFC0B0089504D /* School.swift */; };
 		F6E5F5D3282AFC2F0089504D /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D2282AFC2F0089504D /* RequestError.swift */; };
 		F6E5F5D5282AFC520089504D /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D4282AFC520089504D /* SignIn.swift */; };
 		F6E5F5D7282AFC7E0089504D /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5D6282AFC7E0089504D /* SignUp.swift */; };
@@ -77,7 +77,7 @@
 		F6D5912A281C1B1900F32F59 /* MesAmiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesAmiesUITests.swift; sourceTree = "<group>"; };
 		F6D5912C281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesAmiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F6E5F5CE282AFBE60089504D /* Reponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reponse.swift; sourceTree = "<group>"; };
-		F6E5F5D0282AFC0B0089504D /* SchoolElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolElement.swift; sourceTree = "<group>"; };
+		F6E5F5D0282AFC0B0089504D /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		F6E5F5D2282AFC2F0089504D /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		F6E5F5D4282AFC520089504D /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		F6E5F5D6282AFC7E0089504D /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				F6E5F5CE282AFBE60089504D /* Reponse.swift */,
-				F6E5F5D0282AFC0B0089504D /* SchoolElement.swift */,
+				F6E5F5D0282AFC0B0089504D /* School.swift */,
 				F6E5F5D2282AFC2F0089504D /* RequestError.swift */,
 				F6E5F5D4282AFC520089504D /* SignIn.swift */,
 				F6E5F5D6282AFC7E0089504D /* SignUp.swift */,
@@ -491,7 +491,7 @@
 				F6E5F5CF282AFBE60089504D /* Reponse.swift in Sources */,
 				F6D59111281C1B1700F32F59 /* MesAmies.xcdatamodeld in Sources */,
 				F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */,
-				F6E5F5D1282AFC0B0089504D /* SchoolElement.swift in Sources */,
+				F6E5F5D1282AFC0B0089504D /* School.swift in Sources */,
 				F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */,
 				F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */,
 				F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */,

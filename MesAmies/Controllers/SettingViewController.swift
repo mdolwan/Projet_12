@@ -11,7 +11,7 @@ import Alamofire
 class SettingViewController: UIViewController {
 
     var repository : RequestService = RequestService()
-    //var schools : [SchoolElement] = []
+   // var schools : [SchoolElement] = []
     var typeSchool: String = ""
     var allSchoolArray : [String] = []
     @IBOutlet weak var addSchoolMaternnelleButton: UIButton!
@@ -43,13 +43,12 @@ extension SettingViewController{
             "type" : type
         ]
         repository.schoolSelect(url: api, method: .post, parameters: parameters, callback: {   dataReponse in
-    
-            switch dataReponse{
+        
+            switch dataReponse {
             case .success(let school):
-                school.forEach { thisSchool in
-                    let schoolInfo = thisSchool.id + thisSchool.name + thisSchool.city + thisSchool.code
-                    allSchoolArray.append(schoolInfo) }
-                print( self.allSchoolArray )
+                print( school.count )
+                for i in 0...school.count-1 { print(school[i].name) }
+                
             case .failure(let error):
                 print(error, "rr")
             }

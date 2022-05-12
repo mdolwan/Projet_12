@@ -18,7 +18,9 @@ protocol AlamofireSession {
 final class MesAmiesSession: AlamofireSession {
     
     func requestSchool<T: Decodable>(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {
-        AF.request(url, method: .post, parameters: parameters).responseDecodable { (response: DataResponse<T, AFError>) in callback(response)
+        AF.request(url, method: .post, parameters: parameters).responseDecodable { (response: DataResponse<T, AFError>) in
+            
+            callback(response)
         }
     }
     func requestIn<T: Decodable>(url: URL,method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {

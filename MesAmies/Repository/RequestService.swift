@@ -57,7 +57,7 @@ final class RequestService {
         }
     }
     
-    func schoolSelect(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<SchoolElement,RequestError>) -> Void){
+    func schoolSelect(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<School,RequestError>) -> Void){
         session.requestSchool(url: url, method: HTTPMethod.post, parameters: parameters) {dataResponse in
             guard let data = dataResponse.data else{
                 callback(.failure(.noData))
@@ -67,11 +67,12 @@ final class RequestService {
                 callback(.failure(.invalidResponse))
                 return
             }
-            guard let dataDecoded = try? JSONDecoder().decode(SchoolElement.self, from: data) else {
+            guard let dataDecoded = try? JSONDecoder().decode(School.self, from: data) else {
                 callback(.failure(.undecodableData))
                 return
             }
-            callback(.success(dataDecoded))
+           // print(dataDecoded)
+           callback(.success(dataDecoded))
         }
     }
 }
