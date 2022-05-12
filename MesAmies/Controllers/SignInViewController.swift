@@ -11,6 +11,7 @@ import Alamofire
 class SignInViewController: UIViewController {
     
     var repository : RequestService = RequestService()
+    var schools : [SchoolElement] = []
     @IBOutlet weak var passWordTestField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
@@ -36,12 +37,15 @@ class SignInViewController: UIViewController {
                 if isSuccess.error == false {
                     UserDefaults.standard.set(true, forKey: "username")
                     self.goToMainViewController()}
-                else if isSuccess.error == true {return}
+                else if isSuccess.error == true {
+                   return }
             case .failure(_):
-                return
+       return
             }
         })
-    }
+        //
+
+        }
 }
 
 extension SignInViewController {

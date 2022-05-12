@@ -172,12 +172,47 @@
                                     <action selector="signOutButton:" destination="stc-RW-lui" eventType="touchUpInside" id="So5-KY-pNg"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-wB-apY" userLabel="Stack Maternelle">
+                                <rect key="frame" x="20" y="59" width="374" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7L-o7-YlY">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JN-iw-zUB">
+                                        <rect key="frame" x="290" y="0.0" width="84" height="45"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="...">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addMaternelleButtonPressed:" destination="yEt-J4-Gw2" eventType="touchUpInside" id="uo2-Ki-2HO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="IYQ-cr-8Op"/>
+                                    <constraint firstItem="4JN-iw-zUB" firstAttribute="width" secondItem="A7L-o7-YlY" secondAttribute="width" multiplier="0.3" id="qXn-Q3-h9l"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tOG-Nz-zEe"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <constraints>
+                            <constraint firstItem="tOG-Nz-zEe" firstAttribute="trailing" secondItem="iUa-wB-apY" secondAttribute="trailing" constant="20" id="DxG-zL-2rh"/>
+                            <constraint firstItem="iUa-wB-apY" firstAttribute="leading" secondItem="tOG-Nz-zEe" secondAttribute="leading" constant="20" id="f1R-rK-DIL"/>
+                            <constraint firstItem="iUa-wB-apY" firstAttribute="top" secondItem="tOG-Nz-zEe" secondAttribute="top" constant="15" id="oFJ-W2-Fxf"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="TDu-wk-d3G"/>
                     <navigationItem key="navigationItem" id="Anl-xH-vSm"/>
+                    <connections>
+                        <outlet property="addSchoolMaternnelleButton" destination="4JN-iw-zUB" id="iQY-Zl-yrt"/>
+                        <outlet property="maternelleSchoolLabel" destination="A7L-o7-YlY" id="pPV-Le-xkc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNl-Nn-bik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="stc-RW-lui" userLabel="Exit" sceneMemberID="exit"/>
@@ -313,6 +348,9 @@
     </scenes>
     <resources>
         <image name="logo_mesAmies" width="400" height="209"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
