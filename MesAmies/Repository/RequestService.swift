@@ -58,7 +58,8 @@ final class RequestService {
     }
     
     func schoolSelect(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<School,RequestError>) -> Void){
-        session.requestSchool(url: url, method: HTTPMethod.post, parameters: parameters) {dataResponse in
+        
+        session.requestSchool(url: url, method: HTTPMethod.post, parameters: parameters) { dataResponse in
             guard let data = dataResponse.data else{
                 callback(.failure(.noData))
                 return
@@ -71,7 +72,6 @@ final class RequestService {
                 callback(.failure(.undecodableData))
                 return
             }
-           // print(dataDecoded)
            callback(.success(dataDecoded))
         }
     }
