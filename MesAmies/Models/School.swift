@@ -8,7 +8,7 @@ import Foundation
 
 // MARK: - SchoolElement
 struct SchoolElement: Codable {
-    let id, name, city, code: String
+    let id, name, city, code: String?
 }
 
 typealias School = [SchoolElement]

@@ -13,65 +13,63 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     
     var repository : RequestService = RequestService()
-    
-    var typeSchool: String = ""
-    var primarySchoolArray : [String] = []
-    var primarySchoolId : [Int] = []
-    var secondarySchoolArray : [String] = []
-    var secondarySchoolId : [Int] = []
-    var highSchoolArray : [String] = []
-    var highSchoolId : [Int] = []
-    var temporaryArray: [String] = []
-    var temporaryId: [Int] = []
+    var city: String?
+    var name: String?
+    var level = ["maternelle","Collèges","lycée"]
+    var tempArray : [String]  = [""]
+    var tempArrayID : [Int] = []
     let pickerSchool = UIPickerView()
     var lastPressedButton: UIButton?
     
-    @IBOutlet weak var addSchoolMaternnelleButton: UIButton!
-    @IBOutlet weak var addSecondaryButton: UIButton!
-    @IBOutlet weak var AddHighSchoolButton: UIButton!
+    let api = URL(string: "http://localhost/mesamies/index.php")
     
-    @IBOutlet weak var maternelleSchoolText: UITextField!
-    @IBOutlet weak var SecondarySchoolText: UITextField!
-    @IBOutlet weak var highSchoolText: UITextField!
+    @IBOutlet weak var chooseCityButton: UIButton!
+    @IBOutlet weak var chooseLevelButton: UIButton!
+    @IBOutlet weak var chooseSchoolButton: UIButton!
     
-    @IBOutlet weak var stackUp: UIStackView!
-    @IBOutlet weak var stackMiddle: UIStackView!
-    @IBOutlet weak var stackHigh: UIStackView!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var levelSchoolTextField: UITextField!
+    @IBOutlet weak var schoolTextField: UITextField!
     
+    @IBOutlet weak var stackCity: UIStackView!
+    @IBOutlet weak var stackLevel: UIStackView!
+    @IBOutlet weak var stackSchool: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        primarySchoolArray = addSchool(forSchoolType: "maternelle").0
-        primarySchoolId = addSchool(forSchoolType: "maternelle").1
-//       hSchoolId = temporaryId
-      
-        stackUp.layer.borderColor = UIColor.darkGray.cgColor
-        stackUp.layer.borderWidth = 3.0
-        stackHigh.layer.borderColor = UIColor.darkGray.cgColor
-        stackHigh.layer.borderWidth = 3.0
-        stackMiddle.layer.borderColor = UIColor.darkGray.cgColor
-        stackMiddle.layer.borderWidth = 3.0
-        
-        pickerSchool.dataSource = self
-        pickerSchool.dataSource = self
-        
-        addSchoolMaternnelleButton.addTarget(self, action:#selector(buttonClicked(sender:)), for: .touchUpInside)
-        addSecondaryButton.addTarget(self, action:#selector(buttonClicked(sender:)), for: .touchUpInside)
-        AddHighSchoolButton.addTarget(self, action:#selector(buttonClicked(sender:)), for: .touchUpInside)
 
-    }
-    
-    @objc func buttonClicked(sender:UIButton!) {
+        stackCity.layer.borderColor = UIColor.darkGray.cgColor
+        stackCity.layer.borderWidth = 3.0
+        stackLevel.layer.borderColor = UIColor.darkGray.cgColor
+        stackLevel.layer.borderWidth = 3.0
+        stackSchool.layer.borderColor = UIColor.darkGray.cgColor
+        stackSchool.layer.borderWidth = 3.0
+        
+        pickerSchool.delegate = self
+        pickerSchool.dataSource = self
+        }
 
-            lastPressedButton = sender
-            if lastPressedButton == addSchoolMaternnelleButton {
-                maternelleSchoolText.inputView = pickerSchool
-            } else if lastPressedButton == addSecondaryButton {
-                SecondarySchoolText.inputView = pickerSchool
-            } else if lastPressedButton == AddHighSchoolButton {
-                highSchoolText.inputView = pickerSchool
+    @IBAction func getAllCitiesPressButton(_ sender: UIButton) {
+        tempArray.removeAll()
+        cityTextField.inputView = pickerSchool
+        let parameters : Parameters = [ "city" : "q",
+                                        "level": "q"
+        ]
+        repository.schoolSelect(url: api!, method: .post, parameters: parameters) { dataResponse in
+            switch dataResponse {
+            case .success(let schools):
+               let school = schools.count
+                for i in 0...school-1{
+                    self.tempArray.append(schools[i].city!)
+                    print( self.tempArray[i])
+                }
+            case .failure(let error):
+                print(error)
             }
         }
+       print(self.tempArray)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -80,46 +78,37 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        
-        if lastPressedButton == addSchoolMaternnelleButton {
-            return primarySchoolArray[row]
-        } else if lastPressedButton == addSecondaryButton {
-            return  secondarySchoolArray[row]
-        } else if lastPressedButton == AddHighSchoolButton {
-            return  highSchoolArray[row]
+        if lastPressedButton == chooseCityButton {
+            return tempArray[row]
+        } else if lastPressedButton == chooseLevelButton {
+           // return  secondarySchoolArray[row]
+        } else if lastPressedButton == chooseSchoolButton {
+          //  return  highSchoolArray[row]
         }
         return ""
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
        
-        if lastPressedButton == addSchoolMaternnelleButton {
-            return temporaryArray.count
-        } else if lastPressedButton == addSecondaryButton {
-            return   temporaryArray.count
-        } else if lastPressedButton == AddHighSchoolButton {
-            return  temporaryArray.count
+        if lastPressedButton == chooseCityButton {
+            return tempArray.count
+        } else if lastPressedButton == chooseLevelButton {
+          //  return   temporaryArray.count
+        } else if lastPressedButton == chooseSchoolButton {
+          //  return  temporaryArray.count
         }
         return 0
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        
-        if lastPressedButton == addSchoolMaternnelleButton {
-                    self.maternelleSchoolText.text = temporaryArray[row]
-                } else if lastPressedButton == addSecondaryButton {
-                    self.SecondarySchoolText.text = temporaryArray[row]
-                } else if lastPressedButton == AddHighSchoolButton {
-                    self.highSchoolText.text = temporaryArray[row]
+        if lastPressedButton == chooseCityButton {
+                    self.cityTextField.text = tempArray[row]
+                } else if lastPressedButton == chooseLevelButton {
+                  //  self.SecondarySchoolText.text = temporaryArray[row]
+                } else if lastPressedButton == chooseSchoolButton {
+                 //   self.highSchoolText.text = temporaryArray[row]
                 }
     }
     
-   @IBAction func addHighSchoolButtonPressed(_ sender: Any) {
-//        addSchool(forSchoolType: "lycée", sender : sender as! UIButton)
-    }
-    @IBAction func addSecondarySchoolButtonPressed(_ sender: Any) {
-//        addSchool(forSchoolType: "Collèges", sender : sender as! UIButton)
-    }
-    @IBAction func addMaternelleButtonPressed(_ sender: UIButton) {
-//        addSchool(forSchoolType: "maternelle", sender : sender )
-    }
     @IBAction func signOutButton(_ sender: UIButton) {
         UserDefaults.standard.set(false, forKey: "username")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -130,30 +119,31 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
 extension SettingViewController{
     
-    func addSchool(forSchoolType type: String)-> ([String],[Int]){
-       
-        guard let api = URL(string: "http://localhost/mesamies/schools.php") else { return ([""],[])  }
+    func addSchool(forCity city: String, andLevel level: String, completion: @escaping([String]) -> Void){
+        tempArray.removeAll()
+        tempArrayID.removeAll()
+        //        guard let api = URL(string: "http://localhost/mesamies/index.php") else { return }
         let parameters: Parameters = [
-            "type" : type
+            "city": city,
+            "level" : level
         ]
-        repository.schoolSelect(url: api, method: .post, parameters: parameters, callback:  {  dataReponse in
-            
+        repository.schoolSelect(url: api!, method: .post, parameters: parameters, callback:  {  dataReponse in
+            var tempArrayCity = [""]
+            var tempArrayId : [Int] = []
             switch dataReponse {
             case .success(let school):
-                print( school.count )
-                self.temporaryArray.removeAll()
-                self.temporaryId.removeAll()
-                for i in 0...school.count-1 {
-                    self.temporaryArray.append("\(school[i].name), \(school[i].city) - \(school[i].code)")
-                    self.temporaryId.append(Int(school[i].id)!)
+                for index in 1...school.count-1 {
+                    if city == "q" && level == "q"{
+                        tempArrayCity.append(school[index].city!)
+                    } else if city != "q" && level != "q"{
+                        tempArrayCity.append(school[index].city!)
+                        tempArrayId.append(Int(school[index].id!)!)
+                    }
                 }
-                print(self.temporaryId, self.temporaryArray)
-                self.primarySchoolArray = self.temporaryArray
-                self.primarySchoolId = self.temporaryId
+                completion(tempArrayCity)
             case .failure(let error):
-                print(error)
+                print(error, "r")
             }
         })
-        return (temporaryArray, temporaryId)
     }
 }
