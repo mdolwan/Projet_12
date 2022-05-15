@@ -16,12 +16,12 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var city: String?
     var name: String?
     var level = ["maternelle","Collèges","lycée"]
-    var tempArray : [String]  = [""]
+    var tempArray : [String]  = []
     var tempArrayID : [Int] = []
     let pickerSchool = UIPickerView()
-    var lastPressedButton: UIButton?
+    var lastPressedTextField: UITextField?
     
-    let api = URL(string: "http://localhost/mesamies/index.php")
+    var api = URL(string: "http://localhost/mesamies/index.php")
     
     @IBOutlet weak var chooseCityButton: UIButton!
     @IBOutlet weak var chooseLevelButton: UIButton!
@@ -47,29 +47,34 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         pickerSchool.delegate = self
         pickerSchool.dataSource = self
-        }
-
-    @IBAction func getAllCitiesPressButton(_ sender: UIButton) {
-        tempArray.removeAll()
-        cityTextField.inputView = pickerSchool
-        let parameters : Parameters = [ "city" : "q",
-                                        "level": "q"
+           
+        // MARK- get all cities available
+        let parameters : Parameters = [ "city" : "",
+                                        "level": ""
         ]
         repository.schoolSelect(url: api!, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse {
-            case .success(let schools):
-               let school = schools.count
-                for i in 0...school-1{
-                    self.tempArray.append(schools[i].city!)
-                    print( self.tempArray[i])
+            case .success(let cities):
+               let city = cities.count
+                for i in 0...city-1{
+                    self.tempArray.append(cities[i].city!)
+                    RequestService.gettenCity.append(cities[i].city!)
                 }
             case .failure(let error):
                 print(error)
             }
-        }
-       print(self.tempArray)
+        } //
+  }
+    @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
+        lastPressedTextField = textField
+        textField.inputView = pickerSchool
     }
     
+    @IBAction func getAllCitiesPressButton(_ sender: UIButton) {
+
+       print(RequestService.gettenCity)
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -78,72 +83,63 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        
-        if lastPressedButton == chooseCityButton {
-            return tempArray[row]
-        } else if lastPressedButton == chooseLevelButton {
-           // return  secondarySchoolArray[row]
-        } else if lastPressedButton == chooseSchoolButton {
-          //  return  highSchoolArray[row]
+        if lastPressedTextField == cityTextField {
+            return RequestService.gettenCity[row]
+        } else if lastPressedTextField == levelSchoolTextField {
+            return  level[row]
+        } else if lastPressedTextField == schoolTextField {
+            return  RequestService.gettenSchool[row]
         }
         return ""
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
        
-        if lastPressedButton == chooseCityButton {
-            return tempArray.count
-        } else if lastPressedButton == chooseLevelButton {
-          //  return   temporaryArray.count
-        } else if lastPressedButton == chooseSchoolButton {
-          //  return  temporaryArray.count
+        if lastPressedTextField == cityTextField {
+            return RequestService.gettenCity.count
+        } else if lastPressedTextField == levelSchoolTextField {
+            return   level.count
+        } else if lastPressedTextField == schoolTextField {
+            return  RequestService.gettenSchool.count
         }
         return 0
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
        
-        if lastPressedButton == chooseCityButton {
-                    self.cityTextField.text = tempArray[row]
-                } else if lastPressedButton == chooseLevelButton {
-                  //  self.SecondarySchoolText.text = temporaryArray[row]
-                } else if lastPressedButton == chooseSchoolButton {
-                 //   self.highSchoolText.text = temporaryArray[row]
+        if lastPressedTextField == cityTextField {
+            self.cityTextField.text = RequestService.gettenCity[row]
+                }
+        else if lastPressedTextField == levelSchoolTextField {
+                    self.lastPressedTextField?.text = level[row]
+                    let newParameters : Parameters = [
+                        "city": cityTextField.text!,
+                        "level" : levelSchoolTextField.text!
+                    ]
+                    api =  URL(string: "http://localhost/mesamies/getschools.php")
+                    repository.schoolSelect(url: api!, method: .post, parameters: newParameters) { dataResponse in
+                        switch dataResponse {
+                        case .success(let schools):
+                           let school = schools.count
+                            for i in 0...school-1{
+                                self.tempArray.append(schools[i].city!)
+                                RequestService.gettenSchool.append(schools[i].city!)
+                            }
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
+        else if lastPressedTextField == schoolTextField {
+                    self.schoolTextField.text = RequestService.gettenSchool[row]
                 }
     }
+}
+
+extension SettingViewController{
     
     @IBAction func signOutButton(_ sender: UIButton) {
         UserDefaults.standard.set(false, forKey: "username")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginNavController)
-    }
-}
-
-extension SettingViewController{
-    
-    func addSchool(forCity city: String, andLevel level: String, completion: @escaping([String]) -> Void){
-        tempArray.removeAll()
-        tempArrayID.removeAll()
-        //        guard let api = URL(string: "http://localhost/mesamies/index.php") else { return }
-        let parameters: Parameters = [
-            "city": city,
-            "level" : level
-        ]
-        repository.schoolSelect(url: api!, method: .post, parameters: parameters, callback:  {  dataReponse in
-            var tempArrayCity = [""]
-            var tempArrayId : [Int] = []
-            switch dataReponse {
-            case .success(let school):
-                for index in 1...school.count-1 {
-                    if city == "q" && level == "q"{
-                        tempArrayCity.append(school[index].city!)
-                    } else if city != "q" && level != "q"{
-                        tempArrayCity.append(school[index].city!)
-                        tempArrayId.append(Int(school[index].id!)!)
-                    }
-                }
-                completion(tempArrayCity)
-            case .failure(let error):
-                print(error, "r")
-            }
-        })
     }
 }

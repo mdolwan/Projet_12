@@ -13,6 +13,7 @@
 		F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67778FE2829B09300AEAC5E /* MesamiesSession.swift */; };
 		F67779052829C4A100AEAC5E /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67779042829C4A100AEAC5E /* RequestService.swift */; };
 		F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A67C92829208F00439DD6 /* SettingViewController.swift */; };
+		F6CA71CD2830FC4A00C60B3D /* TextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CA71CC2830FC4A00C60B3D /* TextFieldType.swift */; };
 		F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59106281C1B1700F32F59 /* AppDelegate.swift */; };
 		F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59108281C1B1700F32F59 /* SceneDelegate.swift */; };
 		F6D5910B281C1B1700F32F59 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5910A281C1B1700F32F59 /* SignInViewController.swift */; };
@@ -62,6 +63,7 @@
 		F67778FE2829B09300AEAC5E /* MesamiesSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesamiesSession.swift; sourceTree = "<group>"; };
 		F67779042829C4A100AEAC5E /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		F69A67C92829208F00439DD6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		F6CA71CC2830FC4A00C60B3D /* TextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldType.swift; sourceTree = "<group>"; };
 		F6D59103281C1B1700F32F59 /* MesAmies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MesAmies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D59106281C1B1700F32F59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6D59108281C1B1700F32F59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				F6E5F5D2282AFC2F0089504D /* RequestError.swift */,
 				F6E5F5D4282AFC520089504D /* SignIn.swift */,
 				F6E5F5D6282AFC7E0089504D /* SignUp.swift */,
+				F6CA71CC2830FC4A00C60B3D /* TextFieldType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				F6D59111281C1B1700F32F59 /* MesAmies.xcdatamodeld in Sources */,
 				F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */,
 				F6E5F5D1282AFC0B0089504D /* School.swift in Sources */,
+				F6CA71CD2830FC4A00C60B3D /* TextFieldType.swift in Sources */,
 				F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */,
 				F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */,
 				F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */,

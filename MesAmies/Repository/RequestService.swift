@@ -11,9 +11,12 @@ import Alamofire
 final class RequestService {
     
     // MARK: - Properties
+    
     private let session: AlamofireSession
     // MARK: - Initializer
     var url: URL!
+    static var  gettenCity = [String]()
+    static var  gettenSchool = [String]()
     var parameters = Parameters()
     init(session: AlamofireSession = MesAmiesSession() ) {
         self.session = session
