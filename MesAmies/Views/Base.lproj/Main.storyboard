@@ -165,7 +165,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-wB-apY" userLabel="Stack City">
                                 <rect key="frame" x="20" y="54" width="374" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Your City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yer-dR-VG3" userLabel="City Text">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Your City" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yer-dR-VG3" userLabel="City Text">
                                         <rect key="frame" x="0.0" y="0.0" width="307.5" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -299,6 +299,7 @@
                         <outlet property="chooseSchoolButton" destination="W0e-im-cXu" id="7LH-lz-bTE"/>
                         <outlet property="cityTextField" destination="yer-dR-VG3" id="8p2-Wb-6SM"/>
                         <outlet property="levelSchoolTextField" destination="pef-k1-asf" id="tRZ-Zu-9OH"/>
+                        <outlet property="schoolTextField" destination="ViA-fU-vDq" id="enI-sE-lbX"/>
                         <outlet property="stackCity" destination="iUa-wB-apY" id="cC3-St-yud"/>
                         <outlet property="stackLevel" destination="XCw-XZ-OHZ" id="ihJ-Nq-ivm"/>
                         <outlet property="stackSchool" destination="SsS-ZE-uNf" id="Wvk-a2-b5z"/>
