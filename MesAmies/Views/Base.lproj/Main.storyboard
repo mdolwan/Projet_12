@@ -251,6 +251,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                     <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveAddSchoolButtonPressed:" destination="yEt-J4-Gw2" eventType="touchUpInside" id="13c-Wp-lfZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiF-6I-yja">
                                 <rect key="frame" x="20" y="773" width="374" height="50"/>

@@ -7,6 +7,7 @@
 import Foundation
 struct Reponse: Codable {
     let error: Bool
+    let userid: Int
     let message: String
 }
 

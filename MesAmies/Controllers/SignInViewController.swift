@@ -35,6 +35,7 @@ class SignInViewController: UIViewController {
             switch dataReponse{
             case .success(let isSuccess):
                 if isSuccess.error == false {
+                    UserDefaults.standard.set(isSuccess.userid, forKey: "id")
                     UserDefaults.standard.set(true, forKey: "username")
                     self.goToMainViewController()}
                 else if isSuccess.error == true {
@@ -50,7 +51,8 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController {
     func isSighned ()-> Bool{
-        return UserDefaults.standard.bool( forKey: "username")
+        return UserDefaults.standard.integer(forKey: "id") > 0
+        //return UserDefaults.standard.bool( forKey: "username")
     }
     
     func goToMainViewController() {

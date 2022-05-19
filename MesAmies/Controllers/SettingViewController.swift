@@ -15,7 +15,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var repository : RequestService = RequestService()
     var city: String?
     var name: String?
-    var level = ["Maternelle","Collèges","Lycée"]
+    var level = ["Maternelle","Colleges","Lycee"]
     let pickerSchool = UIPickerView()
     var lastPressedTextField: UITextField?
     var currentIndex = 0
@@ -38,7 +38,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      print(  fillLevelArray(for: UserDefaults.standard.integer(forKey: "id")))
         stackCity.layer.borderColor = UIColor.darkGray.cgColor
         stackCity.layer.borderWidth = 3.0
         stackLevel.layer.borderColor = UIColor.darkGray.cgColor
@@ -48,7 +48,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         pickerSchool.delegate = self
         pickerSchool.dataSource = self
-        
+        cityTextField.placeholder = String(UserDefaults.standard.integer(forKey: "id"))
         
         // MARK- get all cities available
         let parameters : Parameters = [ "city" : "",
@@ -124,6 +124,35 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             self.schoolTextField.text = RequestService.gettenSchool[row]
         }
     }
+    @IBAction func saveAddSchoolButtonPressed(_ sender: UIButton) {
+
+        let userId = UserDefaults.standard.integer(forKey: "id")
+        let schoolId = String( Int(RequestService.gettenSchool.firstIndex(where: {$0 == schoolTextField.text})!) + 1)
+        let level = levelSchoolTextField.text!
+        // MARK- Add New School
+        let parameters : Parameters = [ "userId" : userId,
+                                        "level": level,
+                                        "schoolId": schoolId as Any
+        ]
+        guard let api = URL(string:"http://localhost/mesamies/addSchool.php")
+        else { return  }
+        repository.signOutRequest(url: api, method: .post, parameters: parameters) { dataResponse in
+            switch dataResponse{
+            case .success(let isSuccess):
+                if isSuccess.error == false {
+                    print(isSuccess.message)
+                }
+                else if isSuccess.error == true {
+                    print(isSuccess.message)
+                    return }
+            case .failure(let error):
+               print(error)
+                return
+            }
+        }
+        //
+    }
+    
 }
 
 extension SettingViewController{
@@ -164,12 +193,12 @@ extension SettingViewController{
                           let school = schools.count
                           for i in 0...school-1{
                               RequestService.gettenSchool.append(schools[i].name!)
+                              RequestService.gettenSchoolId.append(Int(schools[i].id!)!)
                           }
                       case .failure(let error):
                           print(error)
                       }
-                  }
-                  //
+                  } //
               }
         else if lastPressedTextField == schoolTextField {
                   print(currentIndex)
@@ -178,4 +207,28 @@ extension SettingViewController{
         lastPressedTextField?.resignFirstResponder()
         view.endEditing(true)
     }
+    func fillLevelArray(for userId : Int)->[String]{
+       
+        //
+        let parameters : Parameters = [ "userId" : userId ]
+        guard let api = URL(string:"http://localhost/mesamies/countLevel.php")
+        else { return [""] }
+        repository.countLevel(url: api, method: .post, parameters: parameters) { dataResponse in
+            switch dataResponse{
+            case .success(let levels):
+                let level = levels.count
+                print(level)
+                for i in 0...level-1{
+                   // RequestService.gettenlevel.append(levels[i].level!)
+                }
+            case .failure(let error):
+                print(error)
+            }
+           
+            }
+        
+        //
+        return [""]
+    }
+    
 }
