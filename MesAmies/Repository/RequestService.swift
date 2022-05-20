@@ -25,7 +25,7 @@ final class RequestService {
     }
     
     // MARK: - Management
-    func signInRequest(url: URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<Reponse, RequestError>) -> Void){
+    func signInRequest(url: URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<ReponseSignIn, RequestError>) -> Void){
         session.requestIn(url: url,method: HTTPMethod.post, parameters: parameters) {  dataResponse in
             guard let data = dataResponse.data else {
                 callback(.failure(.noData))
@@ -35,7 +35,7 @@ final class RequestService {
                 callback(.failure(.invalidResponse))
                 return
             }
-            guard let dataDecoded = try? JSONDecoder().decode(Reponse.self, from: data) else {
+            guard let dataDecoded = try? JSONDecoder().decode(ReponseSignIn.self, from: data) else {
                 callback(.failure(.undecodableData))
                 return
             }
@@ -80,9 +80,7 @@ final class RequestService {
            callback(.success(dataDecoded))
         }
     }
-    
-    
-    //
+
     func countLevel(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<Level,RequestError>) -> Void){
         
         session.requestLevel(url: url, method: HTTPMethod.post, parameters: parameters) { dataResponse in
@@ -102,17 +100,22 @@ final class RequestService {
         }
     }
     
-    //
+    func addNewSchool(url:URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<Reponse, RequestError>) -> Void){
+        session.requestOut(url: url,method: HTTPMethod.post, parameters: parameters) {  dataResponse in
+            guard let data = dataResponse.data else{
+                callback(.failure(.noData))
+                return
+            }
+            guard dataResponse.response?.statusCode == 200 else {
+                callback(.failure(.invalidResponse))
+                return
+            }
+            guard let dataDecoded = try? JSONDecoder().decode(Reponse.self, from: data) else {
+                callback(.failure(.undecodableData))
+                return
+            }
+            callback(.success(dataDecoded))
+        }
+    }
 }
-/*
- 
- var array1 = ["maternelle", "college", "lycee"]
- var array2 = ["maternelle"]
- if array2.count>0{
- for i in 0...array2.count-1{
-   if (  array1.contains(array2[i])){
-       array1.remove(at:array1.firstIndex(of: array2[i])! )
-   }
- }}
- print(array1)
- */
+

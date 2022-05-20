@@ -15,7 +15,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var repository : RequestService = RequestService()
     var city: String?
     var name: String?
-    var level = ["Maternelle","Colleges","Lycee"]
+    var level =  [String]()
     let pickerSchool = UIPickerView()
     var lastPressedTextField: UITextField?
     var currentIndex = 0
@@ -38,7 +38,16 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      print(  fillLevelArray(for: UserDefaults.standard.integer(forKey: "id")))
+        fillLevelArray(for: UserDefaults.standard.integer(forKey: "id"))
+//        print(fillLevelArray(for: UserDefaults.standard.integer(forKey: "id")),"fillLevelArray")
+        //
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: { [self] in
+            level = RequestService.gettenlevel
+            print(level, "level1")
+            level = initialLevelArrayFinal()
+            print(level, "level2")
+        })
+        //
         stackCity.layer.borderColor = UIColor.darkGray.cgColor
         stackCity.layer.borderWidth = 3.0
         stackLevel.layer.borderColor = UIColor.darkGray.cgColor
@@ -66,12 +75,12 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
         }
         //
-        
-       
         toolBar.sizeToFit()
         let buttonDone = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(closePicker))
         toolBar.setItems([buttonDone], animated: true)
        // lastPressedTextField?.inputAccessoryView = toolBar
+        level = RequestService.gettenlevel
+        print(level, "level")
     }
     
     @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -83,6 +92,10 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBAction func getAllCitiesPressButton(_ sender: UIButton) {
         
         print(RequestService.gettenSchool)
+        level = RequestService.gettenlevel
+        print(level, "level1")
+        level = initialLevelArrayFinal()
+        print(level, "level2")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -125,18 +138,17 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     @IBAction func saveAddSchoolButtonPressed(_ sender: UIButton) {
-
-        let userId = UserDefaults.standard.integer(forKey: "id")
+        let userId : String = UserDefaults.standard.string(forKey: "id")!
         let schoolId = String( Int(RequestService.gettenSchool.firstIndex(where: {$0 == schoolTextField.text})!) + 1)
         let level = levelSchoolTextField.text!
         // MARK- Add New School
-        let parameters : Parameters = [ "userId" : userId,
+        let parameters : Parameters = [ "userId" : userId as Any,
                                         "level": level,
                                         "schoolId": schoolId as Any
         ]
         guard let api = URL(string:"http://localhost/mesamies/addSchool.php")
         else { return  }
-        repository.signOutRequest(url: api, method: .post, parameters: parameters) { dataResponse in
+        repository.addNewSchool(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
             case .success(let isSuccess):
                 if isSuccess.error == false {
@@ -180,7 +192,7 @@ extension SettingViewController{
                   lastPressedTextField?.text = RequestService.gettenCity[currentIndex]
               } else if lastPressedTextField == levelSchoolTextField {
                   print(currentIndex)
-                  lastPressedTextField?.text = level[currentIndex]
+                //  lastPressedTextField?.text = level[currentIndex]
                   //
                   let newParameters : Parameters = [
                       "city": cityTextField.text!,
@@ -207,28 +219,36 @@ extension SettingViewController{
         lastPressedTextField?.resignFirstResponder()
         view.endEditing(true)
     }
-    func fillLevelArray(for userId : Int)->[String]{
-       
-        //
+    func fillLevelArray(for userId : Int){
         let parameters : Parameters = [ "userId" : userId ]
         guard let api = URL(string:"http://localhost/mesamies/countLevel.php")
-        else { return [""] }
+        else { return }
         repository.countLevel(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
             case .success(let levels):
                 let level = levels.count
                 print(level)
                 for i in 0...level-1{
-                   // RequestService.gettenlevel.append(levels[i].level!)
+                    RequestService.gettenlevel.append(levels[i].level)
+                   // print(RequestService.gettenlevel[i])
                 }
             case .failure(let error):
                 print(error)
+               }
             }
-           
-            }
-        
-        //
-        return [""]
     }
-    
+    func initialLevelArrayFinal()->[String]{
+        var fixedLevelArray = ["Maternelle","Colleges","Lycee"] //array1
+        if RequestService.gettenlevel.count>0{
+        for i in 0...RequestService.gettenlevel.count-1{
+          if (  fixedLevelArray.contains(RequestService.gettenlevel[i])){
+              fixedLevelArray.remove(at:fixedLevelArray.firstIndex(of: RequestService.gettenlevel[i])! )
+          }
+        }
+       }
+        print(RequestService.gettenlevel, "RequestService.gettenlevel")
+        print(fixedLevelArray, "fixedLevelArray")
+        return fixedLevelArray
+    }
 }
+

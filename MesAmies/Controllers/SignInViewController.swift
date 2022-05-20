@@ -35,7 +35,8 @@ class SignInViewController: UIViewController {
             switch dataReponse{
             case .success(let isSuccess):
                 if isSuccess.error == false {
-                    UserDefaults.standard.set(isSuccess.userid, forKey: "id")
+                    let userId = String(isSuccess.userid)
+                    UserDefaults.standard.set("\(userId)", forKey: "id")
                     UserDefaults.standard.set(true, forKey: "username")
                     self.goToMainViewController()}
                 else if isSuccess.error == true {

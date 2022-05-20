@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32061E7B-BEE4-48BF-AAA4-801C87817048"
+            uuid = "5410F35A-BDB6-4E94-B16A-B61602384753"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MesAmies/Repository/RequestService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "countLevel(url:method:parameters:callback:)"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "addNewSchool(url:method:parameters:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E82DD346-28F9-4AEA-B640-0BC3B04FD8B1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MesAmies/Repository/RequestService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "signInRequest(url:method:parameters:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
