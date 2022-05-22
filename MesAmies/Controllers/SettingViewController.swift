@@ -4,7 +4,6 @@
 //
 //  Created by Mohammad Olwan on 09/05/2022.
 //
-
 import UIKit
 import Alamofire
 
@@ -31,6 +30,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var levelSchoolTextField: UITextField!
     @IBOutlet weak var schoolTextField: UITextField!
     
+    @IBOutlet weak var mainStack: UIStackView!
     @IBOutlet weak var stackCity: UIStackView!
     @IBOutlet weak var stackLevel: UIStackView!
     @IBOutlet weak var stackSchool: UIStackView!
@@ -38,16 +38,9 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fillLevelArray(for: UserDefaults.standard.integer(forKey: "id"))
-//        print(fillLevelArray(for: UserDefaults.standard.integer(forKey: "id")),"fillLevelArray")
-        //
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: { [self] in
-            level = RequestService.gettenlevel
-            print(level, "level1")
-            level = initialLevelArrayFinal()
-            print(level, "level2")
-        })
-        //
+        
+        setLevelArrayAfterAdditionASchool()
+        
         stackCity.layer.borderColor = UIColor.darkGray.cgColor
         stackCity.layer.borderWidth = 3.0
         stackLevel.layer.borderColor = UIColor.darkGray.cgColor
@@ -78,9 +71,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         toolBar.sizeToFit()
         let buttonDone = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(closePicker))
         toolBar.setItems([buttonDone], animated: true)
-       // lastPressedTextField?.inputAccessoryView = toolBar
-        level = RequestService.gettenlevel
-        print(level, "level")
+        // lastPressedTextField?.inputAccessoryView = toolBar
     }
     
     @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -158,11 +149,15 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     print(isSuccess.message)
                     return }
             case .failure(let error):
-               print(error)
+                print(error)
                 return
             }
         }
         //
+        cityTextField.text = ""
+        levelSchoolTextField.text = ""
+        schoolTextField.text = ""
+        setLevelArrayAfterAdditionASchool()
     }
     
 }
@@ -170,13 +165,13 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 extension SettingViewController{
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-            pickerSchool.isHidden = false
-            textField.inputView = pickerSchool;
-            return false
-        }
-   func textFieldDidEndEditing(_ textField: UITextField) {
-            pickerSchool.isHidden = true
-        }
+        pickerSchool.isHidden = false
+        textField.inputView = pickerSchool;
+        return false
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        pickerSchool.isHidden = true
+    }
     
     
     @IBAction func signOutButton(_ sender: UIButton) {
@@ -188,34 +183,31 @@ extension SettingViewController{
     
     @objc func closePicker(){
         if lastPressedTextField == cityTextField {
-                  print(currentIndex)
-                  lastPressedTextField?.text = RequestService.gettenCity[currentIndex]
-              } else if lastPressedTextField == levelSchoolTextField {
-                  print(currentIndex)
-                //  lastPressedTextField?.text = level[currentIndex]
-                  //
-                  let newParameters : Parameters = [
-                      "city": cityTextField.text!,
-                      "level" : levelSchoolTextField.text!
-                  ]
-                  api =  URL(string: "http://localhost/mesamies/getschools.php")
-                  repository.schoolSelect(url: api!, method: .post, parameters: newParameters) { dataResponse in
-                      switch dataResponse {
-                      case .success(let schools):
-                          let school = schools.count
-                          for i in 0...school-1{
-                              RequestService.gettenSchool.append(schools[i].name!)
-                              RequestService.gettenSchoolId.append(Int(schools[i].id!)!)
-                          }
-                      case .failure(let error):
-                          print(error)
-                      }
-                  } //
-              }
+            lastPressedTextField?.text = RequestService.gettenCity[currentIndex]
+        } else if lastPressedTextField == levelSchoolTextField {
+            //  lastPressedTextField?.text = level[currentIndex]
+            //
+            let newParameters : Parameters = [
+                "city": cityTextField.text!,
+                "level" : levelSchoolTextField.text!
+            ]
+            api =  URL(string: "http://localhost/mesamies/getschools.php")
+            repository.schoolSelect(url: api!, method: .post, parameters: newParameters) { dataResponse in
+                switch dataResponse {
+                case .success(let schools):
+                    let school = schools.count
+                    for i in 0...school-1{
+                        RequestService.gettenSchool.append(schools[i].name!)
+                        RequestService.gettenSchoolId.append(Int(schools[i].id!)!)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            } //
+        }
         else if lastPressedTextField == schoolTextField {
-                  print(currentIndex)
-                  schoolTextField?.text = RequestService.gettenSchool[currentIndex]
-              }
+            schoolTextField?.text = RequestService.gettenSchool[currentIndex]
+        }
         lastPressedTextField?.resignFirstResponder()
         view.endEditing(true)
     }
@@ -227,28 +219,35 @@ extension SettingViewController{
             switch dataResponse{
             case .success(let levels):
                 let level = levels.count
-                print(level)
                 for i in 0...level-1{
                     RequestService.gettenlevel.append(levels[i].level)
-                   // print(RequestService.gettenlevel[i])
                 }
             case .failure(let error):
                 print(error)
-               }
             }
+        }
     }
     func initialLevelArrayFinal()->[String]{
         var fixedLevelArray = ["Maternelle","Colleges","Lycee"] //array1
         if RequestService.gettenlevel.count>0{
-        for i in 0...RequestService.gettenlevel.count-1{
-          if (  fixedLevelArray.contains(RequestService.gettenlevel[i])){
-              fixedLevelArray.remove(at:fixedLevelArray.firstIndex(of: RequestService.gettenlevel[i])! )
-          }
+            for i in 0...RequestService.gettenlevel.count-1{
+                if (  fixedLevelArray.contains(RequestService.gettenlevel[i])){
+                    fixedLevelArray.remove(at:fixedLevelArray.firstIndex(of: RequestService.gettenlevel[i])! )
+                }
+            }
         }
-       }
-        print(RequestService.gettenlevel, "RequestService.gettenlevel")
-        print(fixedLevelArray, "fixedLevelArray")
         return fixedLevelArray
+    }
+    
+    func setLevelArrayAfterAdditionASchool(){
+        fillLevelArray(for: UserDefaults.standard.integer(forKey: "id"))
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: { [self] in
+            level = RequestService.gettenlevel
+            level = initialLevelArrayFinal()
+            if level.count == 0{
+                mainStack.isHidden = true
+            }
+        })
     }
 }
 

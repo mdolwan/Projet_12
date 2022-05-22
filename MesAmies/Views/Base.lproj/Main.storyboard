@@ -15,8 +15,20 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5AJ-09-c7T">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5AJ-09-c7T" secondAttribute="bottom" id="Ulg-7B-QQQ"/>
+                            <constraint firstItem="5AJ-09-c7T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WpT-Y1-y1q"/>
+                            <constraint firstItem="5AJ-09-c7T" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wwi-Eq-12H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5AJ-09-c7T" secondAttribute="trailing" id="aSL-Yf-OSp"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="FW7-Yg-79u"/>
                     <navigationItem key="navigationItem" id="PWT-ik-9gI"/>
@@ -145,8 +157,20 @@
                     <view key="view" contentMode="scaleToFill" id="bmb-Sn-mAp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oia-4O-L2g">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wVg-Th-jm1"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <constraints>
+                            <constraint firstItem="wVg-Th-jm1" firstAttribute="trailing" secondItem="oia-4O-L2g" secondAttribute="trailing" id="976-1a-0aq"/>
+                            <constraint firstItem="oia-4O-L2g" firstAttribute="leading" secondItem="wVg-Th-jm1" secondAttribute="leading" id="HO2-CI-s0X"/>
+                            <constraint firstItem="oia-4O-L2g" firstAttribute="top" secondItem="wVg-Th-jm1" secondAttribute="top" id="lX3-Uv-sPn"/>
+                            <constraint firstItem="wVg-Th-jm1" firstAttribute="bottom" secondItem="oia-4O-L2g" secondAttribute="bottom" id="raa-W9-0B9"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="KhU-Zx-Qnr"/>
                 </viewController>
@@ -162,99 +186,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-wB-apY" userLabel="Stack City">
-                                <rect key="frame" x="20" y="54" width="374" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="s36-xO-L0B" userLabel="Main">
+                                <rect key="frame" x="20" y="54" width="374" height="230"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Your City" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yer-dR-VG3" userLabel="City Text">
-                                        <rect key="frame" x="0.0" y="0.0" width="307.5" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="textFieldDidBeginEditing:" destination="yEt-J4-Gw2" eventType="editingDidEnd" id="OPh-4d-Y6A"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JN-iw-zUB" userLabel="Add City Button">
-                                        <rect key="frame" x="312.5" y="0.0" width="61.5" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="...">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
-                                            <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="getAllCitiesPressButton:" destination="yEt-J4-Gw2" eventType="touchUpInside" id="F8G-VS-UGu"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iUa-wB-apY" userLabel="Stack City">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Your City" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yer-dR-VG3" userLabel="City Text">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldDidBeginEditing:" destination="yEt-J4-Gw2" eventType="editingDidEnd" id="OPh-4d-Y6A"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="X2R-dp-Ju8"/>
+                                            <constraint firstAttribute="height" constant="50" id="igm-Hb-12c"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XCw-XZ-OHZ" userLabel="Stack Level">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose School Level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pef-k1-asf" userLabel="Level School Text">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldDidBeginEditing:" destination="yEt-J4-Gw2" eventType="editingDidEnd" id="3BM-0x-jKT"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CJz-KQ-ZJp"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="DQ4-88-592"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SsS-ZE-uNf" userLabel="Stack School">
+                                        <rect key="frame" x="0.0" y="120" width="374" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Your School" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ViA-fU-vDq" userLabel="School Text">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldDidBeginEditing:" destination="yEt-J4-Gw2" eventType="editingDidEnd" id="nLP-tw-G8Z"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Yc3-GB-uzy"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xhN-Xp-V8L"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gjw-9m-NQN">
+                                        <rect key="frame" x="0.0" y="180" width="374" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaR-Mw-110">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <color key="backgroundColor" systemColor="labelColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="O22-H4-pq9"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                                    <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="saveAddSchoolButtonPressed:" destination="yEt-J4-Gw2" eventType="touchUpInside" id="13c-Wp-lfZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="PgH-AX-0EH"/>
+                                            <constraint firstAttribute="height" constant="50" id="cog-fP-cmC"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="igm-Hb-12c"/>
-                                    <constraint firstItem="4JN-iw-zUB" firstAttribute="width" secondItem="yer-dR-VG3" secondAttribute="width" multiplier="0.2" id="n0m-xH-XnH"/>
+                                    <constraint firstAttribute="height" constant="230" id="4Cx-wC-Xrf"/>
+                                    <constraint firstItem="SsS-ZE-uNf" firstAttribute="leading" secondItem="s36-xO-L0B" secondAttribute="leading" id="5bC-zh-wVi"/>
+                                    <constraint firstAttribute="trailing" secondItem="gjw-9m-NQN" secondAttribute="trailing" id="6ZL-4s-Foh"/>
+                                    <constraint firstAttribute="trailing" secondItem="gjw-9m-NQN" secondAttribute="trailing" id="9bK-4U-wA2"/>
+                                    <constraint firstItem="iUa-wB-apY" firstAttribute="top" secondItem="s36-xO-L0B" secondAttribute="top" id="AHZ-nP-3Mu"/>
+                                    <constraint firstItem="gjw-9m-NQN" firstAttribute="top" secondItem="SsS-ZE-uNf" secondAttribute="bottom" constant="10" id="AJD-oy-xc2"/>
+                                    <constraint firstItem="gjw-9m-NQN" firstAttribute="leading" secondItem="s36-xO-L0B" secondAttribute="leading" id="IYR-gE-VUm"/>
+                                    <constraint firstItem="XCw-XZ-OHZ" firstAttribute="top" secondItem="iUa-wB-apY" secondAttribute="bottom" constant="10" id="JiD-k5-5ar"/>
+                                    <constraint firstAttribute="trailing" secondItem="XCw-XZ-OHZ" secondAttribute="trailing" id="M7y-G7-se9"/>
+                                    <constraint firstItem="gjw-9m-NQN" firstAttribute="top" secondItem="SsS-ZE-uNf" secondAttribute="bottom" constant="10" id="YcB-uz-Pnk"/>
+                                    <constraint firstItem="SsS-ZE-uNf" firstAttribute="top" secondItem="XCw-XZ-OHZ" secondAttribute="bottom" constant="10" id="bp9-RO-3jY"/>
+                                    <constraint firstAttribute="trailing" secondItem="SsS-ZE-uNf" secondAttribute="trailing" id="fdH-2j-9Uk"/>
+                                    <constraint firstAttribute="bottom" secondItem="gjw-9m-NQN" secondAttribute="bottom" id="hp8-qF-ang"/>
+                                    <constraint firstAttribute="bottom" secondItem="gjw-9m-NQN" secondAttribute="bottom" id="i5y-mR-YQd"/>
+                                    <constraint firstItem="iUa-wB-apY" firstAttribute="leading" secondItem="s36-xO-L0B" secondAttribute="leading" id="jQ4-ee-OrN"/>
+                                    <constraint firstItem="XCw-XZ-OHZ" firstAttribute="leading" secondItem="s36-xO-L0B" secondAttribute="leading" id="jpk-lw-ZQd"/>
+                                    <constraint firstAttribute="trailing" secondItem="iUa-wB-apY" secondAttribute="trailing" id="mUt-jl-IAO"/>
+                                    <constraint firstItem="XCw-XZ-OHZ" firstAttribute="top" secondItem="iUa-wB-apY" secondAttribute="bottom" constant="10" id="rdE-to-VUS"/>
+                                    <constraint firstItem="gjw-9m-NQN" firstAttribute="leading" secondItem="s36-xO-L0B" secondAttribute="leading" id="vRo-t7-lus"/>
+                                    <constraint firstItem="SsS-ZE-uNf" firstAttribute="top" secondItem="XCw-XZ-OHZ" secondAttribute="bottom" constant="10" id="xtB-cG-ZqH"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XCw-XZ-OHZ" userLabel="Stack Level">
-                                <rect key="frame" x="20" y="114" width="374" height="50"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose School Level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pef-k1-asf" userLabel="Level School Text">
-                                        <rect key="frame" x="0.0" y="0.0" width="307.5" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="textFieldDidBeginEditing:" destination="yEt-J4-Gw2" eventType="editingDidEnd" id="3BM-0x-jKT"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pS1-og-hgK" userLabel="Add School Level Button">
-                                        <rect key="frame" x="312.5" y="0.0" width="61.5" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="...">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
-                                            <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="CJz-KQ-ZJp"/>
-                                    <constraint firstItem="pS1-og-hgK" firstAttribute="width" secondItem="pef-k1-asf" secondAttribute="width" multiplier="0.2" id="Z2d-Bw-eHj"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SsS-ZE-uNf" userLabel="Stack School">
-                                <rect key="frame" x="20" y="174" width="374" height="50"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose Your School" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ViA-fU-vDq" userLabel="School Text">
-                                        <rect key="frame" x="0.0" y="0.0" width="307.5" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="textFieldDidBeginEditing:" destination="yEt-J4-Gw2" eventType="editingDidEnd" id="nLP-tw-G8Z"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-im-cXu" userLabel="Add School Button">
-                                        <rect key="frame" x="312.5" y="0.0" width="61.5" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="...">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
-                                            <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="W0e-im-cXu" firstAttribute="width" secondItem="ViA-fU-vDq" secondAttribute="width" multiplier="0.2" id="PAu-Po-6qx"/>
-                                    <constraint firstAttribute="height" constant="50" id="Yc3-GB-uzy"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaR-Mw-110">
-                                <rect key="frame" x="20" y="234" width="374" height="50"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="O22-H4-pq9"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
-                                    <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="saveAddSchoolButtonPressed:" destination="yEt-J4-Gw2" eventType="touchUpInside" id="13c-Wp-lfZ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiF-6I-yja">
                                 <rect key="frame" x="20" y="773" width="374" height="50"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
@@ -275,33 +308,22 @@
                         <viewLayoutGuide key="safeArea" id="tOG-Nz-zEe"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
-                            <constraint firstItem="XCw-XZ-OHZ" firstAttribute="top" secondItem="iUa-wB-apY" secondAttribute="bottom" constant="10" id="2fp-lc-vSV"/>
-                            <constraint firstItem="iUa-wB-apY" firstAttribute="leading" secondItem="tOG-Nz-zEe" secondAttribute="leading" constant="20" id="4tH-am-3aF"/>
                             <constraint firstItem="xiF-6I-yja" firstAttribute="leading" secondItem="tOG-Nz-zEe" secondAttribute="leading" constant="20" id="8tq-Od-iF1"/>
-                            <constraint firstItem="iUa-wB-apY" firstAttribute="top" secondItem="tOG-Nz-zEe" secondAttribute="top" constant="10" id="BE3-vi-xcQ"/>
-                            <constraint firstItem="SsS-ZE-uNf" firstAttribute="top" secondItem="XCw-XZ-OHZ" secondAttribute="bottom" constant="10" id="CVG-jd-2ts"/>
-                            <constraint firstItem="tOG-Nz-zEe" firstAttribute="trailing" secondItem="SsS-ZE-uNf" secondAttribute="trailing" constant="20" id="DB7-DR-6bi"/>
-                            <constraint firstItem="XCw-XZ-OHZ" firstAttribute="leading" secondItem="tOG-Nz-zEe" secondAttribute="leading" constant="20" id="EZ1-a3-BSf"/>
-                            <constraint firstItem="tOG-Nz-zEe" firstAttribute="trailing" secondItem="iUa-wB-apY" secondAttribute="trailing" constant="20" id="Nmk-z5-2Pf"/>
-                            <constraint firstItem="tOG-Nz-zEe" firstAttribute="trailing" secondItem="YaR-Mw-110" secondAttribute="trailing" constant="20" id="Qbi-5m-tZq"/>
-                            <constraint firstItem="YaR-Mw-110" firstAttribute="top" secondItem="SsS-ZE-uNf" secondAttribute="bottom" constant="10" id="VOE-KO-Q1I"/>
-                            <constraint firstItem="YaR-Mw-110" firstAttribute="top" secondItem="SsS-ZE-uNf" secondAttribute="bottom" constant="10" id="ZdC-jA-Uio"/>
-                            <constraint firstItem="SsS-ZE-uNf" firstAttribute="leading" secondItem="tOG-Nz-zEe" secondAttribute="leading" constant="20" id="aJo-ud-JvT"/>
-                            <constraint firstItem="YaR-Mw-110" firstAttribute="leading" secondItem="tOG-Nz-zEe" secondAttribute="leading" constant="20" id="cqV-tX-2De"/>
-                            <constraint firstItem="tOG-Nz-zEe" firstAttribute="trailing" secondItem="XCw-XZ-OHZ" secondAttribute="trailing" constant="20" id="e5e-8f-XtP"/>
+                            <constraint firstItem="xiF-6I-yja" firstAttribute="top" secondItem="s36-xO-L0B" secondAttribute="bottom" constant="489" id="LKX-ym-omA"/>
+                            <constraint firstItem="tOG-Nz-zEe" firstAttribute="trailing" secondItem="s36-xO-L0B" secondAttribute="trailing" constant="20" id="QW1-1V-fTS"/>
+                            <constraint firstItem="s36-xO-L0B" firstAttribute="top" secondItem="tOG-Nz-zEe" secondAttribute="top" constant="10" id="d0S-ro-Rr8"/>
+                            <constraint firstItem="s36-xO-L0B" firstAttribute="leading" secondItem="tOG-Nz-zEe" secondAttribute="leading" constant="20" id="kdE-Jl-vIw"/>
                             <constraint firstItem="xiF-6I-yja" firstAttribute="bottom" secondItem="tOG-Nz-zEe" secondAttribute="bottom" constant="10" id="lW0-3z-QPr"/>
+                            <constraint firstItem="s36-xO-L0B" firstAttribute="top" secondItem="tOG-Nz-zEe" secondAttribute="top" constant="10" id="m51-fC-xnr"/>
                             <constraint firstItem="tOG-Nz-zEe" firstAttribute="trailing" secondItem="xiF-6I-yja" secondAttribute="trailing" constant="20" id="uHA-0d-2qp"/>
-                            <constraint firstItem="XCw-XZ-OHZ" firstAttribute="top" secondItem="iUa-wB-apY" secondAttribute="bottom" constant="10" id="xxw-b8-vaO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="TDu-wk-d3G"/>
                     <navigationItem key="navigationItem" id="Anl-xH-vSm"/>
                     <connections>
-                        <outlet property="chooseCityButton" destination="4JN-iw-zUB" id="a52-mW-c8t"/>
-                        <outlet property="chooseLevelButton" destination="pS1-og-hgK" id="vFB-9h-oGv"/>
-                        <outlet property="chooseSchoolButton" destination="W0e-im-cXu" id="7LH-lz-bTE"/>
                         <outlet property="cityTextField" destination="yer-dR-VG3" id="8p2-Wb-6SM"/>
                         <outlet property="levelSchoolTextField" destination="pef-k1-asf" id="tRZ-Zu-9OH"/>
+                        <outlet property="mainStack" destination="s36-xO-L0B" id="YbQ-Vj-eJi"/>
                         <outlet property="schoolTextField" destination="ViA-fU-vDq" id="enI-sE-lbX"/>
                         <outlet property="stackCity" destination="iUa-wB-apY" id="cC3-St-yud"/>
                         <outlet property="stackLevel" destination="XCw-XZ-OHZ" id="ihJ-Nq-ivm"/>
@@ -320,8 +342,20 @@
                     <view key="view" contentMode="scaleToFill" id="sC0-uc-i1Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eOR-4g-xrj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="YYZ-Jz-GCk"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="eOR-4g-xrj" firstAttribute="top" secondItem="YYZ-Jz-GCk" secondAttribute="top" id="7hK-HO-yXw"/>
+                            <constraint firstItem="eOR-4g-xrj" firstAttribute="leading" secondItem="YYZ-Jz-GCk" secondAttribute="leading" id="CYh-5e-TvV"/>
+                            <constraint firstItem="YYZ-Jz-GCk" firstAttribute="trailing" secondItem="eOR-4g-xrj" secondAttribute="trailing" id="TWd-dh-F30"/>
+                            <constraint firstItem="YYZ-Jz-GCk" firstAttribute="bottom" secondItem="eOR-4g-xrj" secondAttribute="bottom" id="khq-FR-eCW"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ok4-40-FDX"/>
                 </viewController>
