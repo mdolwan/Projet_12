@@ -11,7 +11,7 @@
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MesAmies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MaternelleViewController" customModule="MesAmies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,6 +19,47 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5AJ-09-c7T">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellOfStudent" rowHeight="50" id="d3Q-Xu-Jev" customClass="StudentTableViewCell" customModule="MesAmies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d3Q-Xu-Jev" id="VZT-bv-vR9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8r-Lh-XZC" userLabel="studentId">
+                                                    <rect key="frame" x="20" y="11" width="363" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-D8-MpB" userLabel="studentName">
+                                                    <rect key="frame" x="393" y="60" width="1" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="6oh-yi-Ezt"/>
+                                                        <constraint firstAttribute="width" constant="1" id="Ego-n9-KTj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="l8r-Lh-XZC" secondAttribute="bottom" id="1rW-Z0-6HL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8Gn-D8-MpB" secondAttribute="trailing" id="5y3-E0-fkc"/>
+                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="top" secondItem="VZT-bv-vR9" secondAttribute="topMargin" constant="49" id="PwC-xv-Hbh"/>
+                                                <constraint firstItem="l8r-Lh-XZC" firstAttribute="leading" secondItem="VZT-bv-vR9" secondAttribute="leadingMargin" id="Xmf-Z4-iuy"/>
+                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="leading" secondItem="l8r-Lh-XZC" secondAttribute="trailing" constant="10" id="euc-Pf-IR1"/>
+                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="bottom" secondItem="VZT-bv-vR9" secondAttribute="bottomMargin" id="szv-hp-mM3"/>
+                                                <constraint firstItem="l8r-Lh-XZC" firstAttribute="top" secondItem="VZT-bv-vR9" secondAttribute="topMargin" id="tsd-oE-BhO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="studentIdLabel" destination="8Gn-D8-MpB" id="7Md-av-Bq8"/>
+                                            <outlet property="studentNameLabel" destination="l8r-Lh-XZC" id="0aQ-2P-xqD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -32,10 +73,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="FW7-Yg-79u"/>
                     <navigationItem key="navigationItem" id="PWT-ik-9gI"/>
+                    <connections>
+                        <outlet property="maternelleTableView" destination="5AJ-09-c7T" id="1lo-zu-TTm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="895"/>
+            <point key="canvasLocation" x="688.40579710144937" y="894.64285714285711"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="YPb-BJ-XcO">

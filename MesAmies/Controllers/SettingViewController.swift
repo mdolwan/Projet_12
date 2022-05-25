@@ -83,7 +83,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBAction func getAllCitiesPressButton(_ sender: UIButton) {
         
         print(RequestService.gettenSchool)
-        level = RequestService.gettenlevel
+        level = RequestService.gettenLevel
         print(level, "level1")
         level = initialLevelArrayFinal()
         print(level, "level2")
@@ -132,7 +132,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let userId : String = UserDefaults.standard.string(forKey: "id")!
         let schoolId = String( Int(RequestService.gettenSchool.firstIndex(where: {$0 == schoolTextField.text})!) + 1)
         let level = levelSchoolTextField.text!
-        // MARK- Add New School
+        // MARK: - Add New School
         let parameters : Parameters = [ "userId" : userId as Any,
                                         "level": level,
                                         "schoolId": schoolId as Any
@@ -220,7 +220,7 @@ extension SettingViewController{
             case .success(let levels):
                 let level = levels.count
                 for i in 0...level-1{
-                    RequestService.gettenlevel.append(levels[i].level)
+                    RequestService.gettenLevel.append(levels[i].level)
                 }
             case .failure(let error):
                 print(error)
@@ -229,10 +229,10 @@ extension SettingViewController{
     }
     func initialLevelArrayFinal()->[String]{
         var fixedLevelArray = ["Maternelle","Colleges","Lycee"] //array1
-        if RequestService.gettenlevel.count>0{
-            for i in 0...RequestService.gettenlevel.count-1{
-                if (  fixedLevelArray.contains(RequestService.gettenlevel[i])){
-                    fixedLevelArray.remove(at:fixedLevelArray.firstIndex(of: RequestService.gettenlevel[i])! )
+        if RequestService.gettenLevel.count>0{
+            for i in 0...RequestService.gettenLevel.count-1{
+                if (  fixedLevelArray.contains(RequestService.gettenLevel[i])){
+                    fixedLevelArray.remove(at:fixedLevelArray.firstIndex(of: RequestService.gettenLevel[i])! )
                 }
             }
         }
@@ -242,7 +242,7 @@ extension SettingViewController{
     func setLevelArrayAfterAdditionASchool(){
         fillLevelArray(for: UserDefaults.standard.integer(forKey: "id"))
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: { [self] in
-            level = RequestService.gettenlevel
+            level = RequestService.gettenLevel
             level = initialLevelArrayFinal()
             if level.count == 0{
                 mainStack.isHidden = true

@@ -18,7 +18,9 @@ final class RequestService {
     static var  gettenCity = [String]()
     static var  gettenSchool = [String]()
     static var  gettenSchoolId = [Int]()
-    static var  gettenlevel = [String]()
+    static var  gettenLevel = [String]()
+    static var  gettenStudent = [String]()
+    static var  gettenStudentId = [String]()
     var parameters = Parameters()
     init(session: AlamofireSession = MesAmiesSession() ) {
         self.session = session
@@ -117,5 +119,22 @@ final class RequestService {
             callback(.success(dataDecoded))
         }
     }
+    
+    func getStudent(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<[Student],RequestError>)-> Void){
+        session.requestStudents(url: url, method: HTTPMethod.post, parameters: parameters){ dataResponse in
+            guard let data = dataResponse.data else {
+                callback(.failure(.noData))
+                return
+            }
+            guard  dataResponse.response?.statusCode == 200 else {
+                callback(.failure(.invalidResponse))
+                return
+            }
+            guard let dataDecoded = try? JSONDecoder().decode([Student].self, from: data) else {
+                callback(.failure(.undecodableData))
+                return
+            }
+            callback(.success(dataDecoded))
+        }
+   }
 }
-

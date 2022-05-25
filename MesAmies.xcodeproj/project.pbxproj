@@ -13,9 +13,11 @@
 		F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67778FE2829B09300AEAC5E /* MesamiesSession.swift */; };
 		F67779052829C4A100AEAC5E /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67779042829C4A100AEAC5E /* RequestService.swift */; };
 		F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A67C92829208F00439DD6 /* SettingViewController.swift */; };
+		F69B4388283D45FF00B2D25F /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B4387283D45FF00B2D25F /* StudentTableViewCell.swift */; };
 		F6BC0E1928369508008519C1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC0E1828369508008519C1 /* Level.swift */; };
 		F6C970A72837C79500B5F764 /* ReponseSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C970A62837C79500B5F764 /* ReponseSignIn.swift */; };
-		F6CA71CD2830FC4A00C60B3D /* TextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CA71CC2830FC4A00C60B3D /* TextFieldType.swift */; };
+		F6C9C7DD283D04B500728FE8 /* MaternelleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C9C7DC283D04B500728FE8 /* MaternelleViewController.swift */; };
+		F6CA71CD2830FC4A00C60B3D /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CA71CC2830FC4A00C60B3D /* Student.swift */; };
 		F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59106281C1B1700F32F59 /* AppDelegate.swift */; };
 		F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59108281C1B1700F32F59 /* SceneDelegate.swift */; };
 		F6D5910B281C1B1700F32F59 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5910A281C1B1700F32F59 /* SignInViewController.swift */; };
@@ -65,9 +67,11 @@
 		F67778FE2829B09300AEAC5E /* MesamiesSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesamiesSession.swift; sourceTree = "<group>"; };
 		F67779042829C4A100AEAC5E /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		F69A67C92829208F00439DD6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		F69B4387283D45FF00B2D25F /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		F6BC0E1828369508008519C1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F6C970A62837C79500B5F764 /* ReponseSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseSignIn.swift; sourceTree = "<group>"; };
-		F6CA71CC2830FC4A00C60B3D /* TextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldType.swift; sourceTree = "<group>"; };
+		F6C9C7DC283D04B500728FE8 /* MaternelleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaternelleViewController.swift; sourceTree = "<group>"; };
+		F6CA71CC2830FC4A00C60B3D /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		F6D59103281C1B1700F32F59 /* MesAmies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MesAmies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D59106281C1B1700F32F59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6D59108281C1B1700F32F59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,23 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		F69B4385283D458B00B2D25F /* MaternnelViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F69B4386283D45AA00B2D25F /* Cells */,
+				F6C9C7DC283D04B500728FE8 /* MaternelleViewController.swift */,
+			);
+			path = MaternnelViewController;
+			sourceTree = "<group>";
+		};
+		F69B4386283D45AA00B2D25F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F69B4387283D45FF00B2D25F /* StudentTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F6D590FA281C1B1700F32F59 = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +230,7 @@
 				F6E5F5D2282AFC2F0089504D /* RequestError.swift */,
 				F6E5F5D4282AFC520089504D /* SignIn.swift */,
 				F6E5F5D6282AFC7E0089504D /* SignUp.swift */,
-				F6CA71CC2830FC4A00C60B3D /* TextFieldType.swift */,
+				F6CA71CC2830FC4A00C60B3D /* Student.swift */,
 				F6BC0E1828369508008519C1 /* Level.swift */,
 				F6C970A62837C79500B5F764 /* ReponseSignIn.swift */,
 			);
@@ -219,6 +240,7 @@
 		F6D5913B281C1C5E00F32F59 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F69B4385283D458B00B2D25F /* MaternnelViewController */,
 				F6D5910A281C1B1700F32F59 /* SignInViewController.swift */,
 				F67609612827C7D6004DC9AF /* SignUpViewController.swift */,
 				F69A67C92829208F00439DD6 /* SettingViewController.swift */,
@@ -498,16 +520,18 @@
 				F6C970A72837C79500B5F764 /* ReponseSignIn.swift in Sources */,
 				F6D5910B281C1B1700F32F59 /* SignInViewController.swift in Sources */,
 				F6E5F5D3282AFC2F0089504D /* RequestError.swift in Sources */,
+				F69B4388283D45FF00B2D25F /* StudentTableViewCell.swift in Sources */,
 				F6E5F5CF282AFBE60089504D /* Reponse.swift in Sources */,
 				F6D59111281C1B1700F32F59 /* MesAmies.xcdatamodeld in Sources */,
 				F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */,
 				F6E5F5D1282AFC0B0089504D /* School.swift in Sources */,
 				F6BC0E1928369508008519C1 /* Level.swift in Sources */,
-				F6CA71CD2830FC4A00C60B3D /* TextFieldType.swift in Sources */,
+				F6CA71CD2830FC4A00C60B3D /* Student.swift in Sources */,
 				F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */,
 				F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */,
 				F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */,
 				F6E5F5D7282AFC7E0089504D /* SignUp.swift in Sources */,
+				F6C9C7DD283D04B500728FE8 /* MaternelleViewController.swift in Sources */,
 				F6E5F5D5282AFC520089504D /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
