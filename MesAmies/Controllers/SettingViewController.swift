@@ -175,6 +175,12 @@ extension SettingViewController{
     
     
     @IBAction func signOutButton(_ sender: UIButton) {
+        RequestService.gettenStudent.removeAll()
+        RequestService.gettenStudentId.removeAll()
+        RequestService.gettenSchoolId.removeAll()
+        RequestService.gettenCity.removeAll()
+        RequestService.gettenLevel.removeAll()
+        RequestService.gettenSchool.removeAll()
         UserDefaults.standard.set(false, forKey: "username")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")

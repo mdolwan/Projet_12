@@ -16,8 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5AJ-09-c7T">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5AJ-09-c7T">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellOfStudent" rowHeight="50" id="d3Q-Xu-Jev" customClass="StudentTableViewCell" customModule="MesAmies" customModuleProvider="target">
@@ -28,30 +29,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8r-Lh-XZC" userLabel="studentId">
-                                                    <rect key="frame" x="20" y="11" width="363" height="28"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-D8-MpB" userLabel="studentName">
-                                                    <rect key="frame" x="393" y="60" width="1" height="1"/>
+                                                    <rect key="frame" x="413" y="0.0" width="1" height="1"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="6oh-yi-Ezt"/>
-                                                        <constraint firstAttribute="width" constant="1" id="Ego-n9-KTj"/>
+                                                        <constraint firstAttribute="height" constant="1" id="PSO-1s-gBi"/>
+                                                        <constraint firstAttribute="width" constant="1" id="zC9-hl-cxq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-D8-MpB" userLabel="studentName">
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="6If-u0-tfd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="l8r-Lh-XZC" secondAttribute="bottom" id="1rW-Z0-6HL"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="8Gn-D8-MpB" secondAttribute="trailing" id="5y3-E0-fkc"/>
-                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="top" secondItem="VZT-bv-vR9" secondAttribute="topMargin" constant="49" id="PwC-xv-Hbh"/>
-                                                <constraint firstItem="l8r-Lh-XZC" firstAttribute="leading" secondItem="VZT-bv-vR9" secondAttribute="leadingMargin" id="Xmf-Z4-iuy"/>
-                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="leading" secondItem="l8r-Lh-XZC" secondAttribute="trailing" constant="10" id="euc-Pf-IR1"/>
-                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="bottom" secondItem="VZT-bv-vR9" secondAttribute="bottomMargin" id="szv-hp-mM3"/>
-                                                <constraint firstItem="l8r-Lh-XZC" firstAttribute="top" secondItem="VZT-bv-vR9" secondAttribute="topMargin" id="tsd-oE-BhO"/>
+                                                <constraint firstAttribute="bottom" secondItem="8Gn-D8-MpB" secondAttribute="bottom" id="2BG-d9-FUW"/>
+                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="top" secondItem="VZT-bv-vR9" secondAttribute="top" id="WYQ-Wc-rxq"/>
+                                                <constraint firstItem="l8r-Lh-XZC" firstAttribute="top" secondItem="VZT-bv-vR9" secondAttribute="top" id="Y4P-NJ-1Kn"/>
+                                                <constraint firstAttribute="trailing" secondItem="l8r-Lh-XZC" secondAttribute="trailing" id="Y5f-av-az5"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Gn-D8-MpB" secondAttribute="trailing" constant="49" id="agX-Xo-IdD"/>
+                                                <constraint firstItem="8Gn-D8-MpB" firstAttribute="leading" secondItem="VZT-bv-vR9" secondAttribute="leading" id="vEo-Ca-MlO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -64,12 +67,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5AJ-09-c7T" secondAttribute="bottom" id="Ulg-7B-QQQ"/>
-                            <constraint firstItem="5AJ-09-c7T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WpT-Y1-y1q"/>
-                            <constraint firstItem="5AJ-09-c7T" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wwi-Eq-12H"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5AJ-09-c7T" secondAttribute="trailing" id="aSL-Yf-OSp"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="FW7-Yg-79u"/>
                     <navigationItem key="navigationItem" id="PWT-ik-9gI"/>
@@ -197,30 +194,72 @@
         <!--Item-->
         <scene sceneID="NZk-M0-M9d">
             <objects>
-                <viewController id="6bJ-Et-xAQ" customClass="SettingVC" customModule="MesAmies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6bJ-Et-xAQ" customClass="LyceeViewController" customModule="MesAmies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bmb-Sn-mAp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oia-4O-L2g">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oia-4O-L2g">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellOfLyceeStudent" rowHeight="50" id="VUc-PL-MjC" customClass="LyceeStudentTableViewCell" customModule="MesAmies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VUc-PL-MjC" id="m7g-Ic-eCv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q3-xa-54O" userLabel="studentLyceeName">
+                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="677-OX-Eyo"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFe-i9-Qbk" userLabel="studentLyceeId">
+                                                    <rect key="frame" x="413" y="0.0" width="1" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="ICt-jt-cem"/>
+                                                        <constraint firstAttribute="width" constant="1" id="o15-SV-Zcf"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="9Q3-xa-54O" secondAttribute="bottom" id="QXF-Dg-24z"/>
+                                                <constraint firstItem="9Q3-xa-54O" firstAttribute="leading" secondItem="m7g-Ic-eCv" secondAttribute="leading" id="dPe-2H-VVn"/>
+                                                <constraint firstAttribute="trailing" secondItem="9Q3-xa-54O" secondAttribute="trailing" constant="10" id="fO9-eF-90t"/>
+                                                <constraint firstItem="9Q3-xa-54O" firstAttribute="top" secondItem="m7g-Ic-eCv" secondAttribute="top" id="i8y-0M-YFS"/>
+                                                <constraint firstAttribute="trailing" secondItem="BFe-i9-Qbk" secondAttribute="trailing" id="qb4-rs-6HF"/>
+                                                <constraint firstItem="BFe-i9-Qbk" firstAttribute="top" secondItem="m7g-Ic-eCv" secondAttribute="top" id="u0p-Tl-KxE"/>
+                                                <constraint firstAttribute="bottom" secondItem="BFe-i9-Qbk" secondAttribute="bottom" constant="49" id="uZU-rf-8cn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="studentIdLabel" destination="BFe-i9-Qbk" id="2VX-8D-nNm"/>
+                                            <outlet property="studentNameLabel" destination="9Q3-xa-54O" id="Z7V-E3-yDJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wVg-Th-jm1"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                        <constraints>
-                            <constraint firstItem="wVg-Th-jm1" firstAttribute="trailing" secondItem="oia-4O-L2g" secondAttribute="trailing" id="976-1a-0aq"/>
-                            <constraint firstItem="oia-4O-L2g" firstAttribute="leading" secondItem="wVg-Th-jm1" secondAttribute="leading" id="HO2-CI-s0X"/>
-                            <constraint firstItem="oia-4O-L2g" firstAttribute="top" secondItem="wVg-Th-jm1" secondAttribute="top" id="lX3-Uv-sPn"/>
-                            <constraint firstItem="wVg-Th-jm1" firstAttribute="bottom" secondItem="oia-4O-L2g" secondAttribute="bottom" id="raa-W9-0B9"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="KhU-Zx-Qnr"/>
+                    <connections>
+                        <outlet property="studentLyceeTableView" destination="oia-4O-L2g" id="xjA-OM-evz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9N-RP-GeV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2457" y="895"/>
+            <point key="canvasLocation" x="2456.521739130435" y="894.64285714285711"/>
         </scene>
         <!--Item-->
         <scene sceneID="KbI-j5-c6M">
@@ -382,7 +421,7 @@
         <!--Item-->
         <scene sceneID="gsS-Q8-Kuf">
             <objects>
-                <viewController id="WIp-QB-01g" sceneMemberID="viewController">
+                <viewController id="WIp-QB-01g" customClass="CollegeViewController" customModule="MesAmies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sC0-uc-i1Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -390,6 +429,56 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eOR-4g-xrj">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellOfCollegeStudent" rowHeight="50" id="xX5-7s-rZn" customClass="CollegeStudentTableViewCell" customModule="MesAmies" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xX5-7s-rZn" id="AdF-li-VjN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drx-kW-71x" userLabel="studentCollegeName">
+                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="JSc-SJ-fsJ"/>
+                                                        <constraint firstAttribute="height" constant="50" id="Xyh-PI-Yb5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtk-VT-cYd" userLabel="studentCollegeId">
+                                                    <rect key="frame" x="372.5" y="-1" width="41.5" height="2"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="KGF-0Y-uDQ"/>
+                                                        <constraint firstAttribute="height" constant="1" id="c1y-dB-bRL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="gtk-VT-cYd" secondAttribute="bottom" constant="49" id="BDy-YF-fNI"/>
+                                                <constraint firstItem="Drx-kW-71x" firstAttribute="leading" secondItem="AdF-li-VjN" secondAttribute="leading" id="Eqf-2p-fCK"/>
+                                                <constraint firstAttribute="trailing" secondItem="Drx-kW-71x" secondAttribute="trailing" constant="10" id="NUp-Xg-xMK"/>
+                                                <constraint firstAttribute="bottom" secondItem="Drx-kW-71x" secondAttribute="bottom" id="Pgt-Je-CdD"/>
+                                                <constraint firstItem="gtk-VT-cYd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AdF-li-VjN" secondAttribute="leading" constant="20" symbolic="YES" id="SaQ-ej-mBe"/>
+                                                <constraint firstAttribute="trailing" secondItem="gtk-VT-cYd" secondAttribute="trailing" id="UkE-vG-VH5"/>
+                                                <constraint firstAttribute="bottom" secondItem="Drx-kW-71x" secondAttribute="bottom" id="VB5-oZ-JEA"/>
+                                                <constraint firstItem="gtk-VT-cYd" firstAttribute="top" secondItem="AdF-li-VjN" secondAttribute="top" constant="-1" id="Z0I-JP-8au"/>
+                                                <constraint firstAttribute="trailing" secondItem="gtk-VT-cYd" secondAttribute="trailing" id="lFZ-na-y5a"/>
+                                                <constraint firstItem="Drx-kW-71x" firstAttribute="top" secondItem="AdF-li-VjN" secondAttribute="top" id="qJz-T1-57O"/>
+                                                <constraint firstItem="Drx-kW-71x" firstAttribute="leading" secondItem="AdF-li-VjN" secondAttribute="leading" id="tuz-Pw-Jr9"/>
+                                                <constraint firstAttribute="bottom" secondItem="gtk-VT-cYd" secondAttribute="bottom" constant="49" id="y91-20-aNx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="studentIdLabel" destination="gtk-VT-cYd" id="o1m-7p-N2P"/>
+                                            <outlet property="studentNameLabel" destination="Drx-kW-71x" id="B4O-0P-Ftz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YYZ-Jz-GCk"/>
@@ -402,10 +491,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ok4-40-FDX"/>
+                    <connections>
+                        <outlet property="studentCollegeTableView" destination="eOR-4g-xrj" id="0u0-Ba-Z8u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gB-tl-1ax" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="895"/>
+            <point key="canvasLocation" x="1615.9420289855075" y="894.64285714285711"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="mjj-o3-1Lz">

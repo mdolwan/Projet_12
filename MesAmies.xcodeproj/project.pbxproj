@@ -12,9 +12,13 @@
 		F67609622827C7D6004DC9AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67609612827C7D6004DC9AF /* SignUpViewController.swift */; };
 		F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67778FE2829B09300AEAC5E /* MesamiesSession.swift */; };
 		F67779052829C4A100AEAC5E /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67779042829C4A100AEAC5E /* RequestService.swift */; };
+		F695B25D283E3B3E00CA124E /* CollegeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695B25C283E3B3E00CA124E /* CollegeViewController.swift */; };
+		F695B25F283E3B8200CA124E /* CollegeStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695B25E283E3B8200CA124E /* CollegeStudentTableViewCell.swift */; };
 		F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A67C92829208F00439DD6 /* SettingViewController.swift */; };
 		F69B4388283D45FF00B2D25F /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B4387283D45FF00B2D25F /* StudentTableViewCell.swift */; };
 		F6BC0E1928369508008519C1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC0E1828369508008519C1 /* Level.swift */; };
+		F6C5BB6B283F7855008B2DB1 /* LyceeStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5BB6A283F7855008B2DB1 /* LyceeStudentTableViewCell.swift */; };
+		F6C5BB6D283F7887008B2DB1 /* LyceeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5BB6C283F7887008B2DB1 /* LyceeViewController.swift */; };
 		F6C970A72837C79500B5F764 /* ReponseSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C970A62837C79500B5F764 /* ReponseSignIn.swift */; };
 		F6C9C7DD283D04B500728FE8 /* MaternelleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C9C7DC283D04B500728FE8 /* MaternelleViewController.swift */; };
 		F6CA71CD2830FC4A00C60B3D /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CA71CC2830FC4A00C60B3D /* Student.swift */; };
@@ -66,9 +70,13 @@
 		F67609612827C7D6004DC9AF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F67778FE2829B09300AEAC5E /* MesamiesSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesamiesSession.swift; sourceTree = "<group>"; };
 		F67779042829C4A100AEAC5E /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		F695B25C283E3B3E00CA124E /* CollegeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeViewController.swift; sourceTree = "<group>"; };
+		F695B25E283E3B8200CA124E /* CollegeStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeStudentTableViewCell.swift; sourceTree = "<group>"; };
 		F69A67C92829208F00439DD6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F69B4387283D45FF00B2D25F /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		F6BC0E1828369508008519C1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		F6C5BB6A283F7855008B2DB1 /* LyceeStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyceeStudentTableViewCell.swift; sourceTree = "<group>"; };
+		F6C5BB6C283F7887008B2DB1 /* LyceeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyceeViewController.swift; sourceTree = "<group>"; };
 		F6C970A62837C79500B5F764 /* ReponseSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseSignIn.swift; sourceTree = "<group>"; };
 		F6C9C7DC283D04B500728FE8 /* MaternelleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaternelleViewController.swift; sourceTree = "<group>"; };
 		F6CA71CC2830FC4A00C60B3D /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -153,6 +161,23 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		F695B25A283E3B0200CA124E /* CollegeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F695B25B283E3B1700CA124E /* Cells */,
+				F695B25C283E3B3E00CA124E /* CollegeViewController.swift */,
+			);
+			path = CollegeViewController;
+			sourceTree = "<group>";
+		};
+		F695B25B283E3B1700CA124E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F695B25E283E3B8200CA124E /* CollegeStudentTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F69B4385283D458B00B2D25F /* MaternnelViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +191,23 @@
 			isa = PBXGroup;
 			children = (
 				F69B4387283D45FF00B2D25F /* StudentTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F6C5BB68283F7813008B2DB1 /* LyceeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F6C5BB69283F7827008B2DB1 /* Cells */,
+				F6C5BB6C283F7887008B2DB1 /* LyceeViewController.swift */,
+			);
+			path = LyceeViewController;
+			sourceTree = "<group>";
+		};
+		F6C5BB69283F7827008B2DB1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F6C5BB6A283F7855008B2DB1 /* LyceeStudentTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -240,6 +282,8 @@
 		F6D5913B281C1C5E00F32F59 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6C5BB68283F7813008B2DB1 /* LyceeViewController */,
+				F695B25A283E3B0200CA124E /* CollegeViewController */,
 				F69B4385283D458B00B2D25F /* MaternnelViewController */,
 				F6D5910A281C1B1700F32F59 /* SignInViewController.swift */,
 				F67609612827C7D6004DC9AF /* SignUpViewController.swift */,
@@ -515,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6C5BB6B283F7855008B2DB1 /* LyceeStudentTableViewCell.swift in Sources */,
 				F67609622827C7D6004DC9AF /* SignUpViewController.swift in Sources */,
 				F67779052829C4A100AEAC5E /* RequestService.swift in Sources */,
 				F6C970A72837C79500B5F764 /* ReponseSignIn.swift in Sources */,
@@ -526,12 +571,15 @@
 				F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */,
 				F6E5F5D1282AFC0B0089504D /* School.swift in Sources */,
 				F6BC0E1928369508008519C1 /* Level.swift in Sources */,
+				F695B25F283E3B8200CA124E /* CollegeStudentTableViewCell.swift in Sources */,
 				F6CA71CD2830FC4A00C60B3D /* Student.swift in Sources */,
 				F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */,
 				F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */,
 				F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */,
 				F6E5F5D7282AFC7E0089504D /* SignUp.swift in Sources */,
 				F6C9C7DD283D04B500728FE8 /* MaternelleViewController.swift in Sources */,
+				F6C5BB6D283F7887008B2DB1 /* LyceeViewController.swift in Sources */,
+				F695B25D283E3B3E00CA124E /* CollegeViewController.swift in Sources */,
 				F6E5F5D5282AFC520089504D /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

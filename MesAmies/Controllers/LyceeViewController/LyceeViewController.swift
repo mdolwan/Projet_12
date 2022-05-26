@@ -1,28 +1,31 @@
 //
-//  MaternelleViewController.swift
+//  LyceeViewController.swift
 //  MesAmies
 //
-//  Created by Mohammad Olwan on 24/05/2022.
+//  Created by Mohammad Olwan on 26/05/2022.
 //
 
 import UIKit
 import Alamofire
 
-class MaternelleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-     
+class LyceeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     var repository : RequestService = RequestService()
     var student : [Student] = []
     let listEmptyLabel = UILabel()
     var page : Int = 0
     let parameters: Parameters = [
         "userId": UserDefaults.standard.integer(forKey: "id"),
-        "level": "Maternelle",
+        "level": "Lycee",
         "page": 0
         ]
-    let api = URL(string: "http://localhost/mesamies/getstudents.php") 
-    @IBOutlet weak var maternelleTableView: UITableView!
+    let api = URL(string: "http://localhost/mesamies/getstudents.php")
+    
+    @IBOutlet weak var studentLyceeTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        RequestService.gettenStudentId.removeAll()
+        RequestService.gettenStudent.removeAll()
         // MARK: - Get All Students
         repository.getStudent(url: api!, method: .post, parameters: parameters) { result in
             switch result{
@@ -34,7 +37,7 @@ class MaternelleViewController: UIViewController, UITableViewDelegate, UITableVi
                         RequestService.gettenStudentId.append(getStudent[i].userid)
                     }
                     DispatchQueue.main.async { [self] in
-                        maternelleTableView.reloadData()
+                        studentLyceeTableView.reloadData()
                     }
                 })
                 //
@@ -43,35 +46,37 @@ class MaternelleViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
         //
-        
-        maternelleTableView.dataSource = self
-        maternelleTableView.delegate = self
+        studentLyceeTableView.dataSource = self
+        studentLyceeTableView.delegate = self
     }
     
+
     // MARK: - Navigation
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-             //print(RequestService.gettenStudent)
-         })
-        
-         return RequestService.gettenStudentId.count
-     }
-     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfStudent", for: indexPath) as? StudentTableViewCell else {
-             return UITableViewCell()
-         }
-         let studentName = RequestService.gettenStudent[indexPath.row]
-         let studentid =  RequestService.gettenStudentId[indexPath.row]
-         cell.configure(with: studentName, and: studentid)
-         cell.textLabel?.backgroundColor = .black
-         cell.textLabel?.textColor = .white
-         return cell
-     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+           // print(RequestService.gettenStudent)
+        })
+        return RequestService.gettenStudentId.count
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfLyceeStudent", for: indexPath) as? LyceeStudentTableViewCell else {
+            return UITableViewCell()
+        }
+        let studentName = RequestService.gettenStudent[indexPath.row]
+        let studentid =  RequestService.gettenStudentId[indexPath.row]
+        cell.configure(with: studentName, and: studentid)
+        cell.textLabel?.backgroundColor = .black
+        cell.textLabel?.textColor = .white
+        return cell
+    }
 
 }
 
-extension MaternelleViewController{
+extension LyceeViewController{
     // MARK: - To indicate that there are no recipe in favorite
     func createLabel(){
         if self.student.count == 0 {
@@ -106,14 +111,14 @@ extension MaternelleViewController{
         
 
         let position = scrollView.contentOffset.y
-        if maternelleTableView.contentSize.height == 0 { return }
-        if position > (maternelleTableView.contentSize.height - scrollView.frame.size.height)
+        if studentLyceeTableView.contentSize.height == 0 { return }
+        if position > (studentLyceeTableView.contentSize.height - scrollView.frame.size.height)
         {
             
-            self.maternelleTableView.tableFooterView = createSpinnerFooter()
+            self.studentLyceeTableView.tableFooterView = createSpinnerFooter()
             let newParameters: Parameters = [
                 "userId": UserDefaults.standard.integer(forKey: "id"),
-                "level": "Maternelle",
+                "level": "Lycee",
                 "page": page + 1
                 ]
             // MARK: - Get All Students
@@ -127,7 +132,7 @@ extension MaternelleViewController{
                             RequestService.gettenStudentId.append(getStudent[i].userid)
                         }
                         DispatchQueue.main.async { [self] in
-                            maternelleTableView.reloadData()
+                            studentLyceeTableView.reloadData()
                         }
                     })
                     //
