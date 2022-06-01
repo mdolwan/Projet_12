@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class LyceeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var repository : RequestService = RequestService()
     var student : [Student] = []
@@ -16,7 +16,7 @@ class LyceeViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var page : Int = 0
     let parameters: Parameters = [
         "userId": UserDefaults.standard.integer(forKey: "id"),
-        "level": "Lycee",
+        "level": "Lyceum",
         "page": 0
         ]
     let api = URL(string: "http://localhost/mesamies/getstudents.php")
@@ -24,6 +24,7 @@ class LyceeViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var studentLyceeTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Lyceum"
         RequestService.gettenStudentId.removeAll()
         RequestService.gettenStudent.removeAll()
         // MARK: - Get All Students
@@ -33,8 +34,13 @@ class LyceeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 //
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     for i in 0...getStudent.count-1{
+                        if Int(getStudent[i].userid) != -1 {
                         RequestService.gettenStudent.append(getStudent[i].username)
-                        RequestService.gettenStudentId.append(getStudent[i].userid)
+                        RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
+                        } else{
+                            self.createLabel()
+                            return
+                        }
                     }
                     DispatchQueue.main.async { [self] in
                         studentLyceeTableView.reloadData()
@@ -50,20 +56,23 @@ class LyceeViewController: UIViewController, UITableViewDelegate, UITableViewDat
         studentLyceeTableView.delegate = self
     }
     
-
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+ }
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-           // print(RequestService.gettenStudent)
         })
         return RequestService.gettenStudentId.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfLyceeStudent", for: indexPath) as? LyceeStudentTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfLyceumStudent", for: indexPath) as? LyceeStudentTableViewCell else {
             return UITableViewCell()
         }
         let studentName = RequestService.gettenStudent[indexPath.row]
@@ -73,15 +82,22 @@ class LyceeViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.textColor = .white
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let messangerViewController = storyboard?.instantiateViewController(withIdentifier: "MessengerVC") as! MessengerViewController
+        messangerViewController.friendId = RequestService.gettenStudentId[indexPath.row]
+        messangerViewController.friendName =  RequestService.gettenStudent[indexPath.row]
+        self.navigationController?.pushViewController(messangerViewController, animated: true)
+    }
 
 }
 
-extension LyceeViewController{
+extension LyceumViewController{
     // MARK: - To indicate that there are no recipe in favorite
     func createLabel(){
         if self.student.count == 0 {
-            listEmptyLabel.frame = CGRect(x: 0, y: 0, width: 250, height: 100)
-            listEmptyLabel.text = "There are no Student in your School.\("\n") Wait...."
+            listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+            listEmptyLabel.text = "There are no Student in your School.\("\n") Add Your School, Please...."
             listEmptyLabel.numberOfLines = 0
             listEmptyLabel.center = self.view.center
             listEmptyLabel.textAlignment = .center
@@ -118,7 +134,7 @@ extension LyceeViewController{
             self.studentLyceeTableView.tableFooterView = createSpinnerFooter()
             let newParameters: Parameters = [
                 "userId": UserDefaults.standard.integer(forKey: "id"),
-                "level": "Lycee",
+                "level": "Lyceum",
                 "page": page + 1
                 ]
             // MARK: - Get All Students
@@ -129,7 +145,7 @@ extension LyceeViewController{
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                         for i in 0...getStudent.count-1{
                             RequestService.gettenStudent.append(getStudent[i].username)
-                            RequestService.gettenStudentId.append(getStudent[i].userid)
+                            RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
                         }
                         DispatchQueue.main.async { [self] in
                             studentLyceeTableView.reloadData()

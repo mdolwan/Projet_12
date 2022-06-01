@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class CollegeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SecondaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var repository : RequestService = RequestService()
     var student : [Student] = []
@@ -16,13 +16,15 @@ class CollegeViewController: UIViewController, UITableViewDelegate, UITableViewD
     var page : Int = 0
     let parameters: Parameters = [
         "userId": UserDefaults.standard.integer(forKey: "id"),
-        "level": "Colleges",
+        "level": "Secondary",
         "page": 0
         ]
     let api = URL(string: "http://localhost/mesamies/getstudents.php")
-    @IBOutlet weak var studentCollegeTableView: UITableView!
+    
+    @IBOutlet weak var studentSecondaryTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Secondary"
         RequestService.gettenStudentId.removeAll()
         RequestService.gettenStudent.removeAll()
         // MARK: - Get All Students
@@ -32,11 +34,15 @@ class CollegeViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     for i in 0...getStudent.count-1{
+                        if Int(getStudent[i].userid) != -1 {
                         RequestService.gettenStudent.append(getStudent[i].username)
-                        RequestService.gettenStudentId.append(getStudent[i].userid)
-                    }
+                        RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
+                        } else{
+                            self.createLabel()
+                            return
+                        }                    }
                     DispatchQueue.main.async { [self] in
-                        studentCollegeTableView.reloadData()
+                        studentSecondaryTableView.reloadData()
                     }
                 })
                 //
@@ -45,11 +51,14 @@ class CollegeViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         //
-        studentCollegeTableView.dataSource = self
-        studentCollegeTableView.delegate = self
+        studentSecondaryTableView.dataSource = self
+        studentSecondaryTableView.delegate = self
     }
     
 
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+ }
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
@@ -60,9 +69,11 @@ class CollegeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfCollegeStudent", for: indexPath) as? CollegeStudentTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfSecondaryStudent", for: indexPath) as? SecondaryStudentTableViewCell else {
             return UITableViewCell()
         }
         let studentName = RequestService.gettenStudent[indexPath.row]
@@ -72,16 +83,23 @@ class CollegeViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.textColor = .white
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let goToMessanger = storyboard?.instantiateViewController(withIdentifier: "MessengerVC") as! MessengerViewController
+        goToMessanger.friendName = RequestService.gettenStudent[indexPath.row]
+        goToMessanger.friendId = RequestService.gettenStudentId[indexPath.row]
+        self.navigationController?.pushViewController(goToMessanger, animated: true)
+    }
 
 }
 
 
-extension CollegeViewController{
+extension SecondaryViewController{
     // MARK: - To indicate that there are no recipe in favorite
     func createLabel(){
         if self.student.count == 0 {
-            listEmptyLabel.frame = CGRect(x: 0, y: 0, width: 250, height: 100)
-            listEmptyLabel.text = "There are no Student in your School.\("\n") Wait...."
+            listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+            listEmptyLabel.text = "There are no Student in your School.\("\n") Add Your School, Please...."
             listEmptyLabel.numberOfLines = 0
             listEmptyLabel.center = self.view.center
             listEmptyLabel.textAlignment = .center
@@ -111,14 +129,14 @@ extension CollegeViewController{
         
 
         let position = scrollView.contentOffset.y
-        if studentCollegeTableView.contentSize.height == 0 { return }
-        if position > (studentCollegeTableView.contentSize.height - scrollView.frame.size.height)
+        if studentSecondaryTableView.contentSize.height == 0 { return }
+        if position > (studentSecondaryTableView.contentSize.height - scrollView.frame.size.height)
         {
             
-            self.studentCollegeTableView.tableFooterView = createSpinnerFooter()
+            self.studentSecondaryTableView.tableFooterView = createSpinnerFooter()
             let newParameters: Parameters = [
                 "userId": UserDefaults.standard.integer(forKey: "id"),
-                "level": "Colleges",
+                "level": "Secondary",
                 "page": page + 1
                 ]
             // MARK: - Get All Students
@@ -129,10 +147,10 @@ extension CollegeViewController{
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                         for i in 0...getStudent.count-1{
                             RequestService.gettenStudent.append(getStudent[i].username)
-                            RequestService.gettenStudentId.append(getStudent[i].userid)
+                            RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
                         }
                         DispatchQueue.main.async { [self] in
-                            studentCollegeTableView.reloadData()
+                            studentSecondaryTableView.reloadData()
                         }
                     })
                     //

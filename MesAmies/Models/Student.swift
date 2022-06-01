@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Student
 struct Student: Codable {
-    let username, userid, level, schoolname: String
+    let username,level, userid, schoolname: String
 }
 
 typealias Students = [Student]

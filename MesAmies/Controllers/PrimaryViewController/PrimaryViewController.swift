@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class MaternelleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
      
     var repository : RequestService = RequestService()
     var student : [Student] = []
@@ -16,13 +16,17 @@ class MaternelleViewController: UIViewController, UITableViewDelegate, UITableVi
     var page : Int = 0
     let parameters: Parameters = [
         "userId": UserDefaults.standard.integer(forKey: "id"),
-        "level": "Maternelle",
+        "level": "Primary",
         "page": 0
         ]
     let api = URL(string: "http://localhost/mesamies/getstudents.php") 
-    @IBOutlet weak var maternelleTableView: UITableView!
+    @IBOutlet weak var primaryTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Primary"
+       
+        RequestService.gettenStudentId.removeAll()
+        RequestService.gettenStudent.removeAll()
         // MARK: - Get All Students
         repository.getStudent(url: api!, method: .post, parameters: parameters) { result in
             switch result{
@@ -30,11 +34,16 @@ class MaternelleViewController: UIViewController, UITableViewDelegate, UITableVi
                 //
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     for i in 0...getStudent.count-1{
+                        if Int(getStudent[i].userid) != -1 {
                         RequestService.gettenStudent.append(getStudent[i].username)
-                        RequestService.gettenStudentId.append(getStudent[i].userid)
+                        RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
+                        } else{
+                            self.createLabel()
+                            return
+                        }
                     }
                     DispatchQueue.main.async { [self] in
-                        maternelleTableView.reloadData()
+                        primaryTableView.reloadData()
                     }
                 })
                 //
@@ -44,21 +53,23 @@ class MaternelleViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         //
         
-        maternelleTableView.dataSource = self
-        maternelleTableView.delegate = self
+        primaryTableView.dataSource = self
+        primaryTableView.delegate = self
     }
-    
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+ }
     // MARK: - Navigation
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-             //print(RequestService.gettenStudent)
          })
-        
          return RequestService.gettenStudentId.count
      }
-     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfStudent", for: indexPath) as? StudentTableViewCell else {
+         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfPrimaryStudent", for: indexPath) as? PrimaryStudentTableViewCell else {
              return UITableViewCell()
          }
          let studentName = RequestService.gettenStudent[indexPath.row]
@@ -68,15 +79,22 @@ class MaternelleViewController: UIViewController, UITableViewDelegate, UITableVi
          cell.textLabel?.textColor = .white
          return cell
      }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let goToMessenger = storyboard?.instantiateViewController(withIdentifier: "MessengerVC") as! MessengerViewController
+        goToMessenger.friendName = RequestService.gettenStudent[indexPath.row]
+        goToMessenger.friendId = RequestService.gettenStudentId[indexPath.row]
+        self.navigationController?.pushViewController(goToMessenger, animated: true)
+    }
 
 }
 
-extension MaternelleViewController{
+extension PrimaryViewController{
     // MARK: - To indicate that there are no recipe in favorite
     func createLabel(){
         if self.student.count == 0 {
-            listEmptyLabel.frame = CGRect(x: 0, y: 0, width: 250, height: 100)
-            listEmptyLabel.text = "There are no Student in your School.\("\n") Wait...."
+            listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+            listEmptyLabel.text = "There are no Student in your School.\("\n") Add Your School, Please...."
             listEmptyLabel.numberOfLines = 0
             listEmptyLabel.center = self.view.center
             listEmptyLabel.textAlignment = .center
@@ -106,14 +124,14 @@ extension MaternelleViewController{
         
 
         let position = scrollView.contentOffset.y
-        if maternelleTableView.contentSize.height == 0 { return }
-        if position > (maternelleTableView.contentSize.height - scrollView.frame.size.height)
+        if primaryTableView.contentSize.height == 0 { return }
+        if position > (primaryTableView.contentSize.height - scrollView.frame.size.height)
         {
             
-            self.maternelleTableView.tableFooterView = createSpinnerFooter()
+            self.primaryTableView.tableFooterView = createSpinnerFooter()
             let newParameters: Parameters = [
                 "userId": UserDefaults.standard.integer(forKey: "id"),
-                "level": "Maternelle",
+                "level": "Primary",
                 "page": page + 1
                 ]
             // MARK: - Get All Students
@@ -123,11 +141,16 @@ extension MaternelleViewController{
                     //
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                         for i in 0...getStudent.count-1{
+                            if Int(getStudent[i].userid) != -1 {
                             RequestService.gettenStudent.append(getStudent[i].username)
-                            RequestService.gettenStudentId.append(getStudent[i].userid)
+                            RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
+                            } else{
+                                self.createLabel()
+                                return
+                            }
                         }
                         DispatchQueue.main.async { [self] in
-                            maternelleTableView.reloadData()
+                            primaryTableView.reloadData()
                         }
                     })
                     //

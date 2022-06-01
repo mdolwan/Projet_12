@@ -15,6 +15,8 @@ protocol AlamofireSession {
     func requestSchool(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (AFDataResponse<SchoolElement>) -> Void)
     func requestLevel(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (AFDataResponse<Level>) -> Void)
     func requestStudents(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<Student>)->Void)
+    
+    func sendMessages(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<Student>)->Void)
 }
 
 final class MesAmiesSession: AlamofireSession {
@@ -44,6 +46,12 @@ final class MesAmiesSession: AlamofireSession {
     
     func requestStudents<T: Decodable>(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {
         AF.request(url, method: .post, parameters: parameters).responseDecodable { (response: DataResponse<T, AFError>) in
+            callback(response)
+        }
+    }
+    
+    func sendMessages<T: Decodable>(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {
+        AF.request(url, method: .post, parameters: parameters).responseDecodable{ (response: DataResponse<T, AFError>) in
             callback(response)
         }
     }

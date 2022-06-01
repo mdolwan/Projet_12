@@ -31,9 +31,9 @@ class SignUpViewController: UIViewController {
             "useremail": useremail,
             "password": password
         ]
-        guard let api = URL(string:"http://localhost/mesamies/indexs.php")
+        guard let api = URL(string:"http://localhost/mesamies/signup.php")
         else { return  }
-        repository.signOutRequest(url: api, method: .post, parameters: parameters) { dataResponse in
+        repository.signUpRequest(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
             case .success(let isSuccess):
                 if isSuccess.error == false {

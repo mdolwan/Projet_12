@@ -20,7 +20,7 @@ final class RequestService {
     static var  gettenSchoolId = [Int]()
     static var  gettenLevel = [String]()
     static var  gettenStudent = [String]()
-    static var  gettenStudentId = [String]()
+    static var  gettenStudentId = [Int]()
     var parameters = Parameters()
     init(session: AlamofireSession = MesAmiesSession() ) {
         self.session = session
@@ -46,7 +46,7 @@ final class RequestService {
     }
     
     // MARK: - Management
-    func signOutRequest(url:URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<Reponse, RequestError>) -> Void){
+    func signUpRequest(url:URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<Reponse, RequestError>) -> Void){
         session.requestOut(url: url,method: HTTPMethod.post, parameters: parameters) {  dataResponse in
             guard let data = dataResponse.data else{
                 callback(.failure(.noData))
@@ -137,4 +137,22 @@ final class RequestService {
             callback(.success(dataDecoded))
         }
    }
+    
+    func sendCurrentMessage(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<Message,RequestError>)-> Void){
+        session.sendMessages(url: url, method: HTTPMethod.post, parameters: parameters){ dataResponse in
+            guard let data = dataResponse.data else {
+                callback(.failure(.noData))
+                return
+            }
+            guard  dataResponse.response?.statusCode == 200 else {
+                callback(.failure(.invalidResponse))
+                return
+            }
+            guard let dataDecoded = try? JSONDecoder().decode(Message.self, from: data) else {
+                callback(.failure(.undecodableData))
+                return
+            }
+            callback(.success(dataDecoded))
+        }
+    }
 }

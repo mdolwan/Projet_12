@@ -53,8 +53,8 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         cityTextField.placeholder = String(UserDefaults.standard.integer(forKey: "id"))
         
         // MARK- get all cities available
-        let parameters : Parameters = [ "city" : "",
-                                        "level": ""
+        let parameters : Parameters = [: //"city" : "",
+                                        //"level": ""
         ]
         repository.schoolSelect(url: api!, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse {
@@ -73,7 +73,9 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         toolBar.setItems([buttonDone], animated: true)
         // lastPressedTextField?.inputAccessoryView = toolBar
     }
-    
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+ }
     @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
         lastPressedTextField = textField
         lastPressedTextField?.inputAccessoryView = toolBar
@@ -234,7 +236,7 @@ extension SettingViewController{
         }
     }
     func initialLevelArrayFinal()->[String]{
-        var fixedLevelArray = ["Maternelle","Colleges","Lycee"] //array1
+        var fixedLevelArray = ["Primary","Secondary","Lyceum"] //array1
         if RequestService.gettenLevel.count>0{
             for i in 0...RequestService.gettenLevel.count-1{
                 if (  fixedLevelArray.contains(RequestService.gettenLevel[i])){

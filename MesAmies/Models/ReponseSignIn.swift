@@ -10,4 +10,5 @@ struct ReponseSignIn: Codable {
     let error: Bool
     let userid: String
     let message: String
+    let username: String
 }

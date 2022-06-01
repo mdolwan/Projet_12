@@ -38,6 +38,7 @@ class SignInViewController: UIViewController {
                     let userId = String(isSuccess.userid)
                     UserDefaults.standard.set("\(userId)", forKey: "id")
                     UserDefaults.standard.set(true, forKey: "username")
+                    UserDefaults.standard.set("\(isSuccess.username)", forKey: "pseudo")
                     self.goToMainViewController()}
                 else if isSuccess.error == true {
                    return }

@@ -1,13 +1,13 @@
 //
-//  LyceeStudentTableViewCell.swift
+//  CollegeStudentTableViewCell.swift
 //  MesAmies
 //
-//  Created by Mohammad Olwan on 26/05/2022.
+//  Created by Mohammad Olwan on 25/05/2022.
 //
 
 import UIKit
 
-class LyceeStudentTableViewCell: UITableViewCell {
+class SecondaryStudentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var studentIdLabel: UILabel!
     @IBOutlet weak var studentNameLabel: UILabel!
@@ -24,18 +24,18 @@ class LyceeStudentTableViewCell: UITableViewCell {
 
 }
 
-extension LyceeStudentTableViewCell{
-    func configure(with studentName: String, and studentId: String ) {
+extension SecondaryStudentTableViewCell{
+    func configure(with studentName: String, and studentId: Int ) {
         
         studentNameLabel.text = " " + studentName
-        studentIdLabel.text = " " + studentId
+        studentIdLabel.text = " " + String(studentId)
 
         //applyAccessibility(student)
     }
 }
 
 // MARK: Accessibility
-extension StudentTableViewCell {
+extension SecondaryStudentTableViewCell {
 //  func applyAccessibility(_ student: Student) {
 //      studentNameLabel.accessibilityTraits = .header
 //      studentNameLabel.accessibilityLabel = student.username

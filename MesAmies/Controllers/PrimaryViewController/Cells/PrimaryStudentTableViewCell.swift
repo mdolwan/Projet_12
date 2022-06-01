@@ -7,10 +7,10 @@
 
 import UIKit
 
-class StudentTableViewCell: UITableViewCell {
+class PrimaryStudentTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var studentIdLabel: UILabel!
-    @IBOutlet weak var studentNameLabel: UILabel!
+    @IBOutlet weak var studentPrimaryIdLabel: UILabel!
+    @IBOutlet weak var studentPrimaryNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,19 +23,19 @@ class StudentTableViewCell: UITableViewCell {
     }
 
 }
-extension StudentTableViewCell{
+extension PrimaryStudentTableViewCell{
     
-    func configure(with studentName: String, and studentId: String ) {
+    func configure(with studentName: String, and studentId: Int ) {
         
-        studentNameLabel.text = " " + studentId
-        studentIdLabel.text = " " + studentName
+        studentPrimaryNameLabel.text = " " + studentName
+        studentPrimaryIdLabel.text = " " + String(studentId)
 
         //applyAccessibility(student)
     }
 }
 
 // MARK: Accessibility
-extension StudentTableViewCell {
+extension PrimaryStudentTableViewCell {
 //  func applyAccessibility(_ student: Student) {
 //      studentNameLabel.accessibilityTraits = .header
 //      studentNameLabel.accessibilityLabel = student.username
