@@ -39,7 +39,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setLevelArrayAfterAdditionASchool()
+       setLevelArrayAfterAdditionASchool()
         
         stackCity.layer.borderColor = UIColor.darkGray.cgColor
         stackCity.layer.borderWidth = 3.0
@@ -228,7 +228,9 @@ extension SettingViewController{
             case .success(let levels):
                 let level = levels.count
                 for i in 0...level-1{
-                    RequestService.gettenLevel.append(levels[i].level)
+                    if levels[i].level != "null" {
+                        RequestService.gettenLevel.append(levels[i].level)
+                    }
                 }
             case .failure(let error):
                 print(error)
