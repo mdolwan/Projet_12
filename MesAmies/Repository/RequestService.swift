@@ -21,6 +21,10 @@ final class RequestService {
     static var  gettenLevel = [String]()
     static var  gettenStudent = [String]()
     static var  gettenStudentId = [Int]()
+    static var  userMessangerId = [String]()  // For MessengerViewController
+    static var  userMessage = [String]()  // For MessengerViewController
+    static var  messageDate = [String]()  // For MessengerViewController
+    static var  messageTime = [String]()  // For MessengerViewController
     var parameters = Parameters()
     init(session: AlamofireSession = MesAmiesSession() ) {
         self.session = session
@@ -155,4 +159,24 @@ final class RequestService {
             callback(.success(dataDecoded))
         }
     }
-}
+    
+    func getMessageBetweenTowtudents(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<GetMessages,RequestError>)-> Void){
+        session.getMessages(url: url, method: HTTPMethod.post, parameters: parameters){ dataResponse in
+           
+            guard let data = dataResponse.data else {
+                callback(.failure(.noData))
+                return
+            }
+            guard  dataResponse.response?.statusCode == 200 else {
+                callback(.failure(.invalidResponse))
+                return
+            }
+            guard let dataDecoded = try? JSONDecoder().decode(GetMessages.self, from: data) else {
+                callback(.failure(.undecodableData))
+                return
+            }
+            callback(.success(dataDecoded))
+        }
+        }
+    }
+

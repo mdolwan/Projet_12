@@ -1,16 +1,17 @@
 //
-//  LyceeStudentTableViewCell.swift
+//  SenderTableViewCell.swift
 //  MesAmies
 //
-//  Created by Mohammad Olwan on 26/05/2022.
+//  Created by Mohammad Olwan on 03/06/2022.
 //
 
 import UIKit
 
-class LyceeStudentTableViewCell: UITableViewCell {
+class SenderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var studentIdLabel: UILabel!
-    @IBOutlet weak var studentNameLabel: UILabel!
+    @IBOutlet weak var senderTimeMessegeLabel: UILabel!
+    @IBOutlet weak var senderDateMessageLabel: UILabel!
+    @IBOutlet weak var sendermessageLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,22 +22,21 @@ class LyceeStudentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
 
-extension LyceeStudentTableViewCell{
-    func configure(with studentName: String, and studentId: Int ) {
-        
-        studentNameLabel.text = " " + studentName
-        studentIdLabel.text = " " + String(studentId)
+extension SenderTableViewCell{
+    func configure(with message: String ) {
+        sendermessageLabel.text = " " + message
         //applyAccessibility(student)
     }
 }
 
 // MARK: Accessibility
-extension LyceeStudentTableViewCell {
+extension SenderTableViewCell {
 //  func applyAccessibility(_ student: Student) {
 //      studentNameLabel.accessibilityTraits = .header
 //      studentNameLabel.accessibilityLabel = student.username
 //  }
 }
+

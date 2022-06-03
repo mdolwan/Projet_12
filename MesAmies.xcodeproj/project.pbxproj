@@ -18,11 +18,15 @@
 		F69B4388283D45FF00B2D25F /* PrimaryStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B4387283D45FF00B2D25F /* PrimaryStudentTableViewCell.swift */; };
 		F6BC0E1928369508008519C1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC0E1828369508008519C1 /* Level.swift */; };
 		F6BC2FDB284647340078B526 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC2FDA284647340078B526 /* Message.swift */; };
-		F6BC2FDD28468A4E0078B526 /* AllMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC2FDC28468A4E0078B526 /* AllMessages.swift */; };
+		F6BC2FDD28468A4E0078B526 /* GetMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC2FDC28468A4E0078B526 /* GetMessages.swift */; };
 		F6BF45EE2845630F00BA67DB /* MenuViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BF45ED2845630F00BA67DB /* MenuViewConroller.swift */; };
 		F6C5BB6B283F7855008B2DB1 /* LyceeStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5BB6A283F7855008B2DB1 /* LyceeStudentTableViewCell.swift */; };
 		F6C5BB6D283F7887008B2DB1 /* LyceumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5BB6C283F7887008B2DB1 /* LyceumViewController.swift */; };
 		F6C605EF283FDA5300FA48AE /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C605EE283FDA5300FA48AE /* MessengerViewController.swift */; };
+		F6C8DAB12849DF6100BC2AD2 /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C8DAAF2849DF6100BC2AD2 /* SenderTableViewCell.swift */; };
+		F6C8DAB22849DF6100BC2AD2 /* SenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C8DAB02849DF6100BC2AD2 /* SenderTableViewCell.xib */; };
+		F6C8DAB52849DF7600BC2AD2 /* RecieverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C8DAB32849DF7600BC2AD2 /* RecieverTableViewCell.swift */; };
+		F6C8DAB62849DF7600BC2AD2 /* RecieverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C8DAB42849DF7600BC2AD2 /* RecieverTableViewCell.xib */; };
 		F6C970A72837C79500B5F764 /* ReponseSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C970A62837C79500B5F764 /* ReponseSignIn.swift */; };
 		F6C9C7DD283D04B500728FE8 /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C9C7DC283D04B500728FE8 /* PrimaryViewController.swift */; };
 		F6CA71CD2830FC4A00C60B3D /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CA71CC2830FC4A00C60B3D /* Student.swift */; };
@@ -80,11 +84,15 @@
 		F69B4387283D45FF00B2D25F /* PrimaryStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryStudentTableViewCell.swift; sourceTree = "<group>"; };
 		F6BC0E1828369508008519C1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F6BC2FDA284647340078B526 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		F6BC2FDC28468A4E0078B526 /* AllMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMessages.swift; sourceTree = "<group>"; };
+		F6BC2FDC28468A4E0078B526 /* GetMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMessages.swift; sourceTree = "<group>"; };
 		F6BF45ED2845630F00BA67DB /* MenuViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewConroller.swift; sourceTree = "<group>"; };
 		F6C5BB6A283F7855008B2DB1 /* LyceeStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyceeStudentTableViewCell.swift; sourceTree = "<group>"; };
 		F6C5BB6C283F7887008B2DB1 /* LyceumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyceumViewController.swift; sourceTree = "<group>"; };
 		F6C605EE283FDA5300FA48AE /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
+		F6C8DAAF2849DF6100BC2AD2 /* SenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
+		F6C8DAB02849DF6100BC2AD2 /* SenderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTableViewCell.xib; sourceTree = "<group>"; };
+		F6C8DAB32849DF7600BC2AD2 /* RecieverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieverTableViewCell.swift; sourceTree = "<group>"; };
+		F6C8DAB42849DF7600BC2AD2 /* RecieverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecieverTableViewCell.xib; sourceTree = "<group>"; };
 		F6C970A62837C79500B5F764 /* ReponseSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseSignIn.swift; sourceTree = "<group>"; };
 		F6C9C7DC283D04B500728FE8 /* PrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
 		F6CA71CC2830FC4A00C60B3D /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -223,9 +231,29 @@
 		F6C605ED283FDA3D00FA48AE /* Massenger */ = {
 			isa = PBXGroup;
 			children = (
+				F6C8DAAE2849DF3000BC2AD2 /* RecieverCell */,
+				F6C8DAAD2849DF2400BC2AD2 /* SenderCell */,
 				F6C605EE283FDA5300FA48AE /* MessengerViewController.swift */,
 			);
 			path = Massenger;
+			sourceTree = "<group>";
+		};
+		F6C8DAAD2849DF2400BC2AD2 /* SenderCell */ = {
+			isa = PBXGroup;
+			children = (
+				F6C8DAAF2849DF6100BC2AD2 /* SenderTableViewCell.swift */,
+				F6C8DAB02849DF6100BC2AD2 /* SenderTableViewCell.xib */,
+			);
+			path = SenderCell;
+			sourceTree = "<group>";
+		};
+		F6C8DAAE2849DF3000BC2AD2 /* RecieverCell */ = {
+			isa = PBXGroup;
+			children = (
+				F6C8DAB32849DF7600BC2AD2 /* RecieverTableViewCell.swift */,
+				F6C8DAB42849DF7600BC2AD2 /* RecieverTableViewCell.xib */,
+			);
+			path = RecieverCell;
 			sourceTree = "<group>";
 		};
 		F6D590FA281C1B1700F32F59 = {
@@ -292,7 +320,7 @@
 				F6BC0E1828369508008519C1 /* Level.swift */,
 				F6C970A62837C79500B5F764 /* ReponseSignIn.swift */,
 				F6BC2FDA284647340078B526 /* Message.swift */,
-				F6BC2FDC28468A4E0078B526 /* AllMessages.swift */,
+				F6BC2FDC28468A4E0078B526 /* GetMessages.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -449,8 +477,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6C8DAB22849DF6100BC2AD2 /* SenderTableViewCell.xib in Resources */,
 				F6D59116281C1B1900F32F59 /* LaunchScreen.storyboard in Resources */,
 				F6D59113281C1B1900F32F59 /* Assets.xcassets in Resources */,
+				F6C8DAB62849DF7600BC2AD2 /* RecieverTableViewCell.xib in Resources */,
 				F6D5910E281C1B1700F32F59 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,16 +622,18 @@
 				F6D59111281C1B1700F32F59 /* MesAmies.xcdatamodeld in Sources */,
 				F6D59107281C1B1700F32F59 /* AppDelegate.swift in Sources */,
 				F6E5F5D1282AFC0B0089504D /* School.swift in Sources */,
+				F6C8DAB52849DF7600BC2AD2 /* RecieverTableViewCell.swift in Sources */,
 				F6BC0E1928369508008519C1 /* Level.swift in Sources */,
 				F6C605EF283FDA5300FA48AE /* MessengerViewController.swift in Sources */,
 				F695B25F283E3B8200CA124E /* SecondaryStudentTableViewCell.swift in Sources */,
 				F6CA71CD2830FC4A00C60B3D /* Student.swift in Sources */,
-				F6BC2FDD28468A4E0078B526 /* AllMessages.swift in Sources */,
+				F6BC2FDD28468A4E0078B526 /* GetMessages.swift in Sources */,
 				F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */,
 				F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */,
 				F6D59109281C1B1700F32F59 /* SceneDelegate.swift in Sources */,
 				F6E5F5D7282AFC7E0089504D /* SignUp.swift in Sources */,
 				F6C9C7DD283D04B500728FE8 /* PrimaryViewController.swift in Sources */,
+				F6C8DAB12849DF6100BC2AD2 /* SenderTableViewCell.swift in Sources */,
 				F6C5BB6D283F7887008B2DB1 /* LyceumViewController.swift in Sources */,
 				F695B25D283E3B3E00CA124E /* SecondaryViewController.swift in Sources */,
 				F6E5F5D5282AFC520089504D /* SignIn.swift in Sources */,

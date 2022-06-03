@@ -11,7 +11,7 @@ import Alamofire
 class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var repository : RequestService = RequestService()
-    var student : [Student] = []
+    //var student : [Student] = []
     let listEmptyLabel = UILabel()
     var page : Int = 0
     let parameters: Parameters = [
@@ -95,7 +95,7 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
 extension LyceumViewController{
     // MARK: - To indicate that there are no recipe in favorite
     func createLabel(){
-        if self.student.count == 0 {
+        if RequestService.gettenStudentId.count == 0 {
             listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
             listEmptyLabel.text = "There are no Student in your School.\("\n") Add Your School, Please...."
             listEmptyLabel.numberOfLines = 0

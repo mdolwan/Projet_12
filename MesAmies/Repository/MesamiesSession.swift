@@ -17,10 +17,12 @@ protocol AlamofireSession {
     func requestStudents(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<Student>)->Void)
     
     func sendMessages(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<Student>)->Void)
+    
+    func getMessages(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<GetMessages>)->Void)
 }
 
 final class MesAmiesSession: AlamofireSession {
-
+    
     func requestSchool<T: Decodable>(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {
         AF.request(url, method: .post, parameters: parameters).responseDecodable { (response: DataResponse<T, AFError>) in
             
@@ -51,6 +53,12 @@ final class MesAmiesSession: AlamofireSession {
     }
     
     func sendMessages<T: Decodable>(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {
+        AF.request(url, method: .post, parameters: parameters).responseDecodable{ (response: DataResponse<T, AFError>) in
+            callback(response)
+        }
+    }
+    
+    func getMessages<T: Decodable>(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {
         AF.request(url, method: .post, parameters: parameters).responseDecodable{ (response: DataResponse<T, AFError>) in
             callback(response)
         }

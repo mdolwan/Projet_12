@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - AllMessage
-struct AllMessage: Codable {
+// MARK: - GetMessage
+struct GetMessage: Codable {
     let fromID, toID, date, time: String
     let message: String
 
@@ -21,4 +21,5 @@ struct AllMessage: Codable {
     }
 }
 
-typealias AllMessages = [AllMessage]
+typealias GetMessages = [GetMessage]
+
