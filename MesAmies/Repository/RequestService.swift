@@ -161,7 +161,7 @@ final class RequestService {
         }
     }
     
-    func getMessageBetweenTowtudents(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<GetMessages,RequestError>)-> Void){
+    func getMessageBetweenTowStudents(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<GetMessages,RequestError>)-> Void){
         session.getMessages(url: url, method: HTTPMethod.post, parameters: parameters){ dataResponse in
            
             guard let data = dataResponse.data else {
