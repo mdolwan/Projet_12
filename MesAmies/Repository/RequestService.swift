@@ -21,6 +21,7 @@ final class RequestService {
     static var  gettenLevel = [String]()
     static var  gettenStudent = [String]()
     static var  gettenStudentId = [Int]()
+    static var  chatId = [Int]()  // For MessengerViewController
     static var  userMessangerId = [String]()  // For MessengerViewController
     static var  userMessage = [String]()  // For MessengerViewController
     static var  messageDate = [String]()  // For MessengerViewController

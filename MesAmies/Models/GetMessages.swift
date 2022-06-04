@@ -8,11 +8,12 @@
 import Foundation
 
 // MARK: - GetMessage
-struct GetMessage: Codable {
-    let fromID, toID, date, time: String
-    let message: String
+struct GetMessage: Codable  {
+    let messegeID, fromID, toID, date: String
+    let time, message: String
 
     enum CodingKeys: String, CodingKey {
+        case messegeID = "MessegeId"
         case fromID = "FromId"
         case toID = "ToId"
         case date = "Date"
