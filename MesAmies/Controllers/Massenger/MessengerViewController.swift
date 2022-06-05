@@ -46,7 +46,8 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
         // MARK: - Get All Messages
         let parameters: Parameters = [
             "FromId": UserDefaults.standard.integer(forKey: "id"),
-            "ToId": friendId
+            "ToId": friendId,
+            //"Page": page
         ]
         repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { result in
             switch result{
@@ -86,7 +87,7 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
                 print(error)
             }
         }
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector:  #selector(getNewMessegeInstantly), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(timeInterval: 1, target: self, selector:  #selector(getNewMessegeInstantly), userInfo: nil, repeats: true)
     }
     // MARK: - Navigation
     @IBAction func sendMessageButton(_ sender: UIButton) {
@@ -161,12 +162,6 @@ extension MessengerViewController{
             "ToId": friendId
         ]
         // MARK: - Reinitialize For Every Time We recovery The New Messeges
-        temporaryChatId.removeAll()
-        temporaryUserMessangerId.removeAll()
-        temporaryUserMessage.removeAll()
-        temporaryMessageDate.removeAll()
-        temporaryMessageTime.removeAll()
-        //
         repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { [self] newResult in
             switch newResult{
             case .success(var newGetMessage):
@@ -209,7 +204,7 @@ extension MessengerViewController{
         let footerView = UIView(frame: CGRect (x: 0, y: 0, width: view.frame.size.width, height:100))
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
-        spinner.color = UIColor.white
+        spinner.color = UIColor.black
         footerView.addSubview(spinner)
         spinner.startAnimating()
         return footerView
@@ -217,28 +212,51 @@ extension MessengerViewController{
     // MARK: - Function for Traite The Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         page += 1
-        print(page)
-//        let parameters: Parameters = [
-//            "FromId": UserDefaults.standard.integer(forKey: "id"),
-//            "ToId": friendId,
-//            "page": page
-//        ]
-//        let position = scrollView.contentOffset.y
-//        if messangerTableView.contentSize.height == 0 { return }
-//        if position < (messangerTableView.contentSize.height - scrollView.frame.size.height)
-//        {
-//            self.messangerTableView.tableFooterView = createSpinnerFooter()
-//            repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { [self] resultPlus in
-//                self.messangerTableView.tableFooterView = nil
-//                switch resultPlus {
-//                case .success(let oldMessege):
-//                   print(oldMessege)
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
-//        }else{
-//            return
-//        }
+        let parameters: Parameters = [
+            "FromId": UserDefaults.standard.integer(forKey: "id"),
+            "ToId": friendId,
+            "Page": page
+        ]
+        //
+        temporaryChatId.removeAll()
+        temporaryUserMessangerId.removeAll()
+        temporaryUserMessage.removeAll()
+        temporaryMessageDate.removeAll()
+        temporaryMessageTime.removeAll()
+        //
+        //page += 1
+        //print(page)
+        let position = scrollView.contentOffset.y
+        if messangerTableView.contentSize.height == 0 { return }
+        if position < (messangerTableView.contentSize.height - scrollView.frame.size.height + 100)
+        {
+            
+            self.messangerTableView.tableHeaderView = createSpinnerFooter()
+          
+            repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { [self] oldResultPlus in
+                self.messangerTableView.tableHeaderView = nil
+                switch oldResultPlus {
+                case .success(let oldMessege):
+                    for i in 0...oldMessege.count-1{
+                        if (oldMessege[i].fromID != "-1"){
+                        RequestService.chatId.insert(Int(oldMessege[i].messegeID)!, at: 0)
+                        RequestService.userMessangerId.insert(oldMessege[i].fromID, at: 0)
+                        RequestService.userMessage.insert(oldMessege[i].message, at: 0)
+                        RequestService.messageDate.insert(oldMessege[i].date, at: 0)
+                        RequestService.messageTime.insert(oldMessege[i].time, at: 0)
+                        }else { return }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                print(page)
+                DispatchQueue.main.async { [self] in
+                    messangerTableView.reloadData()
+                }
+               
+            }
+        }else{
+            return
+        }
     }
 }
