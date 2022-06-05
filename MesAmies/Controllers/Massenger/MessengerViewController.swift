@@ -14,16 +14,12 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
     var friendId = -1
     var friendName = ""
     var lastMessegeId = 0
+    var firstMessegeId = 1
     var page = 0
     var senderName = UserDefaults.standard.string(forKey: "pseudo")!
     let apiMessanger = URL(string:"http://localhost/mesamies/getMessages.php")
-    // var indexPathForTabelView = 0
-    
-    var temporaryChatId : [Int] = []
-    var temporaryUserMessangerId = [String]()
-    var temporaryUserMessage = [String]()
-    var temporaryMessageDate = [String]()
-    var temporaryMessageTime = [String]()
+    // variable to save the last position visited, default to zero
+    private var lastContentOffset: CGFloat = 0
     
     @IBOutlet weak var messangerTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextView!
@@ -77,9 +73,11 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
                         messangerTableView.reloadData()
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: { [self] in
-                        let  indexPathForTabelView = IndexPath(row: RequestService.userMessage.count-1, section: 0)
+                      let  indexPathForTabelView = IndexPath(row: RequestService.userMessage.count-1, section: 0)
                         if indexPathForTabelView.row > 10 {
                             messangerTableView.scrollToRow(at: indexPathForTabelView, at: .top, animated: true)
+                            self.page = 0
+                            print(page)
                         }
                     })
                 })
@@ -87,7 +85,7 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
                 print(error)
             }
         }
-//        Timer.scheduledTimer(timeInterval: 1, target: self, selector:  #selector(getNewMessegeInstantly), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector:  #selector(getNewMessegeInstantly), userInfo: nil, repeats: true)
     }
     // MARK: - Navigation
     @IBAction func sendMessageButton(_ sender: UIButton) {
@@ -211,33 +209,31 @@ extension MessengerViewController{
     }
     // MARK: - Function for Traite The Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if firstMessegeId == 0 { return }
+        print(page, "1")
         page += 1
+        
         let parameters: Parameters = [
             "FromId": UserDefaults.standard.integer(forKey: "id"),
             "ToId": friendId,
             "Page": page
         ]
-        //
-        temporaryChatId.removeAll()
-        temporaryUserMessangerId.removeAll()
-        temporaryUserMessage.removeAll()
-        temporaryMessageDate.removeAll()
-        temporaryMessageTime.removeAll()
-        //
-        //page += 1
-        //print(page)
-        let position = scrollView.contentOffset.y
-        if messangerTableView.contentSize.height == 0 { return }
-        if position < (messangerTableView.contentSize.height - scrollView.frame.size.height + 100)
+        print(page, "2")
+//        let position = scrollView.contentOffset.y
+//        if messangerTableView.contentSize.height == 0 { return }
+      //  if position < (messangerTableView.contentSize.height - scrollView.frame.size.height + 100)
+        if (self.lastContentOffset > scrollView.contentOffset.y)
         {
-            
             self.messangerTableView.tableHeaderView = createSpinnerFooter()
-          
             repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { [self] oldResultPlus in
                 self.messangerTableView.tableHeaderView = nil
                 switch oldResultPlus {
                 case .success(let oldMessege):
                     for i in 0...oldMessege.count-1{
+                        if Int(oldMessege[oldMessege.count-1].messegeID) == 1 {
+                            self.firstMessegeId = 0
+                        }
+                        print(self.firstMessegeId, "firstMessegeId")
                         if (oldMessege[i].fromID != "-1"){
                         RequestService.chatId.insert(Int(oldMessege[i].messegeID)!, at: 0)
                         RequestService.userMessangerId.insert(oldMessege[i].fromID, at: 0)
@@ -249,14 +245,17 @@ extension MessengerViewController{
                 case .failure(let error):
                     print(error)
                 }
-                print(page)
+                print(page, "3")
                 DispatchQueue.main.async { [self] in
                     messangerTableView.reloadData()
                 }
-               
             }
-        }else{
+        }else if (self.lastContentOffset < scrollView.contentOffset.y){
+            print("move to down")
+            page = 0
             return
         }
+        // update the new position acquired
+            self.lastContentOffset = scrollView.contentOffset.y
     }
 }
