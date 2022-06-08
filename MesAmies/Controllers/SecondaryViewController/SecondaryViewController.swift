@@ -163,4 +163,9 @@ extension SecondaryViewController{
             return
         }
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+        UIView.animate(withDuration: 0.35, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1, 1, 1)})
+    }
 }

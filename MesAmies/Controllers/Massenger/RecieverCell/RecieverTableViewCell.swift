@@ -9,12 +9,20 @@ import UIKit
 
 class RecieverTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var textView: UIView!
     @IBOutlet weak var recieverDateMessegeLabel: UILabel!
     @IBOutlet weak var recieverTimeMessegeLabel: UILabel!
     @IBOutlet weak var recieverMessageLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        textView.backgroundColor = .cyan
+        textView.layer.cornerRadius = 5
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        
+        recieverMessageLabel.numberOfLines = 0
+        recieverMessageLabel.textColor = .black
+        recieverMessageLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

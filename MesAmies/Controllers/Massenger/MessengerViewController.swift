@@ -30,6 +30,9 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         messangerTableView.delegate = self
         messangerTableView.dataSource = self
+        messangerTableView.separatorStyle = .none
+        messangerTableView.rowHeight = UITableView.automaticDimension;
+        messangerTableView.estimatedRowHeight = 70.0; // set to whatever your "average" cell height is
         messangerTableView.register(UINib(nibName: "RecieverTableViewCell", bundle: nil), forCellReuseIdentifier: "MessegeRecieved")
         messangerTableView.register(UINib(nibName: "SenderTableViewCell", bundle: nil), forCellReuseIdentifier: "MessegeSend")
         tabBarLabel.text = "\(String(describing: senderName)) Chat With \(friendName)"
@@ -48,9 +51,7 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
         repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { result in
             switch result{
             case .success(let getMessage):
-                //
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: { [self] in
-                    
                     for i in 0...getMessage.count-1 {
                         if (getMessage[i].fromID != "-1"){
                             RequestService.chatId.append(Int(getMessage[i].messegeID)!)
@@ -209,21 +210,24 @@ extension MessengerViewController{
     }
     // MARK: - Function for Traite The Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !repository.isPagination else{
+            return
+        }
+       // print(!repository.isPagination)
         if firstMessegeId == 0 { return }
-        print(page, "1")
-        page += 1
-        
-        let parameters: Parameters = [
-            "FromId": UserDefaults.standard.integer(forKey: "id"),
-            "ToId": friendId,
-            "Page": page
-        ]
-        print(page, "2")
-//        let position = scrollView.contentOffset.y
-//        if messangerTableView.contentSize.height == 0 { return }
-      //  if position < (messangerTableView.contentSize.height - scrollView.frame.size.height + 100)
+       // repository.isPagination = true
         if (self.lastContentOffset > scrollView.contentOffset.y)
-        {
+        { //
+            print(page, "1")
+            page += 1
+            print(scrollView.contentOffset.y, page)
+            let parameters: Parameters = [
+                "FromId": UserDefaults.standard.integer(forKey: "id"),
+                "ToId": friendId,
+                "Page": page
+            ]
+            print(page, "2")
+            //
             self.messangerTableView.tableHeaderView = createSpinnerFooter()
             repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { [self] oldResultPlus in
                 self.messangerTableView.tableHeaderView = nil
@@ -249,13 +253,15 @@ extension MessengerViewController{
                 DispatchQueue.main.async { [self] in
                     messangerTableView.reloadData()
                 }
+                repository.isPagination = false
             }
         }else if (self.lastContentOffset < scrollView.contentOffset.y){
             print("move to down")
-            page = 0
+//            page = 0
             return
         }
         // update the new position acquired
             self.lastContentOffset = scrollView.contentOffset.y
     }
+    
 }

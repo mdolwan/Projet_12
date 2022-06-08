@@ -11,21 +11,20 @@ import Alamofire
 
 protocol AlamofireSession {
     func requestIn(url: URL,method:HTTPMethod,parameters: Parameters,callback: @escaping (AFDataResponse<Reponse>) -> Void)
-    func requestOut(url: URL,method:HTTPMethod,parameters: Parameters, callback: @escaping (AFDataResponse<Reponse>) -> Void)
+    func requestUp(url: URL,method:HTTPMethod,parameters: Parameters, callback: @escaping (AFDataResponse<Reponse>) -> Void)
     func requestSchool(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (AFDataResponse<SchoolElement>) -> Void)
     func requestLevel(url:URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (AFDataResponse<Level>) -> Void)
     func requestStudents(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<Student>)->Void)
-    
-    func sendMessages(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<Student>)->Void)
+    func sendMessages(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<Message>)->Void)
     
     func getMessages(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<GetMessages>)->Void)
+    func requestAddNewSchool(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(AFDataResponse<NewSchool>)->Void)
 }
 
 final class MesAmiesSession: AlamofireSession {
     
     func requestSchool<T: Decodable>(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping (DataResponse<T, AFError>) -> Void) {
         AF.request(url, method: .post, parameters: parameters).responseDecodable { (response: DataResponse<T, AFError>) in
-            
             callback(response)
         }
     }
@@ -34,7 +33,13 @@ final class MesAmiesSession: AlamofireSession {
             callback(response)
         }
     }
-    func requestOut<T: Decodable>(url: URL,method: HTTPMethod, parameters: Parameters , callback: @escaping (DataResponse<T, AFError>) -> Void) {
+    func requestUp<T: Decodable>(url: URL,method: HTTPMethod, parameters: Parameters , callback: @escaping (DataResponse<T, AFError>) -> Void) {
+        AF.request(url, method: .post, parameters: parameters).responseDecodable { (response: DataResponse<T, AFError>) in
+            callback(response)
+        }
+    }
+    
+    func requestAddNewSchool<T: Decodable>(url: URL,method: HTTPMethod, parameters: Parameters , callback: @escaping (DataResponse<T, AFError>) -> Void) {
         AF.request(url, method: .post, parameters: parameters).responseDecodable { (response: DataResponse<T, AFError>) in
             callback(response)
         }

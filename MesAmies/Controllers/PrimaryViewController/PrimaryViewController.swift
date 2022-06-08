@@ -19,8 +19,8 @@ class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewD
         "level": "Primary",
         "page": 0
         ]
-    let api = URL(string: "http://localhost/mesamies/getstudents.php") 
-    @IBOutlet weak var primaryTableView: UITableView!
+    let api = URL(string: "http://localhost/mesamies/getstudents.php")
+     @IBOutlet weak var primaryTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Primary"
@@ -65,6 +65,9 @@ class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewD
          })
          return RequestService.gettenStudentId.count
      }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
@@ -162,5 +165,11 @@ extension PrimaryViewController{
         }else{
             return
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+        UIView.animate(withDuration: 0.35, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1, 1, 1)})
     }
 }

@@ -9,8 +9,6 @@ import Alamofire
 
 class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    
-    
     var repository : RequestService = RequestService()
     var city: String?
     var name: String?
@@ -21,10 +19,6 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     let toolBar = UIToolbar()
     
     var api = URL(string: "http://localhost/mesamies/index.php")
-    
-    @IBOutlet weak var chooseCityButton: UIButton!
-    @IBOutlet weak var chooseLevelButton: UIButton!
-    @IBOutlet weak var chooseSchoolButton: UIButton!
     
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var levelSchoolTextField: UITextField!
@@ -39,7 +33,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       setLevelArrayAfterAdditionASchool()
+        setLevelArrayAfterAdditionASchool()
         
         stackCity.layer.borderColor = UIColor.darkGray.cgColor
         stackCity.layer.borderWidth = 3.0
@@ -53,8 +47,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         cityTextField.placeholder = String(UserDefaults.standard.integer(forKey: "id"))
         
         // MARK- get all cities available
-        let parameters : Parameters = [: //"city" : "",
-                                        //"level": ""
+        let parameters : Parameters = [: // This Query don't need to Parameters, becuase it is SELECT * FROM TABLE
         ]
         repository.schoolSelect(url: api!, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse {
@@ -75,22 +68,13 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
- }
+    }
     @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
         lastPressedTextField = textField
         lastPressedTextField?.inputAccessoryView = toolBar
         lastPressedTextField!.inputView = pickerSchool
     }
-    
-    @IBAction func getAllCitiesPressButton(_ sender: UIButton) {
-        
-        print(RequestService.gettenSchool)
-        level = RequestService.gettenLevel
-        print(level, "level1")
-        level = initialLevelArrayFinal()
-        print(level, "level2")
-    }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -175,7 +159,6 @@ extension SettingViewController{
         pickerSchool.isHidden = true
     }
     
-    
     @IBAction func signOutButton(_ sender: UIButton) {
         RequestService.gettenStudent.removeAll()
         RequestService.gettenStudentId.removeAll()
@@ -193,8 +176,6 @@ extension SettingViewController{
         if lastPressedTextField == cityTextField {
             lastPressedTextField?.text = RequestService.gettenCity[currentIndex]
         } else if lastPressedTextField == levelSchoolTextField {
-            //  lastPressedTextField?.text = level[currentIndex]
-            //
             let newParameters : Parameters = [
                 "city": cityTextField.text!,
                 "level" : levelSchoolTextField.text!
@@ -211,7 +192,7 @@ extension SettingViewController{
                 case .failure(let error):
                     print(error)
                 }
-            } //
+            }
         }
         else if lastPressedTextField == schoolTextField {
             schoolTextField?.text = RequestService.gettenSchool[currentIndex]
@@ -258,6 +239,7 @@ extension SettingViewController{
                 mainStack.isHidden = true
             }
         })
+        
     }
 }
 

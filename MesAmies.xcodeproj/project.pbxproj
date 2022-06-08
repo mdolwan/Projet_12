@@ -9,13 +9,31 @@
 /* Begin PBXBuildFile section */
 		2CF6F8790EA91F745BBAD35D /* Pods_MesAmiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D66556CA5A6F5433A0F33A0 /* Pods_MesAmiesTests.framework */; };
 		330AAF9DCCB1839A68F7EA1A /* Pods_MesAmies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4569C26F3B405C730AE12201 /* Pods_MesAmies.framework */; };
+		F67506432850FAE60069C5B6 /* CountLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67506422850FAE60069C5B6 /* CountLevelTests.swift */; };
+		F67506452850FAF70069C5B6 /* CountLevel.json in Resources */ = {isa = PBXBuildFile; fileRef = F67506442850FAF70069C5B6 /* CountLevel.json */; };
+		F67506482850FCAE0069C5B6 /* SendMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67506472850FCAE0069C5B6 /* SendMessageTests.swift */; };
+		F675064A2850FCEC0069C5B6 /* Message.json in Resources */ = {isa = PBXBuildFile; fileRef = F67506492850FCEC0069C5B6 /* Message.json */; };
 		F67609622827C7D6004DC9AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67609612827C7D6004DC9AF /* SignUpViewController.swift */; };
 		F67778FF2829B09300AEAC5E /* MesamiesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67778FE2829B09300AEAC5E /* MesamiesSession.swift */; };
 		F67779052829C4A100AEAC5E /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67779042829C4A100AEAC5E /* RequestService.swift */; };
+		F6940016284E8F2E00712EBE /* FakeMesAmiesSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6940015284E8F2E00712EBE /* FakeMesAmiesSession.swift */; };
+		F694001A284E911100712EBE /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6940019284E911100712EBE /* FakeResponseData.swift */; };
+		F694001C284E922B00712EBE /* MesAmies.json in Resources */ = {isa = PBXBuildFile; fileRef = F694001B284E922B00712EBE /* MesAmies.json */; };
+		F694659F28500AE400EB61CB /* NewSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694659E28500AE400EB61CB /* NewSchool.swift */; };
+		F69465A2285015C100EB61CB /* GetMessagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69465A1285015C100EB61CB /* GetMessagesTests.swift */; };
+		F69465A42850163600EB61CB /* GetMessages.json in Resources */ = {isa = PBXBuildFile; fileRef = F69465A32850163600EB61CB /* GetMessages.json */; };
+		F69465A728501CBE00EB61CB /* ResponseSignInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69465A628501CBE00EB61CB /* ResponseSignInTests.swift */; };
+		F69465A928501D6800EB61CB /* ResponseSignIn.json in Resources */ = {isa = PBXBuildFile; fileRef = F69465A828501D6800EB61CB /* ResponseSignIn.json */; };
+		F694A6DD284FEDE100BE1E4D /* NewSchoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694A6DC284FEDE100BE1E4D /* NewSchoolTests.swift */; };
+		F694A6E3284FEE2100BE1E4D /* NewSchool.json in Resources */ = {isa = PBXBuildFile; fileRef = F694A6E2284FEE2100BE1E4D /* NewSchool.json */; };
 		F695B25D283E3B3E00CA124E /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695B25C283E3B3E00CA124E /* SecondaryViewController.swift */; };
 		F695B25F283E3B8200CA124E /* SecondaryStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695B25E283E3B8200CA124E /* SecondaryStudentTableViewCell.swift */; };
 		F69A67CA2829208F00439DD6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A67C92829208F00439DD6 /* SettingViewController.swift */; };
 		F69B4388283D45FF00B2D25F /* PrimaryStudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69B4387283D45FF00B2D25F /* PrimaryStudentTableViewCell.swift */; };
+		F6B9DFF72850922700DB44A2 /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9DFF62850922700DB44A2 /* SignUpTests.swift */; };
+		F6B9DFF92850923A00DB44A2 /* SignUp.json in Resources */ = {isa = PBXBuildFile; fileRef = F6B9DFF82850923A00DB44A2 /* SignUp.json */; };
+		F6B9DFFC285098BB00DB44A2 /* SelectSchoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9DFFB285098BB00DB44A2 /* SelectSchoolTests.swift */; };
+		F6B9DFFE285098D100DB44A2 /* School.json in Resources */ = {isa = PBXBuildFile; fileRef = F6B9DFFD285098D100DB44A2 /* School.json */; };
 		F6BC0E1928369508008519C1 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC0E1828369508008519C1 /* Level.swift */; };
 		F6BC2FDB284647340078B526 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC2FDA284647340078B526 /* Message.swift */; };
 		F6BC2FDD28468A4E0078B526 /* GetMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC2FDC28468A4E0078B526 /* GetMessages.swift */; };
@@ -37,7 +55,7 @@
 		F6D59111281C1B1700F32F59 /* MesAmies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6D5910F281C1B1700F32F59 /* MesAmies.xcdatamodeld */; };
 		F6D59113281C1B1900F32F59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6D59112281C1B1900F32F59 /* Assets.xcassets */; };
 		F6D59116281C1B1900F32F59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D59114281C1B1900F32F59 /* LaunchScreen.storyboard */; };
-		F6D59121281C1B1900F32F59 /* MesAmiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59120281C1B1900F32F59 /* MesAmiesTests.swift */; };
+		F6D59121281C1B1900F32F59 /* RequestServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D59120281C1B1900F32F59 /* RequestServiceTests.swift */; };
 		F6D5912B281C1B1900F32F59 /* MesAmiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5912A281C1B1900F32F59 /* MesAmiesUITests.swift */; };
 		F6D5912D281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D5912C281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift */; };
 		F6E5F5CF282AFBE60089504D /* Reponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5F5CE282AFBE60089504D /* Reponse.swift */; };
@@ -75,13 +93,31 @@
 		AD1AA9763C35DF6FE02949AC /* Pods-MesAmiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesAmiesTests.release.xcconfig"; path = "Target Support Files/Pods-MesAmiesTests/Pods-MesAmiesTests.release.xcconfig"; sourceTree = "<group>"; };
 		E281F366A6F6A652918B5828 /* Pods-MesAmiesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesAmiesTests.debug.xcconfig"; path = "Target Support Files/Pods-MesAmiesTests/Pods-MesAmiesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F659339C6D974FF252F87EF7 /* Pods-MesAmies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesAmies.debug.xcconfig"; path = "Target Support Files/Pods-MesAmies/Pods-MesAmies.debug.xcconfig"; sourceTree = "<group>"; };
+		F67506422850FAE60069C5B6 /* CountLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLevelTests.swift; sourceTree = "<group>"; };
+		F67506442850FAF70069C5B6 /* CountLevel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountLevel.json; sourceTree = "<group>"; };
+		F67506472850FCAE0069C5B6 /* SendMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageTests.swift; sourceTree = "<group>"; };
+		F67506492850FCEC0069C5B6 /* Message.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Message.json; sourceTree = "<group>"; };
 		F67609612827C7D6004DC9AF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F67778FE2829B09300AEAC5E /* MesamiesSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesamiesSession.swift; sourceTree = "<group>"; };
 		F67779042829C4A100AEAC5E /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		F6940015284E8F2E00712EBE /* FakeMesAmiesSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMesAmiesSession.swift; sourceTree = "<group>"; };
+		F6940019284E911100712EBE /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
+		F694001B284E922B00712EBE /* MesAmies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MesAmies.json; sourceTree = "<group>"; };
+		F694659E28500AE400EB61CB /* NewSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSchool.swift; sourceTree = "<group>"; };
+		F69465A1285015C100EB61CB /* GetMessagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMessagesTests.swift; sourceTree = "<group>"; };
+		F69465A32850163600EB61CB /* GetMessages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetMessages.json; sourceTree = "<group>"; };
+		F69465A628501CBE00EB61CB /* ResponseSignInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSignInTests.swift; sourceTree = "<group>"; };
+		F69465A828501D6800EB61CB /* ResponseSignIn.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ResponseSignIn.json; sourceTree = "<group>"; };
+		F694A6DC284FEDE100BE1E4D /* NewSchoolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSchoolTests.swift; sourceTree = "<group>"; };
+		F694A6E2284FEE2100BE1E4D /* NewSchool.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NewSchool.json; sourceTree = "<group>"; };
 		F695B25C283E3B3E00CA124E /* SecondaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
 		F695B25E283E3B8200CA124E /* SecondaryStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryStudentTableViewCell.swift; sourceTree = "<group>"; };
 		F69A67C92829208F00439DD6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F69B4387283D45FF00B2D25F /* PrimaryStudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryStudentTableViewCell.swift; sourceTree = "<group>"; };
+		F6B9DFF62850922700DB44A2 /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
+		F6B9DFF82850923A00DB44A2 /* SignUp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SignUp.json; sourceTree = "<group>"; };
+		F6B9DFFB285098BB00DB44A2 /* SelectSchoolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchoolTests.swift; sourceTree = "<group>"; };
+		F6B9DFFD285098D100DB44A2 /* School.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = School.json; sourceTree = "<group>"; };
 		F6BC0E1828369508008519C1 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F6BC2FDA284647340078B526 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F6BC2FDC28468A4E0078B526 /* GetMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMessages.swift; sourceTree = "<group>"; };
@@ -106,7 +142,7 @@
 		F6D59115281C1B1900F32F59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6D59117281C1B1900F32F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6D5911C281C1B1900F32F59 /* MesAmiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MesAmiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6D59120281C1B1900F32F59 /* MesAmiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesAmiesTests.swift; sourceTree = "<group>"; };
+		F6D59120281C1B1900F32F59 /* RequestServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServiceTests.swift; sourceTree = "<group>"; };
 		F6D59126281C1B1900F32F59 /* MesAmiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MesAmiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D5912A281C1B1900F32F59 /* MesAmiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesAmiesUITests.swift; sourceTree = "<group>"; };
 		F6D5912C281C1B1900F32F59 /* MesAmiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesAmiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -168,6 +204,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F67506412850FAC30069C5B6 /* CountLevelTests */ = {
+			isa = PBXGroup;
+			children = (
+				F67506422850FAE60069C5B6 /* CountLevelTests.swift */,
+				F67506442850FAF70069C5B6 /* CountLevel.json */,
+			);
+			path = CountLevelTests;
+			sourceTree = "<group>";
+		};
+		F67506462850FC830069C5B6 /* SendMessageTests */ = {
+			isa = PBXGroup;
+			children = (
+				F67506472850FCAE0069C5B6 /* SendMessageTests.swift */,
+				F67506492850FCEC0069C5B6 /* Message.json */,
+			);
+			path = SendMessageTests;
+			sourceTree = "<group>";
+		};
 		F676095C2827B86F004DC9AF /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +229,42 @@
 				F67779042829C4A100AEAC5E /* RequestService.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		F69465A02850155000EB61CB /* GetMessagesTests */ = {
+			isa = PBXGroup;
+			children = (
+				F69465A1285015C100EB61CB /* GetMessagesTests.swift */,
+				F69465A32850163600EB61CB /* GetMessages.json */,
+			);
+			path = GetMessagesTests;
+			sourceTree = "<group>";
+		};
+		F69465A528501C8500EB61CB /* ReponseSignInTests */ = {
+			isa = PBXGroup;
+			children = (
+				F69465A628501CBE00EB61CB /* ResponseSignInTests.swift */,
+				F69465A828501D6800EB61CB /* ResponseSignIn.json */,
+			);
+			path = ReponseSignInTests;
+			sourceTree = "<group>";
+		};
+		F694A6E4284FF51F00BE1E4D /* NewSchoolTest */ = {
+			isa = PBXGroup;
+			children = (
+				F694A6DC284FEDE100BE1E4D /* NewSchoolTests.swift */,
+				F694A6E2284FEE2100BE1E4D /* NewSchool.json */,
+			);
+			path = NewSchoolTest;
+			sourceTree = "<group>";
+		};
+		F694A6E5284FF58200BE1E4D /* GetStudentTest */ = {
+			isa = PBXGroup;
+			children = (
+				F6D59120281C1B1900F32F59 /* RequestServiceTests.swift */,
+				F694001B284E922B00712EBE /* MesAmies.json */,
+			);
+			path = GetStudentTest;
 			sourceTree = "<group>";
 		};
 		F695B25A283E3B0200CA124E /* SecondaryViewController */ = {
@@ -209,6 +299,24 @@
 				F69B4387283D45FF00B2D25F /* PrimaryStudentTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F6B9DFF52850920400DB44A2 /* SignUpTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6B9DFF62850922700DB44A2 /* SignUpTests.swift */,
+				F6B9DFF82850923A00DB44A2 /* SignUp.json */,
+			);
+			path = SignUpTests;
+			sourceTree = "<group>";
+		};
+		F6B9DFFA2850989A00DB44A2 /* SelectSchoolTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6B9DFFB285098BB00DB44A2 /* SelectSchoolTests.swift */,
+				F6B9DFFD285098D100DB44A2 /* School.json */,
+			);
+			path = SelectSchoolTests;
 			sourceTree = "<group>";
 		};
 		F6C5BB68283F7813008B2DB1 /* LyceumViewController */ = {
@@ -294,7 +402,16 @@
 		F6D5911F281C1B1900F32F59 /* MesAmiesTests */ = {
 			isa = PBXGroup;
 			children = (
-				F6D59120281C1B1900F32F59 /* MesAmiesTests.swift */,
+				F67506462850FC830069C5B6 /* SendMessageTests */,
+				F67506412850FAC30069C5B6 /* CountLevelTests */,
+				F6B9DFFA2850989A00DB44A2 /* SelectSchoolTests */,
+				F6B9DFF52850920400DB44A2 /* SignUpTests */,
+				F69465A528501C8500EB61CB /* ReponseSignInTests */,
+				F6940015284E8F2E00712EBE /* FakeMesAmiesSession.swift */,
+				F6940019284E911100712EBE /* FakeResponseData.swift */,
+				F69465A02850155000EB61CB /* GetMessagesTests */,
+				F694A6E5284FF58200BE1E4D /* GetStudentTest */,
+				F694A6E4284FF51F00BE1E4D /* NewSchoolTest */,
 			);
 			path = MesAmiesTests;
 			sourceTree = "<group>";
@@ -321,6 +438,7 @@
 				F6C970A62837C79500B5F764 /* ReponseSignIn.swift */,
 				F6BC2FDA284647340078B526 /* Message.swift */,
 				F6BC2FDC28468A4E0078B526 /* GetMessages.swift */,
+				F694659E28500AE400EB61CB /* NewSchool.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -489,6 +607,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67506452850FAF70069C5B6 /* CountLevel.json in Resources */,
+				F675064A2850FCEC0069C5B6 /* Message.json in Resources */,
+				F694001C284E922B00712EBE /* MesAmies.json in Resources */,
+				F694A6E3284FEE2100BE1E4D /* NewSchool.json in Resources */,
+				F6B9DFF92850923A00DB44A2 /* SignUp.json in Resources */,
+				F69465A928501D6800EB61CB /* ResponseSignIn.json in Resources */,
+				F69465A42850163600EB61CB /* GetMessages.json in Resources */,
+				F6B9DFFE285098D100DB44A2 /* School.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +738,7 @@
 				F6C5BB6B283F7855008B2DB1 /* LyceeStudentTableViewCell.swift in Sources */,
 				F67609622827C7D6004DC9AF /* SignUpViewController.swift in Sources */,
 				F6BF45EE2845630F00BA67DB /* MenuViewConroller.swift in Sources */,
+				F694659F28500AE400EB61CB /* NewSchool.swift in Sources */,
 				F67779052829C4A100AEAC5E /* RequestService.swift in Sources */,
 				F6C970A72837C79500B5F764 /* ReponseSignIn.swift in Sources */,
 				F6D5910B281C1B1700F32F59 /* SignInViewController.swift in Sources */,
@@ -644,7 +771,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6D59121281C1B1900F32F59 /* MesAmiesTests.swift in Sources */,
+				F69465A2285015C100EB61CB /* GetMessagesTests.swift in Sources */,
+				F6940016284E8F2E00712EBE /* FakeMesAmiesSession.swift in Sources */,
+				F694A6DD284FEDE100BE1E4D /* NewSchoolTests.swift in Sources */,
+				F6D59121281C1B1900F32F59 /* RequestServiceTests.swift in Sources */,
+				F6B9DFF72850922700DB44A2 /* SignUpTests.swift in Sources */,
+				F67506432850FAE60069C5B6 /* CountLevelTests.swift in Sources */,
+				F6B9DFFC285098BB00DB44A2 /* SelectSchoolTests.swift in Sources */,
+				F67506482850FCAE0069C5B6 /* SendMessageTests.swift in Sources */,
+				F69465A728501CBE00EB61CB /* ResponseSignInTests.swift in Sources */,
+				F694001A284E911100712EBE /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

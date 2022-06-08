@@ -14,11 +14,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var backToSignIn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    @IBAction func backToSignIn(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+    }
     @IBAction func signUpNewMember(_ sender: UIButton) {
         guard
             let useremail = emailTextField.text,

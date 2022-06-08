@@ -26,6 +26,7 @@ final class RequestService {
     static var  userMessage = [String]()  // For MessengerViewController
     static var  messageDate = [String]()  // For MessengerViewController
     static var  messageTime = [String]()  // For MessengerViewController
+    var isPagination: Bool = false  // For Paginiation in MessengerViewController
     var parameters = Parameters()
     init(session: AlamofireSession = MesAmiesSession() ) {
         self.session = session
@@ -52,7 +53,7 @@ final class RequestService {
     
     // MARK: - Management
     func signUpRequest(url:URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<Reponse, RequestError>) -> Void){
-        session.requestOut(url: url,method: HTTPMethod.post, parameters: parameters) {  dataResponse in
+        session.requestUp(url: url,method: HTTPMethod.post, parameters: parameters) {  dataResponse in
             guard let data = dataResponse.data else{
                 callback(.failure(.noData))
                 return
@@ -107,8 +108,8 @@ final class RequestService {
         }
     }
     
-    func addNewSchool(url:URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<Reponse, RequestError>) -> Void){
-        session.requestOut(url: url,method: HTTPMethod.post, parameters: parameters) {  dataResponse in
+    func addNewSchool(url:URL, method: HTTPMethod, parameters: Parameters ,callback: @escaping (Result<NewSchool, RequestError>) -> Void){
+        session.requestAddNewSchool(url: url,method: HTTPMethod.post, parameters: parameters) {  dataResponse in
             guard let data = dataResponse.data else{
                 callback(.failure(.noData))
                 return
@@ -117,11 +118,12 @@ final class RequestService {
                 callback(.failure(.invalidResponse))
                 return
             }
-            guard let dataDecoded = try? JSONDecoder().decode(Reponse.self, from: data) else {
+            guard let dataDecoded = try? JSONDecoder().decode(NewSchool.self, from: data) else {
                 callback(.failure(.undecodableData))
                 return
             }
             callback(.success(dataDecoded))
+            
         }
     }
     
@@ -162,6 +164,7 @@ final class RequestService {
     }
     
     func getMessageBetweenTowStudents(url: URL, method: HTTPMethod, parameters: Parameters, callback: @escaping(Result<GetMessages,RequestError>)-> Void){
+        
         session.getMessages(url: url, method: HTTPMethod.post, parameters: parameters){ dataResponse in
            
             guard let data = dataResponse.data else {

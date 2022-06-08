@@ -25,6 +25,7 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Lyceum"
+        
         RequestService.gettenStudentId.removeAll()
         RequestService.gettenStudent.removeAll()
         // MARK: - Get All Students
@@ -160,5 +161,10 @@ extension LyceumViewController{
         }else{
             return
         }
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+        UIView.animate(withDuration: 0.35, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1, 1, 1)})
     }
 }
