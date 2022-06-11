@@ -19,7 +19,7 @@ class SecondaryViewController: UIViewController, UITableViewDelegate, UITableVie
         "level": "Secondary",
         "page": 0
         ]
-    let api = URL(string: "http://localhost/mesamies/getstudents.php")
+    let api = URL(string: "http://localhost/MyFriends/getstudents.php")
     
     @IBOutlet weak var studentSecondaryTableView: UITableView!
     override func viewDidLoad() {
@@ -47,6 +47,7 @@ class SecondaryViewController: UIViewController, UITableViewDelegate, UITableVie
                 })
                 //
             case .failure(let error):
+                self.createLabel()
                 print(error)
             }
         }
@@ -55,7 +56,6 @@ class SecondaryViewController: UIViewController, UITableViewDelegate, UITableVie
         studentSecondaryTableView.delegate = self
     }
     
-
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
  }

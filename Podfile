@@ -7,6 +7,7 @@ target 'MesAmies' do
 
   # Pods for MesAmies
   pod 'Alamofire', '~> 5.2'
+  pod 'IQKeyboardManagerSwift'
   target 'MesAmiesTests' do
     inherit! :search_paths
     # Pods for testing

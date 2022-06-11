@@ -11,7 +11,7 @@ import Alamofire
 class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
      
     var repository : RequestService = RequestService()
-   // var student : [Student] = []
+    var student : [Student] = []
     let listEmptyLabel = UILabel()
     var page : Int = 0
     let parameters: Parameters = [
@@ -19,12 +19,11 @@ class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewD
         "level": "Primary",
         "page": 0
         ]
-    let api = URL(string: "http://localhost/mesamies/getstudents.php")
+    let api = URL(string: "http://localhost/MyFriends/getstudents.php")
      @IBOutlet weak var primaryTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Primary"
-       
         RequestService.gettenStudentId.removeAll()
         RequestService.gettenStudent.removeAll()
         // MARK: - Get All Students
@@ -40,19 +39,19 @@ class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         } else{
                             self.createLabel()
                             return
-                        }
-                    }
+                        }                    }
                     DispatchQueue.main.async { [self] in
                         primaryTableView.reloadData()
                     }
                 })
                 //
             case .failure(let error):
+                self.createLabel()
                 print(error)
             }
+            
         }
         //
-        
         primaryTableView.dataSource = self
         primaryTableView.delegate = self
     }

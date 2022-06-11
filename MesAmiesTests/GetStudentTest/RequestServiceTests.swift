@@ -14,7 +14,7 @@ class RequestServiceTests: XCTestCase {
     let parameters  = [ "userId" : "1" as Any,
                         "level": "Primary",
                         "schoolId": "1" as Any ]
-    var api = URL(string: "http://localhost/mesamies/index.php")
+    var api = URL(string: "http://localhost/MyFriends/index.php")
     
    
     

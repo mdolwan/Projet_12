@@ -14,7 +14,7 @@ class SelectSchoolTests: XCTestCase {
         "City":"Cherbourg",
         "Level": "Primary"
     ]
-     let api = URL(string: "http://localhost/mesamies/getSchools.php")
+     let api = URL(string: "http://localhost/MyFriends/getSchools.php")
     
     func testGetData_WhenNoDataIsPassed_ThenShouldReturnFailedCallback_Response_Sign_In() {
         let session = FakeMesAmiesSession(fakeResponse: FakeResponse(response: nil, data: nil))

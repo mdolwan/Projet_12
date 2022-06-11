@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     
     var repository : RequestService = RequestService()
     var schools : [SchoolElement] = []
@@ -16,6 +16,8 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passWordTestField.delegate = self
     }
 
     @IBAction func pressedButton(_ sender: Any) {
@@ -28,9 +30,9 @@ class SignInViewController: UIViewController {
             "useremail": useremail,
             "password": password
         ]
-        guard let api = URL(string: "http://localhost/mesamies/Authentication.php") else { return  }
+        guard let api = URL(string: "http://localhost/MyFriends/Authentication.php") else { return  }
         
-        repository.signInRequest(url: api, method: .post, parameters: parameters, callback: { dataReponse in
+        repository.signInRequest(url: api, method: .post, parameters: parameters, callback: { [self] dataReponse in
             
             switch dataReponse{
             case .success(let isSuccess):
@@ -41,7 +43,9 @@ class SignInViewController: UIViewController {
                     UserDefaults.standard.set("\(isSuccess.username)", forKey: "pseudo")
                     self.goToMainViewController()}
                 else if isSuccess.error == true {
-                   return }
+                    showSimpleAlert(withTitle: "Error Happen", andDescription: "Try with other information")
+                   return
+                }
             case .failure(_):
        return
             }
@@ -54,7 +58,6 @@ class SignInViewController: UIViewController {
 extension SignInViewController {
     func isSighned ()-> Bool{
         return UserDefaults.standard.integer(forKey: "id") > 0
-        //return UserDefaults.standard.bool( forKey: "username")
     }
     
     func goToMainViewController() {
@@ -69,5 +72,12 @@ extension SignInViewController {
         }
         
     }
+    
+        func showSimpleAlert(withTitle title: String, andDescription description: String) {
+            let alert = UIAlertController(title: title, message: description, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+   
 }
 

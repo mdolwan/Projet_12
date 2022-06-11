@@ -13,7 +13,7 @@ class CountLevelTests: XCTestCase {
     let parameters = [
         "userId":1
     ]
-     let api = URL(string:"http://localhost/mesamies/countLevel.php")
+     let api = URL(string:"http://localhost/MyFriends/countLevel.php")
     func testGetData_WhenNoDataIsPassed_ThenShouldReturnFailedCallback_Get_Messages() {
         let session = FakeMesAmiesSession(fakeResponse: FakeResponse(response: nil, data: nil))
         let requestService = RequestService(session: session)

@@ -35,7 +35,7 @@ class SignUpViewController: UIViewController {
             "useremail": useremail,
             "password": password
         ]
-        guard let api = URL(string:"http://localhost/mesamies/signup.php")
+        guard let api = URL(string:"http://localhost/MyFriends/signup.php")
         else { return  }
         repository.signUpRequest(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{

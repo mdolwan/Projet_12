@@ -15,7 +15,7 @@ class SignUpTests: XCTestCase {
             "useremail": "olwan@gmail.com",
             "password": "abc123"
         ]
-         let api = URL(string: "http://localhost/mesamies/signup.php")
+         let api = URL(string: "http://localhost/MyFriends/signup.php")
         
         func testGetData_WhenNoDataIsPassed_ThenShouldReturnFailedCallback_Response_Sign_In() {
             let session = FakeMesAmiesSession(fakeResponse: FakeResponse(response: nil, data: nil))

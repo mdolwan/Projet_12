@@ -19,7 +19,7 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
         "level": "Lyceum",
         "page": 0
         ]
-    let api = URL(string: "http://localhost/mesamies/getstudents.php")
+    let api = URL(string: "http://localhost/MyFriends/getstudents.php")
     
     @IBOutlet weak var studentLyceeTableView: UITableView!
     override func viewDidLoad() {
@@ -49,6 +49,7 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 })
                 //
             case .failure(let error):
+                self.createLabel()
                 print(error)
             }
         }

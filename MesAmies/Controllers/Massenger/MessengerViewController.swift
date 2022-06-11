@@ -17,7 +17,7 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
     var firstMessegeId = 1
     var page = 0
     var senderName = UserDefaults.standard.string(forKey: "pseudo")!
-    let apiMessanger = URL(string:"http://localhost/mesamies/getMessages.php")
+    let apiMessanger = URL(string:"http://localhost/MyFriends/getMessages.php")
     // variable to save the last position visited, default to zero
     private var lastContentOffset: CGFloat = 0
     
@@ -46,7 +46,7 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
         let parameters: Parameters = [
             "FromId": UserDefaults.standard.integer(forKey: "id"),
             "ToId": friendId,
-            //"Page": page
+            "Page": page
         ]
         repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { result in
             switch result{
@@ -101,7 +101,7 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
             "ToId": userId,
             "Text": Text as Any
         ]
-        guard let api = URL(string:"http://localhost/mesamies/addMessage.php")
+        guard let api = URL(string:"http://localhost/MyFriends/addMessage.php")
         else { return  }
         repository.sendCurrentMessage(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
@@ -158,7 +158,8 @@ extension MessengerViewController{
     @objc func getNewMessegeInstantly(){
         let parameters: Parameters = [
             "FromId": UserDefaults.standard.integer(forKey: "id"),
-            "ToId": friendId
+            "ToId": friendId,
+            "Page": 0
         ]
         // MARK: - Reinitialize For Every Time We recovery The New Messeges
         repository.getMessageBetweenTowStudents(url: apiMessanger!, method: .post, parameters: parameters) { [self] newResult in

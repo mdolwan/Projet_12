@@ -13,7 +13,7 @@ class GetMessagesTests: XCTestCase {
         "FromId":1 as Any,
         "ToId": 2
     ]
-     let api = URL(string:"http://localhost/mesamies/addMessage.php")
+     let api = URL(string:"http://localhost/MyFriends/addMessage.php")
     func testGetData_WhenNoDataIsPassed_ThenShouldReturnFailedCallback_Get_Messages() {
         let session = FakeMesAmiesSession(fakeResponse: FakeResponse(response: nil, data: nil))
         let requestService = RequestService(session: session)

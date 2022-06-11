@@ -18,7 +18,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var currentIndex = 0
     let toolBar = UIToolbar()
     
-    var api = URL(string: "http://localhost/mesamies/index.php")
+    var api = URL(string: "http://bmz.otajer.com/index.php")
     
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var levelSchoolTextField: UITextField!
@@ -32,9 +32,7 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setLevelArrayAfterAdditionASchool()
-        
         stackCity.layer.borderColor = UIColor.darkGray.cgColor
         stackCity.layer.borderWidth = 3.0
         stackLevel.layer.borderColor = UIColor.darkGray.cgColor
@@ -44,7 +42,17 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         pickerSchool.delegate = self
         pickerSchool.dataSource = self
-        cityTextField.placeholder = String(UserDefaults.standard.integer(forKey: "id"))
+        cityTextField.delegate = self
+        levelSchoolTextField.delegate = self
+        schoolTextField.delegate = self
+        cityTextField.inputView = pickerSchool
+        levelSchoolTextField.inputView = pickerSchool
+        schoolTextField.inputView = pickerSchool
+        cityTextField.tintColor = .clear
+        levelSchoolTextField.tintColor = .clear
+        schoolTextField.tintColor = .clear
+        
+        cityTextField.placeholder = String(UserDefaults.standard.integer(forKey: "id")) + "  " + cityTextField.placeholder!
         
         // MARK- get all cities available
         let parameters : Parameters = [: // This Query don't need to Parameters, becuase it is SELECT * FROM TABLE
@@ -64,16 +72,14 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         toolBar.sizeToFit()
         let buttonDone = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(closePicker))
         toolBar.setItems([buttonDone], animated: true)
-        // lastPressedTextField?.inputAccessoryView = toolBar
+        lastPressedTextField?.inputAccessoryView = toolBar
     }
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func textFieldDidBeginEditing(_ textField: UITextField) {
-        lastPressedTextField = textField
-        lastPressedTextField?.inputAccessoryView = toolBar
-        lastPressedTextField!.inputView = pickerSchool
-    }
+    @IBAction func textFieldDidBeginEditing(_ sender: UITextField) {
+        lastPressedTextField = sender
+       }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -82,13 +88,13 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
+        currentIndex = row
         if lastPressedTextField == cityTextField {
-            return RequestService.gettenCity[row]
+            return RequestService.gettenCity[currentIndex]
         } else if lastPressedTextField == levelSchoolTextField {
-            return  level[row]
+            return  level[currentIndex]
         } else if lastPressedTextField == schoolTextField {
-            return  RequestService.gettenSchool[row]
+            return  RequestService.gettenSchool[currentIndex]
         }
         return ""
     }
@@ -105,25 +111,48 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentIndex = row
         if lastPressedTextField == cityTextField {
-            self.cityTextField.text = RequestService.gettenCity[row]
+            self.cityTextField.text = RequestService.gettenCity[currentIndex]
         }
         else if lastPressedTextField == levelSchoolTextField {
-            self.levelSchoolTextField?.text = level[row]
+            self.levelSchoolTextField?.text = level[currentIndex]
+            let newParameters : Parameters = [
+                "city": cityTextField.text!,
+                "level" : levelSchoolTextField.text!
+            ]
+            //http://bmz.otajer.com/
+           // api =  URL(string: "http://localhost/MyFriends/getschools.php")
+            api =  URL(string: "http://bmz.otajer.com/getschools.php")
+            RequestService.gettenSchool.removeAll()
+            RequestService.gettenSchoolId.removeAll()
+            repository.schoolSelect(url: api!, method: .post, parameters: newParameters) { dataResponse in
+                switch dataResponse {
+                case .success(let schools):
+                    let school = schools.count
+                    for i in 0...school-1{
+                        RequestService.gettenSchool.append(schools[i].name!)
+                        RequestService.gettenSchoolId.append(Int(schools[i].id!)!)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
         else  {
-            self.schoolTextField.text = RequestService.gettenSchool[row]
+            self.schoolTextField.text = RequestService.gettenSchool[currentIndex]
         }
     }
     @IBAction func saveAddSchoolButtonPressed(_ sender: UIButton) {
         let userId : String = UserDefaults.standard.string(forKey: "id")!
-        let schoolId = String( Int(RequestService.gettenSchool.firstIndex(where: {$0 == schoolTextField.text})!) + 1)
+        let schoolNameId = String(Int(RequestService.gettenSchool.firstIndex(where: {$0 == schoolTextField.text})!))
+        let schoolId = RequestService.gettenSchoolId[Int(schoolNameId)!]
+
         let level = levelSchoolTextField.text!
         // MARK: - Add New School
         let parameters : Parameters = [ "userId" : userId as Any,
                                         "level": level,
                                         "schoolId": schoolId as Any
         ]
-        guard let api = URL(string:"http://localhost/mesamies/addSchool.php")
+        guard let api = URL(string:"http://localhost/MyFriends/addSchool.php")
         else { return  }
         repository.addNewSchool(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
@@ -143,21 +172,14 @@ class SettingViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         cityTextField.text = ""
         levelSchoolTextField.text = ""
         schoolTextField.text = ""
+        RequestService.gettenSchool.removeAll()
+        RequestService.gettenSchoolId.removeAll()
         setLevelArrayAfterAdditionASchool()
     }
     
 }
 
 extension SettingViewController{
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        pickerSchool.isHidden = false
-        textField.inputView = pickerSchool;
-        return false
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        pickerSchool.isHidden = true
-    }
     
     @IBAction func signOutButton(_ sender: UIButton) {
         RequestService.gettenStudent.removeAll()
@@ -173,36 +195,21 @@ extension SettingViewController{
     }
     
     @objc func closePicker(){
+    
         if lastPressedTextField == cityTextField {
             lastPressedTextField?.text = RequestService.gettenCity[currentIndex]
         } else if lastPressedTextField == levelSchoolTextField {
-            let newParameters : Parameters = [
-                "city": cityTextField.text!,
-                "level" : levelSchoolTextField.text!
-            ]
-            api =  URL(string: "http://localhost/mesamies/getschools.php")
-            repository.schoolSelect(url: api!, method: .post, parameters: newParameters) { dataResponse in
-                switch dataResponse {
-                case .success(let schools):
-                    let school = schools.count
-                    for i in 0...school-1{
-                        RequestService.gettenSchool.append(schools[i].name!)
-                        RequestService.gettenSchoolId.append(Int(schools[i].id!)!)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
+            levelSchoolTextField.text = level[currentIndex]
         }
         else if lastPressedTextField == schoolTextField {
             schoolTextField?.text = RequestService.gettenSchool[currentIndex]
         }
-        lastPressedTextField?.resignFirstResponder()
+       // lastPressedTextField?.resignFirstResponder()
         view.endEditing(true)
     }
     func fillLevelArray(for userId : Int){
         let parameters : Parameters = [ "userId" : userId ]
-        guard let api = URL(string:"http://localhost/mesamies/countLevel.php")
+        guard let api = URL(string:"http://localhost/MyFriends/countLevel.php")
         else { return }
         repository.countLevel(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
@@ -243,3 +250,8 @@ extension SettingViewController{
     }
 }
 
+extension SettingViewController{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        false
+      }
+}
