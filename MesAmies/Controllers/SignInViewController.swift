@@ -30,7 +30,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             "useremail": useremail,
             "password": password
         ]
-        guard let api = URL(string: "http://localhost/MyFriends/Authentication.php") else { return  }
+        guard let api = URL(string: "http://myfriends.fr/Authentication.php") else { return  }
         
         repository.signInRequest(url: api, method: .post, parameters: parameters, callback: { [self] dataReponse in
             

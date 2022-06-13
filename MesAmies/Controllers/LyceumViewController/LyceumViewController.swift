@@ -11,7 +11,6 @@ import Alamofire
 class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var repository : RequestService = RequestService()
-    //var student : [Student] = []
     let listEmptyLabel = UILabel()
     var page : Int = 0
     let parameters: Parameters = [
@@ -19,7 +18,7 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
         "level": "Lyceum",
         "page": 0
         ]
-    let api = URL(string: "http://localhost/MyFriends/getstudents.php")
+    let api = URL(string: "http://myfriends.fr/getstudents.php")
     
     @IBOutlet weak var studentLyceeTableView: UITableView!
     override func viewDidLoad() {
@@ -32,7 +31,6 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
         repository.getStudent(url: api!, method: .post, parameters: parameters) { result in
             switch result{
             case .success(let getStudent):
-                //
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     for i in 0...getStudent.count-1{
                         if Int(getStudent[i].userid) != -1 {
@@ -47,7 +45,6 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         studentLyceeTableView.reloadData()
                     }
                 })
-                //
             case .failure(let error):
                 self.createLabel()
                 print(error)
@@ -95,7 +92,7 @@ class LyceumViewController: UIViewController, UITableViewDelegate, UITableViewDa
 }
 
 extension LyceumViewController{
-    // MARK: - To indicate that there are no recipe in favorite
+    // MARK: - To indicate that there are no Friens
     func createLabel(){
         if RequestService.gettenStudentId.count == 0 {
             listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)

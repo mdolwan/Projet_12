@@ -525,7 +525,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNl-Nn-bik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="stc-RW-lui" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3641" y="1573"/>
+            <point key="canvasLocation" x="3640.6542056074763" y="1572.5701943844495"/>
         </scene>
         <!--Secondary View Controller-->
         <scene sceneID="gsS-Q8-Kuf">
@@ -557,9 +557,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtk-VT-cYd" userLabel="studentCollegeId">
-                                                    <rect key="frame" x="388.66666666666669" y="-1" width="39.333333333333314" height="2"/>
+                                                    <rect key="frame" x="388.33333333333331" y="0.0" width="39.666666666666686" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="KGF-0Y-uDQ"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="LNQ-2i-X8b"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="Xo3-tR-NoG"/>
                                                         <constraint firstAttribute="height" constant="1" id="c1y-dB-bRL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -574,9 +576,10 @@
                                                 <constraint firstAttribute="bottom" secondItem="Drx-kW-71x" secondAttribute="bottom" id="Pgt-Je-CdD"/>
                                                 <constraint firstItem="gtk-VT-cYd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AdF-li-VjN" secondAttribute="leading" constant="20" symbolic="YES" id="SaQ-ej-mBe"/>
                                                 <constraint firstAttribute="trailing" secondItem="gtk-VT-cYd" secondAttribute="trailing" id="UkE-vG-VH5"/>
+                                                <constraint firstItem="gtk-VT-cYd" firstAttribute="top" secondItem="AdF-li-VjN" secondAttribute="top" id="V2p-1p-ixv"/>
                                                 <constraint firstAttribute="bottom" secondItem="Drx-kW-71x" secondAttribute="bottom" id="VB5-oZ-JEA"/>
-                                                <constraint firstItem="gtk-VT-cYd" firstAttribute="top" secondItem="AdF-li-VjN" secondAttribute="top" constant="-1" id="Z0I-JP-8au"/>
                                                 <constraint firstAttribute="trailing" secondItem="gtk-VT-cYd" secondAttribute="trailing" id="lFZ-na-y5a"/>
+                                                <constraint firstItem="gtk-VT-cYd" firstAttribute="top" secondItem="AdF-li-VjN" secondAttribute="top" id="lxz-Il-uWh"/>
                                                 <constraint firstItem="Drx-kW-71x" firstAttribute="top" secondItem="AdF-li-VjN" secondAttribute="top" id="qJz-T1-57O"/>
                                                 <constraint firstItem="Drx-kW-71x" firstAttribute="leading" secondItem="AdF-li-VjN" secondAttribute="leading" id="tuz-Pw-Jr9"/>
                                                 <constraint firstAttribute="bottom" secondItem="gtk-VT-cYd" secondAttribute="bottom" constant="49" id="y91-20-aNx"/>
@@ -593,7 +596,6 @@
                         <viewLayoutGuide key="safeArea" id="YYZ-Jz-GCk"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="eOR-4g-xrj" secondAttribute="bottom" constant="49" id="3IC-0H-m3Y"/>
                             <constraint firstItem="eOR-4g-xrj" firstAttribute="leading" secondItem="YYZ-Jz-GCk" secondAttribute="leading" id="CYh-5e-TvV"/>
                             <constraint firstItem="eOR-4g-xrj" firstAttribute="centerY" secondItem="sC0-uc-i1Z" secondAttribute="centerY" id="Qym-cy-gca"/>
                             <constraint firstItem="YYZ-Jz-GCk" firstAttribute="trailing" secondItem="eOR-4g-xrj" secondAttribute="trailing" id="TWd-dh-F30"/>

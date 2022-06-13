@@ -9,17 +9,16 @@ import UIKit
 import Alamofire
 
 class SecondaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var repository : RequestService = RequestService()
-    var student : [Student] = []
     let listEmptyLabel = UILabel()
     var page : Int = 0
     let parameters: Parameters = [
         "userId": UserDefaults.standard.integer(forKey: "id"),
         "level": "Secondary",
         "page": 0
-        ]
-    let api = URL(string: "http://localhost/MyFriends/getstudents.php")
+    ]
+    let api = URL(string: "http://myfriends.fr/getstudents.php")
     
     @IBOutlet weak var studentSecondaryTableView: UITableView!
     override func viewDidLoad() {
@@ -27,6 +26,7 @@ class SecondaryViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationItem.title = "Secondary"
         RequestService.gettenStudentId.removeAll()
         RequestService.gettenStudent.removeAll()
+        
         // MARK: - Get All Students
         repository.getStudent(url: api!, method: .post, parameters: parameters) { result in
             switch result{
@@ -35,8 +35,8 @@ class SecondaryViewController: UIViewController, UITableViewDelegate, UITableVie
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     for i in 0...getStudent.count-1{
                         if Int(getStudent[i].userid) != -1 {
-                        RequestService.gettenStudent.append(getStudent[i].username)
-                        RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
+                            RequestService.gettenStudent.append(getStudent[i].username)
+                            RequestService.gettenStudentId.append(Int(getStudent[i].userid)!)
                         } else{
                             self.createLabel()
                             return
@@ -45,24 +45,22 @@ class SecondaryViewController: UIViewController, UITableViewDelegate, UITableVie
                         studentSecondaryTableView.reloadData()
                     }
                 })
-                //
             case .failure(let error):
                 self.createLabel()
                 print(error)
             }
         }
-        //
         studentSecondaryTableView.dataSource = self
         studentSecondaryTableView.delegate = self
     }
     
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
- }
+    }
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-           // print(RequestService.gettenStudent)
+            // print(RequestService.gettenStudent)
         })
         return RequestService.gettenStudentId.count
     }
@@ -90,14 +88,14 @@ class SecondaryViewController: UIViewController, UITableViewDelegate, UITableVie
         goToMessanger.friendId = RequestService.gettenStudentId[indexPath.row]
         self.navigationController?.pushViewController(goToMessanger, animated: true)
     }
-
+    
 }
 
 
 extension SecondaryViewController{
-    // MARK: - To indicate that there are no recipe in favorite
+    // MARK: - To indicate that there are Friends
     func createLabel(){
-        if self.student.count == 0 {
+        if RequestService.gettenStudentId.count == 0 {
             listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
             listEmptyLabel.text = "There are no Student in your School.\("\n") Add Your School, Please...."
             listEmptyLabel.numberOfLines = 0
@@ -127,7 +125,6 @@ extension SecondaryViewController{
     // MARK: - Function for Traite The Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-
         let position = scrollView.contentOffset.y
         if studentSecondaryTableView.contentSize.height == 0 { return }
         if position > (studentSecondaryTableView.contentSize.height - scrollView.frame.size.height)
@@ -138,7 +135,7 @@ extension SecondaryViewController{
                 "userId": UserDefaults.standard.integer(forKey: "id"),
                 "level": "Secondary",
                 "page": page + 1
-                ]
+            ]
             // MARK: - Get All Students
             repository.getStudent(url: api!, method: .post, parameters: newParameters) { result in
                 switch result{

@@ -11,7 +11,6 @@ import Alamofire
 class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
      
     var repository : RequestService = RequestService()
-    var student : [Student] = []
     let listEmptyLabel = UILabel()
     var page : Int = 0
     let parameters: Parameters = [
@@ -19,7 +18,7 @@ class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewD
         "level": "Primary",
         "page": 0
         ]
-    let api = URL(string: "http://localhost/MyFriends/getstudents.php")
+    let api = URL(string: "http://myfriends.fr/getstudents.php")
      @IBOutlet weak var primaryTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +91,7 @@ class PrimaryViewController: UIViewController, UITableViewDelegate, UITableViewD
 }
 
 extension PrimaryViewController{
-    // MARK: - To indicate that there are no recipe in favorite
+    // MARK: - To indicate that there are no friends
     func createLabel(){
         if RequestService.gettenStudentId.count == 0 {
             listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
@@ -124,7 +123,6 @@ extension PrimaryViewController{
     // MARK: - Function for Traite The Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-
         let position = scrollView.contentOffset.y
         if primaryTableView.contentSize.height == 0 { return }
         if position > (primaryTableView.contentSize.height - scrollView.frame.size.height)

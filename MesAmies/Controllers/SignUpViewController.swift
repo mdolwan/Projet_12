@@ -23,6 +23,7 @@ class SignUpViewController: UIViewController {
     @IBAction func backToSignIn(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
+    // MARK: - Add New User By Sign him Up
     @IBAction func signUpNewMember(_ sender: UIButton) {
         guard
             let useremail = emailTextField.text,
@@ -35,7 +36,7 @@ class SignUpViewController: UIViewController {
             "useremail": useremail,
             "password": password
         ]
-        guard let api = URL(string:"http://localhost/MyFriends/signup.php")
+        guard let api = URL(string:"http://myfriends.fr/signup.php")
         else { return  }
         repository.signUpRequest(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
@@ -54,6 +55,8 @@ class SignUpViewController: UIViewController {
     }
 }
 extension SignUpViewController{
+    
+    // MARK: - PopUp An Alert
     func showSimpleAlert(withTitle title: String, andDescription description: String) {
         let alert = UIAlertController(title: title, message: description, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))

@@ -11,20 +11,24 @@ import Alamofire
 class MessengerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var repository : RequestService = RequestService()
+    let listEmptyLabel = UILabel()
     var friendId = -1
     var friendName = ""
     var lastMessegeId = 0
     var firstMessegeId = 1
     var page = 0
     var senderName = UserDefaults.standard.string(forKey: "pseudo")!
-    let apiMessanger = URL(string:"http://localhost/MyFriends/getMessages.php")
+    //http://bmz.otajer.com/
+    //http://localhost/MyFriends/
+    // http://myfriends.fr/getMessages.php
+    let apiMessanger = URL(string:"http://myfriends.fr/getMessages.php")
     // variable to save the last position visited, default to zero
     private var lastContentOffset: CGFloat = 0
     
     @IBOutlet weak var messangerTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextView!
     @IBOutlet weak var tabBarLabel: UILabel!
-    
+    var myActivityIndicator: UIActivityIndicatorView! = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,7 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
         RequestService.messageTime.removeAll()
         RequestService.messageDate.removeAll()
         // MARK: - Get All Messages
+        createActivityIndicator()
         let parameters: Parameters = [
             "FromId": UserDefaults.standard.integer(forKey: "id"),
             "ToId": friendId,
@@ -85,8 +90,10 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
             case .failure(let error):
                 print(error)
             }
+           
         }
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector:  #selector(getNewMessegeInstantly), userInfo: nil, repeats: true)
+        self.hideActivityIndicator()
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector:  #selector(getNewMessegeInstantly), userInfo: nil, repeats: true)
     }
     // MARK: - Navigation
     @IBAction func sendMessageButton(_ sender: UIButton) {
@@ -99,9 +106,9 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
         let parameters: Parameters = [
             "FromId":FromId as Any,
             "ToId": userId,
-            "Text": Text as Any
+            "Text": Text as Any // http://localhost/MyFriends/
         ]
-        guard let api = URL(string:"http://localhost/MyFriends/addMessage.php")
+        guard let api = URL(string:"http://myfriends.fr/addMessage.php")
         else { return  }
         repository.sendCurrentMessage(url: api, method: .post, parameters: parameters) { dataResponse in
             switch dataResponse{
@@ -147,11 +154,6 @@ class MessengerViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 }
 
-extension MessengerViewController{
-    // MARK: - To indicate that there are no recipe in favorite
-    func createLabel(){
-    }
-}
 
 extension MessengerViewController{
     // MARK: - Get ALL Messeges Instantly
@@ -266,3 +268,39 @@ extension MessengerViewController{
     }
     
 }
+extension MessengerViewController{
+// MARK: - Display UIActivityIndiatorView
+func createActivityIndicator(){
+    myActivityIndicator.center = self.view.center
+    myActivityIndicator.hidesWhenStopped = true
+    myActivityIndicator.style = .large
+    myActivityIndicator.color = .black
+    self.view.addSubview(myActivityIndicator)
+    myActivityIndicator.startAnimating()
+    self.view.isUserInteractionEnabled = false
+}
+
+// MARK: - Hide UIActivityIndicator
+func hideActivityIndicator() {
+    myActivityIndicator.stopAnimating()
+    self.view.isUserInteractionEnabled = true
+}
+    // MARK: - To indicate that there are no friends
+    func createLabel(){
+        if RequestService.chatId.count == 0 {
+            listEmptyLabel.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100)
+            listEmptyLabel.text = "There are no more messeges.\("\n") Send First messege now...."
+            listEmptyLabel.numberOfLines = 0
+            listEmptyLabel.center = self.view.center
+            listEmptyLabel.textAlignment = .center
+            listEmptyLabel.backgroundColor = UIColor.black
+            listEmptyLabel.textColor = UIColor.white
+            self.view.addSubview(listEmptyLabel)
+        }
+        else{
+            listEmptyLabel.removeFromSuperview()
+        }
+    }
+}
+
+
